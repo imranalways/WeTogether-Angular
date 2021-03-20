@@ -1,0 +1,41 @@
+<form #form="ngForm">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>NAME</label>
+                <input type="text" class="form-control" name="Name"
+                #Name="ngModel" [(ngModel)]="service.formData.Name"
+                required [class.invalid]="Name.invalid && Name.touched">
+            </div>
+            <div class="form-group">
+                <label>EMAIL</label>
+                <input type="text" class="form-control" name="Email"
+                #Email="ngModel" [(ngModel)]="service.formData.Email"
+                required [class.invalid]="Email.invalid && Email.touched">
+            </div>
+            <div class="form-group">
+                <label>PASSWORD</label>
+                <input type="password" class="form-control" name="Password"
+                #Password="ngModel" [(ngModel)]="service.formData.Password"
+                required [class.invalid]="Password.invalid && Password.touched">
+            </div>
+            <div class="form-group">
+                <label>CONFIRM PASSWORD</label>
+                <input type="password" class="form-control" name="ConfirmPassword"
+                #ConfirmPassword="ngModel" [(ngModel)]="service.formData.ConfirmPassword"
+                required [class.invalid]="ConfirmPassword.invalid && ConfirmPassword.touched">
+            </div>
+            <div class="form-group">
+                <label>DATE OF BIRTH</label>
+                <input type="date" class="form-control" name="Dob"
+                #Dob="ngModel" [(ngModel)]="service.formData.Dob"
+                required [class.invalid]="Dob.invalid && Dob.touched">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm">SIGNUP</button>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</form>
