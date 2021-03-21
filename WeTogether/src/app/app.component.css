@@ -1,0 +1,11 @@
+.jumbotron{
+    background-color: darkslateblue;
+    color:white;
+    font-weight: bold;
+    margin-top: 6%;
+    border-color:red;
+}
+#register .container{
+    border-color:red;
+    
+}

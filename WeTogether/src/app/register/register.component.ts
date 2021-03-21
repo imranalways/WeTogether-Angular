@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegister } from '../shared/user-register.model';
+import { NgForm } from '@angular/forms';
 import { UserRegisterService } from '../shared/user-register.service';
 
 @Component({
@@ -13,5 +13,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onSubmit(form:NgForm){
+    this.service.postRegister().subscribe(
+      res=>{
 
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
 }

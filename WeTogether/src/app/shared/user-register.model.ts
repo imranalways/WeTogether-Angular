@@ -5,6 +5,6 @@ export class UserRegister {
     Password:String="";
     ConfirmPassword:String="";
     Dob:String="";
-    IsActive="";
+    IsActive;
 
 }
