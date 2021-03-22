@@ -1,0 +1,54 @@
+.jumbotron{
+    background-color: darkslateblue;
+    color:white;
+    font-weight: bold;
+    margin-top: 6%;
+    border-color:red;
+}
+#register .container{
+    border-color:red;
+    
+}
+.form-group a{
+    text-decoration: none;
+    text-align-last: center;
+}
+
+
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+.form-group label{
+    color: gray;
+}
+
+.form-group input{
+    font-weight:300;
+}
+
+thead th{
+    font-weight: 400;
+}
+table tbody tr:hover{
+    background-color:#fffbf2;
+}
+input.invalid{
+    border-color: red;
+}
+
+.form-group #error_msg{
+    /* padding:6px;
+    background-color: #f08080;
+    color:white; */
+    color:red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.form-group #register{
+    width: 100%;
+}
+
+#error{
+    text-align: center;
+    font-weight: bolder;
+    color:red;
+}

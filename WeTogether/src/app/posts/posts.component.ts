@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Posts } from '../shared/posts.model';
 import { PostsService } from '../shared/posts.service';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-posts',
@@ -10,13 +11,39 @@ import { PostsService } from '../shared/posts.service';
 export class PostsComponent implements OnInit {
 
   constructor(public service:PostsService) { }
+  txt:String;
+  PrivacyList:String[]=[
+    'Public',
+    'Friends',
+    'Only Me'
+  ];
+  
 
   ngOnInit(): void {
-    
+    console.log(this.PrivacyList);
     console.log(this.service.getAllPosts());
   }
   
-  getPostById(post:Posts){
-      console.log( post.PostId);
+  // getPostById(post:Posts){
+  //     console.log( post.PostId);
+  // }
+  clickEvent(){
+    if(this.txt=="Clicked"){
+      this.txt="NotClicked";
+    }
+    else{
+      this.txt="Clicked";
+    }
+  }
+  onSubmit(form:NgForm){
+    this.service.submitPost().subscribe(
+      res=>{
+        this.ngOnInit();
+        this.service.formData.PostBody="";
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 }

@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<br>
+
+<form #form="ngForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div *ngFor="let user of service.list">
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                User Id
+                            </td>
+                            <td>
+                                {{ user.UserId }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                {{ user.Name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                {{ user.Email }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                DOB
+                            </td>
+                            <td>
+                                {{ user.Dob }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</form>

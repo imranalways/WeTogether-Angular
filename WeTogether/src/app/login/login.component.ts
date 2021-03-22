@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Login } from '../shared/login.model';
 import { LoginService } from '../shared/login.service';
 
@@ -10,17 +11,19 @@ import { LoginService } from '../shared/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public service:LoginService) { }
-  
+  constructor(public service:LoginService,public router:Router) { }
+  error:String;
   ngOnInit(): void {
   }
   onSubmit(form:NgForm){
     this.service.Verify_Login().subscribe(
       res=>{
-        console.log(res);
+        this.error="";
+        this.router.navigate(['/Posts']);
       },
       err=>{
-        console.log(err);
+        this.error="Email/Password is Invalid";
+        console.log(err.status);
       }
     )
   }

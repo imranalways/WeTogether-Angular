@@ -5,18 +5,21 @@ import { AppComponent } from './app.component';
 import { UserRegisterService } from './shared/user-register.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {NgxPrintModule} from 'ngx-print';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPrintModule
     
   ],
   providers: [UserRegisterService],

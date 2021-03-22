@@ -1,55 +1,77 @@
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th colspan="2">
-                        Action
-                    </th>
-                    <th>
-                        Post ID
-                    </th>
-                    <th>
-                        Post Body
-                    </th>
-                    <th>
-                        Post By
-                    </th>
-                    <th>
-                        Post Date
-                    </th>
-                    <th>
-                        Is Deleted
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let post of service.list">
-                    <td (click)="getPostById(post)">
-                        <i class="far fa-edit fa-lg text-primary"></i>
-                    </td>
-                    <td>
-                        <i class="far fa-trash-alt fa-lg text-danger"></i>
-                     </td>
-                    <td>
-                        {{ post.PostId }}
-                    </td>
-                    <td>
-                        {{ post.PostBody }}
-                    </td>
-                    <td>
-                        {{ post.PostBy }}
-                    </td>
-                    <td>
-                        {{ post.PostDate }}
-                    </td>
-                    <td>
-                        {{ post.IsDeleted }}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<app-navbar></app-navbar>
+<br>
+<form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label><b>Imran Hossain</b></label>
+                <select class="form-control form-control-sm" name="PostPrivacy"
+                #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy" id="privacy">
+                    <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <textarea name="postbody" id="postbody" placeholder="What's on your mind?" 
+                name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"></textarea>
+            </div>
+            <div class="form-group">
+                <button id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary">
+                    POST
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
-    <div class="col-md-2"></div>
+</form>
+<br><br><br>
+<form #form="ngForm"></form>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div *ngFor="let post of service.list">
+            <div id="post">
+                <div class="form-group">
+                    <label><b>{{ post.PostBy }}</b></label>
+                    <p>{{ post.PostPrivacy }}</p>
+                </div>
+                <div class="form-group">
+                    <p>{{ post.PostBody }}</p>
+                </div>
+                <div class="form-group">
+                    <table>
+                        <tr id="btnPost">
+                            <td id="">
+                                <button class="" name="Like" (click)="clickEvent()"
+                                type="button" id={{txt}}>Like</button>
+                            </td>
+                            <td id="LikeBtn"><button type="button">Comment</button></td>
+                            <td id="LikeBtn"><button type="button">Share</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+        </div>
+        <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
+        <button printTitle="All Posts( {{ service.list.length }} )" printSectionId="print-section" ngxPrint>
+            Print
+          </button>
+<br><br><br><br>
+        <div id="print-section" hidden>
+            <div *ngFor="let post of service.list" id="post">
+              <div class="form-group">
+                  <label><b>{{ post.PostBy }}</b></label>
+                  <p>{{ post.PostPrivacy }}</p>
+              </div>
+              <div class="form-group">
+                  <p>{{ post.PostBody }}</p>
+              </div>
+              <br><hr><br>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
 </div>
+
