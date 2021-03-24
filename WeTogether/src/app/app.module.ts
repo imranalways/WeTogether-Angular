@@ -7,7 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPrintModule} from 'ngx-print';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +20,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPrintModule
-    
+    NgxPrintModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [UserRegisterService],
   bootstrap: [AppComponent]

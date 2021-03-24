@@ -1,72 +1,72 @@
-<div id="register">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="jumbotron">
-            <h3 class="display-4 text-center">SIGNUP</h3>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-      </div>
-    </div>
-</div>
 <br>
 
-<form #form="ngForm" (submit)="onSubmit(form)">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="">
-                <div class="form-group">
-                    <label>NAME</label>
-                    <input type="text" class="form-control" name="Name"
-                    #Name="ngModel" [(ngModel)]="service.formData.Name"
-                    required [class.invalid]="Name.invalid && Name.touched">
-                    <div id="error_msg" *ngIf="Name.invalid && Name.touched">Name is required</div>
+<section class="pb-4">
+
+    <div class="card text-center">
+      <h3 class="card-header primary-color white-text">SIGNUP</h3>
+      <div class="card-body">
+        <form #form="ngForm" (submit)="onSubmit(form)">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="">
+                        <div class="form-group">
+                            <label>NAME</label>
+                            <input type="text" class="form-control" name="Name"
+                            #Name="ngModel" [(ngModel)]="service.formData.Name"
+                            required [class.invalid]="Name.invalid && Name.touched">
+                            <div id="error_msg" *ngIf="Name.invalid && Name.touched">Name is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label>EMAIL</label>
+                            <input type="text" class="form-control" name="Email"
+                            #Email="ngModel" [(ngModel)]="service.formData.Email"
+                            required [class.invalid]="Email.invalid && Email.touched">
+                            <div id="error_msg" *ngIf="Email.invalid && Email.touched">Email is required</div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>PASSWORD</label>
+                            <input type="password" class="form-control" name="Password"
+                            #Password="ngModel" [(ngModel)]="service.formData.Password"
+                            required [class.invalid]="Password.invalid && Password.touched">
+                            <!-- <div id="error_msg" *ngIf="Password.invalid && Password.touched">Password is required</div> -->
+                            <div id="error_msg" *ngIf="Password.touched && service.formData.Password.length<6">Password length is short</div>
+            
+                        </div>
+                        <div class="form-group">
+                            <label>CONFIRM PASSWORD</label>
+                            <input type="password" class="form-control" name="ConfirmPassword"
+                            #ConfirmPassword="ngModel" [(ngModel)]="service.formData.ConfirmPassword"
+                            required [class.invalid]="ConfirmPassword.invalid && ConfirmPassword.touched">
+                            <!-- <div id="error_msg" *ngIf="ConfirmPassword.invalid && ConfirmPassword.touched">Confirm Password is required</div> -->
+                            <div id="error_msg" *ngIf="ConfirmPassword.touched && service.formData.Password != service.formData.ConfirmPassword">Confirm password doesn't match with password</div>
+                        </div>
+                        <div class="form-group">
+                            <label>DATE OF BIRTH</label>
+                            <input type="date" class="form-control" name="Dob"
+                            #Dob="ngModel" [(ngModel)]="service.formData.Dob"
+                            required [class.invalid]="Dob.invalid && Dob.touched">
+                            <div id="error_msg" *ngIf="Dob.invalid && Dob.touched">Date of birth is required</div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary">
+                                
+                                Register
+                            </button>
+                            <a routerLink="/">Already have an account?</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>EMAIL</label>
-                    <input type="text" class="form-control" name="Email"
-                    #Email="ngModel" [(ngModel)]="service.formData.Email"
-                    required [class.invalid]="Email.invalid && Email.touched">
-                    <div id="error_msg" *ngIf="Email.invalid && Email.touched">Email is required</div>
-                    
-                </div>
-                <div class="form-group">
-                    <label>PASSWORD</label>
-                    <input type="password" class="form-control" name="Password"
-                    #Password="ngModel" [(ngModel)]="service.formData.Password"
-                    required [class.invalid]="Password.invalid && Password.touched">
-                    <!-- <div id="error_msg" *ngIf="Password.invalid && Password.touched">Password is required</div> -->
-                    <div id="error_msg" *ngIf="Password.touched && service.formData.Password.length<6">Password length is short</div>
-    
-                </div>
-                <div class="form-group">
-                    <label>CONFIRM PASSWORD</label>
-                    <input type="password" class="form-control" name="ConfirmPassword"
-                    #ConfirmPassword="ngModel" [(ngModel)]="service.formData.ConfirmPassword"
-                    required [class.invalid]="ConfirmPassword.invalid && ConfirmPassword.touched">
-                    <!-- <div id="error_msg" *ngIf="ConfirmPassword.invalid && ConfirmPassword.touched">Confirm Password is required</div> -->
-                    <div id="error_msg" *ngIf="ConfirmPassword.touched && service.formData.Password != service.formData.ConfirmPassword">Confirm password doesn't match with password</div>
-                </div>
-                <div class="form-group">
-                    <label>DATE OF BIRTH</label>
-                    <input type="date" class="form-control" name="Dob"
-                    #Dob="ngModel" [(ngModel)]="service.formData.Dob"
-                    required [class.invalid]="Dob.invalid && Dob.touched">
-                    <div id="error_msg" *ngIf="Dob.invalid && Dob.touched">Date of birth is required</div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <button id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary">
-                        
-                        Register
-                    </button>
-                    <a routerLink="/">Already have an account?</a>
-                </div>
+                <div class="col-md-3"></div>
             </div>
-        </div>
-        <div class="col-md-3"></div>
+        </form>
+      </div>
     </div>
-</form>
+
+  </section>
+
+
+
+

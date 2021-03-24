@@ -1,0 +1,10 @@
+ mdb-card-img{
+    
+    border-radius: 400px;
+}
+.form-outline #Yeshidden{
+    display: block;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}

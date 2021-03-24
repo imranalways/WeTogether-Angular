@@ -1,4 +1,4 @@
 export class Login {
-    Email:String="";
+    Email:any="";
     Password:String="";
 }

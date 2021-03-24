@@ -1,20 +1,47 @@
 <app-navbar></app-navbar>
 <br>
 
+
+<mdb-card class="text-center">
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><mdb-card-img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap"></mdb-card-img></div>
+        <div class="col-md-4"></div>
+    </div>
+    
+    <mdb-card-body>
+      <mdb-card-title>
+        <h2>{{ service.list.Name }}</h2>
+      </mdb-card-title>
+  
+      <mdb-card-text >
+          <!-- <div class="form-outline" #Bio="ngModel" [(ngModel)]="service.formData.Bio">
+        <input name="bio"   id={{hdn}} placeholder="Edit your bio..." 
+        name="bio" #Bio="ngModel" [(ngModel)]="service.formData.Bio" class="form-control form-control-lg">
+      </div> -->
+      </mdb-card-text>
+    
+      <button routerLink="/Edit-Profile" mdbBtn color="primary" mdbWavesEffect>Edit<i class="fas fa-pencil-alt"></i></button>
+      <br>
+      
+    
+    </mdb-card-body>
+  </mdb-card>
+
 <form #form="ngForm">
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div *ngFor="let user of service.list">
-
+                <div>
                     <table class="table table-bordered">
                         <tr>
                             <td>
                                 User Id
                             </td>
                             <td>
-                                {{ user.UserId }}
+                                {{ service.list.UserId }}
                             </td>
                         </tr>
                         <tr>
@@ -22,7 +49,7 @@
                                 Name
                             </td>
                             <td>
-                                {{ user.Name }}
+                                {{ service.list.Name }}
                             </td>
                         </tr>
                         <tr>
@@ -30,7 +57,7 @@
                                 Email
                             </td>
                             <td>
-                                {{ user.Email }}
+                                {{ service.list.Email }}
                             </td>
                         </tr>
                         <tr>
@@ -38,7 +65,7 @@
                                 DOB
                             </td>
                             <td>
-                                {{ user.Dob }}
+                                {{ service.list.Dob }}
                             </td>
                         </tr>
                     </table>

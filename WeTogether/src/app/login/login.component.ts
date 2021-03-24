@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     this.service.Verify_Login().subscribe(
       res=>{
         this.error="";
+        localStorage.setItem('Email', this.service.formData.Email);
         this.router.navigate(['/Posts']);
       },
       err=>{

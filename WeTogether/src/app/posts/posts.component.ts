@@ -10,16 +10,22 @@ import { NgForm } from '@angular/forms';
 })
 export class PostsComponent implements OnInit {
 
-  constructor(public service:PostsService) { }
+  constructor(public service:PostsService) {
+    
+   }
+
+   
   txt:String;
+
   PrivacyList:String[]=[
-    'Public',
     'Friends',
     'Only Me'
   ];
-  
 
   ngOnInit(): void {
+    if(this.service.formData.PostPrivacy==""){
+      this.service.formData.PostPrivacy='Public';
+    }
     console.log(this.PrivacyList);
     console.log(this.service.getAllPosts());
   }
@@ -35,6 +41,9 @@ export class PostsComponent implements OnInit {
       this.txt="Clicked";
     }
   }
+ 
+  
+ 
   onSubmit(form:NgForm){
     this.service.submitPost().subscribe(
       res=>{
