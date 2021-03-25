@@ -21,7 +21,7 @@ export class PostsService {
     if(this.formData.PostPrivacy==""){
       this.formData.PostPrivacy="Public";
     }
-    this.formData.PostBy="Hossain";
+    this.formData.PostBy=localStorage.getItem('Name');
     console.log(this.formData);
     if(this.formData.PostBody!=""){
       return this.http.post(this.baseURL+"Submit",this.formData);

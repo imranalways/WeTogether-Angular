@@ -30,11 +30,11 @@
     <div class="col-md-2"></div>
   </div>
 </div> -->
-<mdb-card>
+<!-- <mdb-card>
     <mdb-card-body>
   
-      <mdb-card-title>
-        <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)">
+      <mdb-card-title> -->
+        <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
           <div class="row">
               <div class="col-md-3"></div>
               <div class="col-md-6">
@@ -46,12 +46,18 @@
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
                                  <option    Value="Public">Public</option>
                                   <option   *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
-                              </select>
+                          </select>
                         </mdb-card-title>
                       <mdb-card-body>
                         <mdb-card-text> 
-                          <textarea name="postbody" id="postbody" placeholder="What's on your mind?" 
-                           #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"></textarea>
+                          <div class="md-form form-sm">
+                            
+                            <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
+                            name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
+                             placeholder="What's on your mind?"></textarea>
+                            
+                        </div>
+                         
                       
                         </mdb-card-text>
                         
@@ -65,7 +71,7 @@
               <div class="col-md-3"></div>
           </div>
       </form>
-      <br><br><br>
+      <br>
       <form #form="ngForm"></form>
       <div class="row">
           <div class="col-md-2"></div>
@@ -92,8 +98,8 @@
                                   <table>
                                       <tr id="btnPost">
                                           <td id="">
-                                              <button class="" name="Like" (click)="clickEvent()"
-                                              type="button" id={{txt}}>Like</button>
+                                              <button class="" name="Like" (click)="checkId(post.PostId)"
+                                              type="button" id={{txt}} >Like</button>
                                           </td>
                                           <td id="LikeBtn"><button type="button">Comment</button></td>
                                           <td id="LikeBtn"><button type="button">Share</button></td>
@@ -127,14 +133,14 @@
           </div>
           <div class="col-md-2"></div>
       </div>
-      </mdb-card-title>
+      <!-- </mdb-card-title>
   
       <mdb-card-text> 
         
       </mdb-card-text>
   
     </mdb-card-body>
-  </mdb-card>
+  </mdb-card> -->
 
 
 

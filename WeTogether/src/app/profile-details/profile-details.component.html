@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+<br>
+<div class="container" *ngIf="this.service.formData.Name != ''">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+           <mdb-card>
+                <mdb-card-body>
+                <mdb-card-title>
+                    <br>
+                    <h3><b>About</b> </h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4><i class="fa fa-university" aria-hidden="true"></i> Education</h4>
+                        </div>
+                        <div class="col-md-7"></div>
+                        <div class="col-md-1" *ngIf='userid == UrlId'>
+                            <h3><a routerLink="/Edit-Profile"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a></h3>
+                        </div>
+                    </div>
+                   
+                </mdb-card-title>
+    
+                <mdb-card-text> 
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
+                            <p><i class="fa fa-university" aria-hidden="true"></i> School at  <b>{{ service.formData.School }}</b></p>
+                            <p><i class="fa fa-university" aria-hidden="true"></i> College at  <b>{{ service.formData.College }}</b></p>
+                            <p><i class="fa fa-university" aria-hidden="true"></i> Graduation at  <b>{{ service.formData.Graduation }}</b></p>
+                            <p><i class="fa fa-university" aria-hidden="true"></i> Post Graduation at  <b>{{ service.formData.PostGraduation }}</b></p>
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                    </div>
+                    
+                </mdb-card-text>
+                <mdb-card-title>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4><i class="far fa-address-card" aria-hidden="true"></i> Contact Info</h4>
+                        </div>
+                        <div class="col-md-7"></div>
+                        <div class="col-md-1" *ngIf='userid == UrlId'>
+                            <h3><a routerLink="/Edit-Profile"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a></h3>
+                        </div>
+                    </div>
+                   
+                </mdb-card-title>
+    
+                <mdb-card-text> 
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Birth Place  <b>{{ service.formData.BirthPlace }}</b></p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Present Address  <b>{{ service.formData.PresentAddress }}</b></p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Permanent Address  <b>{{ service.formData.PermanentAddress }}</b></p>
+                            <p><i class="fa fa-mobile" aria-hidden="true"></i> Contact No  <b>{{ service.formData.Contact }}</b></p>
+                            <p><i class="fa fa-phone" aria-hidden="true"></i>Telephone  <b>{{ service.formData.Telephone }}</b></p>
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                    </div>
+                    
+                </mdb-card-text>
+                <mdb-card-title>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4><i class="fas fa-tag prefix" aria-hidden="true"></i> General Information</h4>
+                        </div>
+                        <div class="col-md-7"></div>
+                        <div class="col-md-1" *ngIf='userid == UrlId'>
+                            <h3><a routerLink="/Edit-Profile"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a></h3>
+                        </div>
+                    </div>
+                   
+                </mdb-card-title>
+    
+                <mdb-card-text> 
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-9">
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Bio  <b>{{ service.formData.Bio }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Hobby  <b>{{ service.formData.Hobby }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Languages  <b>{{ service.formData.Language }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Religion  <b>{{ service.formData.Religion }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Gender  <b>{{ service.formData.Gender }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Relationship  <b>{{ service.formData.Relationship }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Interest In  <b>{{ service.formData.InterestIn }}</b></p>
+                            <p><i class="fas fa-tag prefix" aria-hidden="true"></i> Qutation  <b>{{ service.formData.Qutation }}</b></p>
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                    </div>
+                    
+                </mdb-card-text>
+                </mdb-card-body>
+           </mdb-card> 
+
+            
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div  class="row" *ngIf="this.service.formData.Name == ''">
+    <div class="col-md-3"></div>
+    <div id="err" class="col-md-6 text-center">
+        <h3>
+            Oppsss... Something bad happened!
+        </h3>
+    </div>
+    <div class="col-md-3"></div>
+</div>

@@ -9,24 +9,19 @@
         <div class="col-md-4"><mdb-card-img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap"></mdb-card-img></div>
         <div class="col-md-4"></div>
     </div>
-    
     <mdb-card-body>
       <mdb-card-title>
         <h2>{{ service.formData.Name }}</h2>
         <p>{{ service.formData.Bio }}</p>
       </mdb-card-title>
-  
       <mdb-card-text >
       </mdb-card-text>
-    
-      <button routerLink="/Edit-Profile" mdbBtn color="primary" mdbWavesEffect>Edit<i class="fas fa-pencil-alt"></i></button>
-      <br>
-      
-    
+      <button *ngIf='userid == UrlId' routerLink="/Edit-Profile" mdbBtn color="primary" mdbWavesEffect>Edit<i class="fas fa-pencil-alt"></i></button>
+     
     </mdb-card-body>
   </mdb-card>
 
-
+  <br>
 
   
 
@@ -40,37 +35,43 @@
                         <br>
                         <div class="row">
                             <div class="col-md-3"></div>
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                                 <p ><i class="fa fa-clock-o" aria-hidden="true">
-                                    </i> Joined <b>{{service.formData.JoinDate}}</b>
+                                    </i> Joined <b>{{service.formData.JoinDate | date: 'longDate' }}</b>
                                 </p>
 
-                                <p *ngIf="service.formData.PresentAddress != ''">
+                                <p ><i class="fa fa-clock-o" aria-hidden="true">
+                                </i> DOB <b>{{service.formData.Dob | date: 'longDate' }}</b>
+                            </p>
+
+                                <p *ngIf="service.formData.PresentAddress != '' && service.formData.PresentAddress != null">
                                     <i class="fa fa-home" aria-hidden="true"></i> Present Address <b>{{service.formData.PresentAddress}}</b>
                                 </p>
 
-                                <p *ngIf="service.formData.College != ''">
+                                <p *ngIf="service.formData.College != '' && service.formData.College != null">
                                     <i class="fa fa-university" aria-hidden="true"></i> College <b>{{service.formData.College}}</b>
                                 </p>
 
-                                <p *ngIf="service.formData.Graduation != ''">
+                                <p *ngIf="service.formData.Graduation != '' && service.formData.Graduation != null">
                                     <i class="fa fa-university" aria-hidden="true"></i> University <b>{{service.formData.Graduation}}</b>
                                 </p>
 
-                                <p *ngIf="service.formData.Relationship != ''">
+                                <p *ngIf="service.formData.PostGraduation != '' && service.formData.PostGraduation != null">
+                                    <i class="fa fa-university" aria-hidden="true"></i> PostGraduation <b>{{service.formData.PostGraduation}}</b>
+                                </p>
+                                
+                                <p *ngIf="service.formData.Relationship != '' && service.formData.Relationship != null">
                                     <i class="fa fa-heartbeat" aria-hidden="true"></i> Relationship <b>{{service.formData.Relationship}}</b>
                                 </p>
 
-                                <p *ngIf="service.formData.PostGraduation != ''">
-                                    <i class="fa fa-university" aria-hidden="true"></i> PostGraduation <b>{{service.formData.PostGraduation}}</b>
-                                </p>
+                                
 
                                 <div class="col-md-5">
-                                    <p id="seeMore"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about you</p>
+                                    <p><a routerLink="/Profile-Details/{{UrlId}}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about you </a></p>
                                 </div>
                                 </div>
                                 
-                            <div class="col-md-3"></div>
+                            <div class="col-md-2"></div>
                         </div>
                         
                         <mdb-card-body>

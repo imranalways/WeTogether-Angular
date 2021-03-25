@@ -8,15 +8,9 @@
 #privacy{
     width:70px;
 }
-#postbody{
-    resize: none;
-    width:400px;
-    max-width:400px;
-    height: 100px;
-    border:3px solid;
-    border-radius: 5px;
-    border-color: gray;
-    padding: 20px;
+#PostBody{
+
+    font-size: 18px;
 }
 
 #LikeBtn{
@@ -32,3 +26,7 @@
     cursor: hand;
     font-weight: bolder;
   }
+
+  /* mdb-card{
+      background-color: whitesmoke;
+  } */

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { LoginComponent } from './login/login.component';
 import { PostsComponent } from './posts/posts.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -10,8 +11,10 @@ const routes: Routes = [
   { path: 'Posts', component: PostsComponent }, 
   { path: 'Register', component: RegisterComponent }, 
   { path: '', component: LoginComponent },
-  { path: 'Profile',component: ProfileComponent},
-  { path: 'Edit-Profile',component: EditProfileComponent}
+  { path: 'Profile/:id',component: ProfileComponent},
+  { path: 'Edit-Profile',component: EditProfileComponent},
+  { path: 'Profile-Details/:id',component: ProfileDetailsComponent}
+
   ]; 
 
 @NgModule({
@@ -19,4 +22,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[PostsComponent,RegisterComponent,LoginComponent,ProfileComponent,EditProfileComponent]
+export const routingComponents=[PostsComponent,RegisterComponent,LoginComponent,
+                                ProfileComponent,EditProfileComponent,ProfileDetailsComponent]

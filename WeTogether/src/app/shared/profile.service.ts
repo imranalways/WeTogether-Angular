@@ -12,8 +12,10 @@ export class ProfileService {
   list:Profile;
   readonly baseURL= 'https://localhost:44388/api/Profile/';
 
+  
+
   getUserById(){
-    this.formData.UserId=localStorage.getItem('UserId');
+
     return this.http.get(this.baseURL+"Get_UserBasic_Info/"+this.formData.UserId)
     .toPromise()
     .then(res=>this.formData=res as Profile);
@@ -21,19 +23,19 @@ export class ProfileService {
 
 
   GeneralInfoSubmit(){
-    this.formData.UserId=localStorage.getItem('UserId');
+    
     console.log(this.formData);
     return this.http.post(this.baseURL+"General_Info_Save/",this.formData);
   }
 
   EducationalInfoSubmit(){
-    this.formData.UserId=localStorage.getItem('UserId');
+   
     console.log(this.formData);
     return this.http.post(this.baseURL+"Educational_Info_Save/",this.formData);
   }
 
   AddressInfoSubmit(){
-    this.formData.UserId=localStorage.getItem('UserId');
+   
     console.log(this.formData);
     return this.http.post(this.baseURL+"Address_Info_Save/",this.formData);
   }

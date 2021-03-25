@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../shared/profile.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-profile-details',
+  templateUrl: './profile-details.component.html',
+  styleUrls: ['./profile-details.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileDetailsComponent implements OnInit {
 
   constructor(public service:ProfileService,private activatedRoute: ActivatedRoute) { }
 
@@ -17,8 +17,9 @@ export class ProfileComponent implements OnInit {
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.formData.UserId=this.UrlId;
     console.log(this.UrlId);
-    console.log(this.service.getUserById());
-    console.log(this.service.list)
+    this.service.getUserById();
+    console.log(this.service.formData.Name);
+    
   }
-  
+
 }

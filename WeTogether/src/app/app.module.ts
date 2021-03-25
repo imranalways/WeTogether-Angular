@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgxPrintModule} from 'ngx-print';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     FormsModule,
     HttpClientModule,
     NgxPrintModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgbNavModule
   ],
   providers: [UserRegisterService],
   bootstrap: [AppComponent]

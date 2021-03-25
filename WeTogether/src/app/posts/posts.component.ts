@@ -21,8 +21,14 @@ export class PostsComponent implements OnInit {
     'Friends',
     'Only Me'
   ];
+
   Name:any=localStorage.getItem('Name');
+  userid:String=localStorage.getItem('UserId');
+  error:String="hasError";
   ngOnInit(): void {
+    if(this.userid != null){
+      this.error="";
+    }
     if(this.service.formData.PostPrivacy==""){
       this.service.formData.PostPrivacy='Public';
     }
@@ -32,9 +38,7 @@ export class PostsComponent implements OnInit {
   }
 
 
-  // getPostById(post:Posts){
-  //     console.log( post.PostId);
-  // }
+
   clickEvent(){
     if(this.txt=="Clicked"){
       this.txt="NotClicked";
@@ -44,6 +48,9 @@ export class PostsComponent implements OnInit {
     }
   }
  
+ checkId(Id:String){
+   console.log(Id);
+ }
   
  
   onSubmit(form:NgForm){
