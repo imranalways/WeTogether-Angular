@@ -9,19 +9,10 @@ import { ProfileService } from '../shared/profile.service';
 export class ProfileComponent implements OnInit {
 
   constructor(public service:ProfileService) { }
-  hdn:String="Yeshidden";
+  
   ngOnInit(): void {
     console.log(this.service.getUserById());
     console.log(this.service.list)
   }
-  EditBio(){
-    if(this.hdn=="NotHidden"){
-      this.hdn="YesHidden";
-    }
-    else{
-      this.hdn="NotHidden";
-    }
-    
-    console.log(this.hdn);
-  }
+  
 }

@@ -3,8 +3,8 @@
 
 <section class="pb-4">
 
-  <div class="card text-center">
-    <h3 class="card-header primary-color white-text">LOGIN</h3>
+  <div class="card">
+    <h3 class="card-header primary-color white-text text-center">LOGIN</h3>
     <div class="card-body">
       <form #form="ngForm" (submit)="onSubmit(form)">
         <div class="row">
@@ -31,7 +31,7 @@
         
                     </div>
                     <br>
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <button id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary">
                             Register
                         </button>

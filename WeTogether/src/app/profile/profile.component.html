@@ -12,14 +12,11 @@
     
     <mdb-card-body>
       <mdb-card-title>
-        <h2>{{ service.list.Name }}</h2>
+        <h2>{{ service.formData.Name }}</h2>
+        <p>{{ service.formData.Bio }}</p>
       </mdb-card-title>
   
       <mdb-card-text >
-          <!-- <div class="form-outline" #Bio="ngModel" [(ngModel)]="service.formData.Bio">
-        <input name="bio"   id={{hdn}} placeholder="Edit your bio..." 
-        name="bio" #Bio="ngModel" [(ngModel)]="service.formData.Bio" class="form-control form-control-lg">
-      </div> -->
       </mdb-card-text>
     
       <button routerLink="/Edit-Profile" mdbBtn color="primary" mdbWavesEffect>Edit<i class="fas fa-pencil-alt"></i></button>
@@ -29,49 +26,67 @@
     </mdb-card-body>
   </mdb-card>
 
+
+
+  
+
 <form #form="ngForm">
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div>
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>
-                                User Id
-                            </td>
-                            <td>
-                                {{ service.list.UserId }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Name
-                            </td>
-                            <td>
-                                {{ service.list.Name }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Email
-                            </td>
-                            <td>
-                                {{ service.list.Email }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                DOB
-                            </td>
-                            <td>
-                                {{ service.list.Dob }}
-                            </td>
-                        </tr>
-                    </table>
+                    <mdb-card class="text-left">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <p ><i class="fa fa-clock-o" aria-hidden="true">
+                                    </i> Joined <b>{{service.formData.JoinDate}}</b>
+                                </p>
+
+                                <p *ngIf="service.formData.PresentAddress != ''">
+                                    <i class="fa fa-home" aria-hidden="true"></i> Present Address <b>{{service.formData.PresentAddress}}</b>
+                                </p>
+
+                                <p *ngIf="service.formData.College != ''">
+                                    <i class="fa fa-university" aria-hidden="true"></i> College <b>{{service.formData.College}}</b>
+                                </p>
+
+                                <p *ngIf="service.formData.Graduation != ''">
+                                    <i class="fa fa-university" aria-hidden="true"></i> University <b>{{service.formData.Graduation}}</b>
+                                </p>
+
+                                <p *ngIf="service.formData.Relationship != ''">
+                                    <i class="fa fa-heartbeat" aria-hidden="true"></i> Relationship <b>{{service.formData.Relationship}}</b>
+                                </p>
+
+                                <p *ngIf="service.formData.PostGraduation != ''">
+                                    <i class="fa fa-university" aria-hidden="true"></i> PostGraduation <b>{{service.formData.PostGraduation}}</b>
+                                </p>
+
+                                <div class="col-md-5">
+                                    <p id="seeMore"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about you</p>
+                                </div>
+                                </div>
+                                
+                            <div class="col-md-3"></div>
+                        </div>
+                        
+                        <mdb-card-body>
+                          <mdb-card-title>
+                           
+                          </mdb-card-title>
+                      
+                          <mdb-card-text >
+                          </mdb-card-text>
+        
+                        </mdb-card-body>
+                      </mdb-card>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 </form>
+<br><br>

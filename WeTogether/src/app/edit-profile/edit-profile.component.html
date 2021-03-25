@@ -23,51 +23,69 @@
     </div>
   </div> -->
 
-<!-- Nav tabs -->
-<mdb-tabset #staticTabs [buttonClass]="'md-tabs pills-primary white'" [contentClass]="''">
-    <!--Panel 1-->
-    <mdb-tab heading="Active">
-      <div class="row">
-        <div class="col-12">
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae
-            placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-        </div>
+
+<!-- <div class="col-12 my-3">
+
+    <div class="classic-tabs">
+
+     
+      <div class="tabs-wrapper">
+        <ul class="nav tabs-blue" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link waves-light active waves-effect waves-light" data-toggle="tab" href="#panel36"
+              role="tab">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel37" role="tab">Follow</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel38" role="tab">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel39" role="tab">Be
+              awesome</a>
+          </li>
+        </ul>
       </div>
-    </mdb-tab>
-    <!--Panel 2-->
-    <mdb-tab heading="Link1">
-      <div class="row">
-        <div class="col-12">
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae
-            placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae
-            placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+
+     
+      <div class="tab-content card">
+       
+        <div class="tab-pane fade in show active" id="panel36" role="tabpanel">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+            doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+            Tempora, placeat ratione porro voluptate odit minima.</p>
         </div>
-      </div>
-    </mdb-tab>
-    <!--Panel 3-->
-    <mdb-tab heading="Link2">
-      <div class="row">
-        <div class="col-12">
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae
-            placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+       
+
+        
+        <div class="tab-pane fade" id="panel37" role="tabpanel">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+            doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+            Tempora, placeat ratione porro voluptate odit minima.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+            doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+            Tempora, placeat ratione porro voluptate odit minima.</p>
+        </div> -->
+        
+        <!-- <div class="tab-pane fade" id="panel38" role="tabpanel">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+            doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+            Tempora, placeat ratione porro voluptate odit minima.</p>
         </div>
-      </div>
-    </mdb-tab>
-    <!--Panel 4-->
-    <mdb-tab heading="Link3">
-      <div class="row">
-        <div class="col-12">
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus reiciendis molestiae
-            placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione porro voluptate odit minima.</p>
+        
+        <div class="tab-pane fade" id="panel39" role="tabpanel">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta
+            doloribus reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur.
+            Tempora, placeat ratione porro voluptate odit minima.</p>
         </div>
+       
       </div>
-    </mdb-tab>
-  </mdb-tabset>
+
+    </div>
+    
+
+  </div> -->
 
 
 
@@ -81,60 +99,72 @@
                     <h3 class="card-header primary-color white-text">General Information</h3>
                     </mdb-card-title>
                     <mdb-card-text> 
-                    <form>       
+                    <form #form="ngForm" (submit)="GeneralInfoSubmit(form)">
+
                         <div class="modal-body mb-0">
-                            <div class="md-form form-sm">
+                            <div class="form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form8" class="form-control">
-                                <label for="form8">Bio</label>
+                                 <label for="Bio">Bio</label>
+
+                                <input type="text" id="Bio" class="form-control form-control-sm" name="Bio" 
+                                #Bio="ngModel" [(ngModel)]="service.formData.Bio">
+                               
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="password" id="form9" class="form-control form-control-sm">
-                                <label for="form9">Hobby</label>
+                                <input type="text" id="Hobby" class="form-control form-control-sm"
+                                name="Hobby" #Hobby="ngModel" [(ngModel)]="service.formData.Hobby">
+                                <label for="Hobby">Hobby</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Languages</label>
+                                <input type="text" id="Languages" class="form-control form-control-sm"
+                                name="Language" #Language="ngModel" [(ngModel)]="service.formData.Language">
+                                <label for="Languages">Languages</label>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="md-form form-sm">
                                         <i class="fas fa-tag prefix"></i>
-                                        <input type="text" id="form11" class="form-control form-control-sm">
-                                        <label for="form11">Religion</label>
+                                        <input type="text" id="Religion" class="form-control form-control-sm"
+                                        name="Religion" #Religion="ngModel" [(ngModel)]="service.formData.Religion">
+                                        <label for="Religion">Religion</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="md-form form-sm">
                                         <i class="fas fa-tag prefix"></i>
-                                        <input type="text" id="form111" class="form-control form-control-sm">
-                                        <label for="form111">Gender</label>
+                                        <input type="text" id="Gender" class="form-control form-control-sm"
+                                        name="Gender" #Gender="ngModel" [(ngModel)]="service.formData.Gender">
+                                        <label for="Gender">Gender</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="md-form form-sm">
                                         <i class="fas fa-tag prefix"></i>
-                                        <input type="text" id="form112" class="form-control form-control-sm">
-                                        <label for="form112">Relationship</label>
+                                        <input type="text" id="Relationship" class="form-control form-control-sm"
+                                        name="Relationship" #Relationship="ngModel" [(ngModel)]="service.formData.Relationship">
+                                        <label for="Relationship">Relationship</label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="md-form form-sm">
                                         <i class="fas fa-tag prefix"></i>
-                                        <input type="text" id="form113" class="form-control form-control-sm">
+                                        <input type="text" id="InterestIn" class="form-control form-control-sm"
+                                        name="InterestIn" #InterestIn="ngModel" [(ngModel)]="service.formData.InterestIn">
                                         <label for="form113">Interest In</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <textarea type="text" id="form12" class="md-textarea form-control form-control-sm" rows="3"></textarea>
-                                <label for="form12">Your qutation</label>
+                                <textarea type="text" id="Qutation" class="md-textarea form-control form-control-sm" rows="3"
+                                name="Qutation" #Qutation="ngModel" [(ngModel)]="service.formData.Qutation"></textarea>
+                                <label for="Qutation">Your qutation</label>
                             </div>
                             <div class="text-center mt-1-half">
-                                <button class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
+                                <button type="submit" class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
+                                <div  id="message">{{message}}</div>
                             </div>
                         </div>    
                     </form>
@@ -160,35 +190,40 @@
                     <h3 class="card-header primary-color white-text">Educational Information</h3>
                     </mdb-card-title>
                     <mdb-card-text>
-                    <form>      
+                    <form #form="ngForm" (submit)="EducationalInfoSubmit(form)">      
                         <div class="modal-body mb-0">
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form8" class="form-control">
-                                <label for="form8">School</label>
+                                <input type="text" id="School" class="form-control form-control-sm"
+                                name="School" #School="ngModel" [(ngModel)]="service.formData.School">
+                                <label for="School">School</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="password" id="form9" class="form-control form-control-sm">
-                                <label for="form9">Higher School</label>
+                                <input type="text" id="HigherSchool" class="form-control form-control-sm"
+                                name="HigherSchool" #HigherSchool="ngModel" [(ngModel)]="service.formData.HigherSchool">
+                                <label for="HigherSchool">Higher School</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form10" class="form-control form-control-sm">
-                                <label for="form10">College</label>
+                                <input type="text" id="College" class="form-control form-control-sm"
+                                name="College" #College="ngModel" [(ngModel)]="service.formData.College">
+                                <label for="College">College</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Graduation</label>
+                                <input type="text" id="Graduation" class="form-control form-control-sm"
+                                name="Graduation" #Graduation="ngModel" [(ngModel)]="service.formData.Graduation">
+                                <label for="Graduation">Graduation</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Post Graduation</label>
+                                <input type="text" id="PostGraduation" class="form-control form-control-sm"
+                                name="PostGraduation" #PostGraduation="ngModel" [(ngModel)]="service.formData.PostGraduation">
+                                <label for="PostGraduation">Post Graduation</label>
                             </div>
                             <div class="text-center mt-1-half">
-                                <button class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
+                                <button type="submit" class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
                             </div>
                         </div>     
                     </form>
@@ -214,35 +249,40 @@
                         <h3 class="card-header primary-color white-text">Address & Communication Information</h3>
                     </mdb-card-title>
                     <mdb-card-text>
-                    <form>
+                    <form #form="ngForm" (submit)="AddressInfoSubmit(form)">
                         <div class="modal-body mb-0">
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form8" class="form-control">
-                                <label for="form8">Birth Place</label>
+                                <input type="text" id="BirthPlace" class="form-control form-control-sm"
+                                name="BirthPlace" #BirthPlace="ngModel" [(ngModel)]="service.formData.BirthPlace">
+                                <label for="BirthPlace">Birth Place</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="password" id="form9" class="form-control form-control-sm">
-                                <label for="form9">Present Address</label>
+                                <input type="text" id="PresentAddress" class="form-control form-control-sm"
+                                name="PresentAddress" #PresentAddress="ngModel" [(ngModel)]="service.formData.PresentAddress">
+                                <label for="PresentAddress">Present Address</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="text" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Permanet Address</label>
+                                <input type="text" id="PermanentAddress" class="form-control form-control-sm"
+                                name="PermanentAddress" #PermanentAddress="ngModel" [(ngModel)]="service.formData.PermanentAddress">
+                                <label for="PermanentAddress">Permanent Address</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="number" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Contact</label>
+                                <input type="number" id="Contact" class="form-control form-control-sm"
+                                name="Contact" #Contact="ngModel" [(ngModel)]="service.formData.Contact">
+                                <label for="Contact">Contact</label>
                             </div>
                             <div class="md-form form-sm">
                                 <i class="fas fa-tag prefix"></i>
-                                <input type="number" id="form10" class="form-control form-control-sm">
-                                <label for="form10">Telephone</label>
+                                <input type="number" id="Telephone" class="form-control form-control-sm"
+                                name="Telephone" #Telephone="ngModel" [(ngModel)]="service.formData.Telephone">
+                                <label for="Telephone">Telephone</label>
                             </div>
                             <div class="text-center mt-1-half">
-                                <button class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
+                                <button type="submit" class="btn btn-info mb-2">Save <i class="fas fa-paper-plane ml-1"></i></button>
                             </div>
                         </div>    
                     </form>
@@ -255,3 +295,4 @@
 </div>
 
 <br> <br>
+

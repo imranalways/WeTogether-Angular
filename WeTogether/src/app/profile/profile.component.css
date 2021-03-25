@@ -8,3 +8,11 @@
     height: 0;
     width: 0;
 }
+#seeMore{
+    cursor: pointer;
+    cursor: hand;
+}
+
+#seeMore:hover{
+    color:rgb(26, 146, 243)
+}

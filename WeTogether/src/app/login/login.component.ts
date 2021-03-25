@@ -18,9 +18,15 @@ export class LoginComponent implements OnInit {
   onSubmit(form:NgForm){
     this.service.Verify_Login().subscribe(
       res=>{
-        this.error="";
+          this.service.formData=res as Login
+        
+        localStorage.setItem('UserId', this.service.formData.UserId);
         localStorage.setItem('Email', this.service.formData.Email);
+        localStorage.setItem('Name', this.service.formData.Name);
+    
+  
         this.router.navigate(['/Posts']);
+
       },
       err=>{
         this.error="Email/Password is Invalid";

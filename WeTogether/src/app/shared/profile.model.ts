@@ -14,11 +14,22 @@ export class Profile {
     Qutation:String="";
     Gender:String="";
     InterestIn:String="";
+    Relationship:String="";
 
     Works:String="";
-    Live:String="";
-    Contact:String="";
-    Relationship:String="";
+    School:String="";
+    HigherSchool:String="";
+    College:String="";
+    Graduation:String="";
+    PostGraduation:String="";
+
+    BirthPlace:String="";
+    PresentAddress:String="";
+    PermanentAddress:String="";
+    Contact:Number;
+    Telephone:Number;
+    
+    
 
     
 

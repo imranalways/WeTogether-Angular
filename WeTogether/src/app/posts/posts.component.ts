@@ -21,15 +21,17 @@ export class PostsComponent implements OnInit {
     'Friends',
     'Only Me'
   ];
-
+  Name:any=localStorage.getItem('Name');
   ngOnInit(): void {
     if(this.service.formData.PostPrivacy==""){
       this.service.formData.PostPrivacy='Public';
     }
+    
     console.log(this.PrivacyList);
     console.log(this.service.getAllPosts());
   }
-  
+
+
   // getPostById(post:Posts){
   //     console.log( post.PostId);
   // }

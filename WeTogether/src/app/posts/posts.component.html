@@ -40,7 +40,7 @@
               <div class="col-md-6">
                   <mdb-card style="padding: 30px;">
                       <mdb-card-title style="padding-left: 15px;">
-                          <label><b>Imran Hossain</b></label>
+                          <label><b>{{Name}}</b></label>
                           
                           <select class="form-control form-control-sm" name="PostPrivacy"
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
@@ -51,7 +51,7 @@
                       <mdb-card-body>
                         <mdb-card-text> 
                           <textarea name="postbody" id="postbody" placeholder="What's on your mind?" 
-                          name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"></textarea>
+                           #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"></textarea>
                       
                         </mdb-card-text>
                         

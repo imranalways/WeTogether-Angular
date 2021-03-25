@@ -10,13 +10,32 @@ export class ProfileService {
   constructor(private http:HttpClient) { }
   formData:Profile=new Profile();
   list:Profile;
-  readonly baseURL= 'https://localhost:44388/api/Account/';
+  readonly baseURL= 'https://localhost:44388/api/Profile/';
 
   getUserById(){
-    this.formData.UserId="User_Imran Hossain_20210321021936";
-    return this.http.get(this.baseURL+"GetById/"+this.formData.UserId)
+    this.formData.UserId=localStorage.getItem('UserId');
+    return this.http.get(this.baseURL+"Get_UserBasic_Info/"+this.formData.UserId)
     .toPromise()
-    .then(res=>this.list=res as Profile);
+    .then(res=>this.formData=res as Profile);
   }
 
+
+  GeneralInfoSubmit(){
+    this.formData.UserId=localStorage.getItem('UserId');
+    console.log(this.formData);
+    return this.http.post(this.baseURL+"General_Info_Save/",this.formData);
+  }
+
+  EducationalInfoSubmit(){
+    this.formData.UserId=localStorage.getItem('UserId');
+    console.log(this.formData);
+    return this.http.post(this.baseURL+"Educational_Info_Save/",this.formData);
+  }
+
+  AddressInfoSubmit(){
+    this.formData.UserId=localStorage.getItem('UserId');
+    console.log(this.formData);
+    return this.http.post(this.baseURL+"Address_Info_Save/",this.formData);
+  }
+  
 }
