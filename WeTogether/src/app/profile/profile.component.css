@@ -16,3 +16,8 @@
 #seeMore:hover{
     color:rgb(26, 146, 243)
 }
+#err{
+    color:white;
+   background-color: coral;
+   padding:20px;
+}

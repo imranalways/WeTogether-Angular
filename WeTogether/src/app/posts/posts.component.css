@@ -30,3 +30,8 @@
   /* mdb-card{
       background-color: whitesmoke;
   } */
+
+#postOption:hover{
+    background-color: rgb(219, 217, 212);
+    border-radius: 60px;
+}

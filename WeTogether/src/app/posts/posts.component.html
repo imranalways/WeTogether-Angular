@@ -44,8 +44,8 @@
                           
                           <select class="form-control form-control-sm" name="PostPrivacy"
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
-                                 <option    Value="Public">Public</option>
-                                  <option   *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+                                 <option Value="Public">Public</option>
+                                  <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
                           </select>
                         </mdb-card-title>
                       <mdb-card-body>
@@ -72,7 +72,7 @@
           </div>
       </form>
       <br>
-      <form #form="ngForm"></form>
+      <form #form="ngForm">
       <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
@@ -83,8 +83,16 @@
                           <mdb-card-body>
       
                             <mdb-card-title>
-                              <label><b>{{ post.PostBy }}</b></label>
-                              <!-- <a style="text-align: right;" class="btn btn-default" data-toggle="popover-click" data-content="Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.">Click me</a> -->
+                             
+                                <div class="row">
+                                  <div class="col-md-5">
+                                    <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
+
+                                  </div>
+                                  <div class="col-md-6"></div>
+                                  <div id="postOption" class="col-md-1 text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
+                                </div>
+                                
                             </mdb-card-title>
       
                             <mdb-card-text>  
@@ -101,7 +109,7 @@
                                               <button class="" name="Like" (click)="checkId(post.PostId)"
                                               type="button" id={{txt}} >Like</button>
                                           </td>
-                                          <td id="LikeBtn"><button type="button">Comment</button></td>
+                                          <td id="LikeBtn"><a routerLink="/Post-Details/{{post.PostId}}"><button type="button">Comment</button></a></td>
                                           <td id="LikeBtn"><button type="button">Share</button></td>
                                       </tr>
                                   </table>
@@ -133,6 +141,7 @@
           </div>
           <div class="col-md-2"></div>
       </div>
+    </form>
       <!-- </mdb-card-title>
   
       <mdb-card-text> 

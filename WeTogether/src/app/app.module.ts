@@ -9,13 +9,14 @@ import {NgxPrintModule} from 'ngx-print';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

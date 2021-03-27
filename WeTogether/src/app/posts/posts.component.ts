@@ -64,4 +64,9 @@ export class PostsComponent implements OnInit {
       }
     )
   }
+
+  optionClicked(){
+    console.log("Okk");
+  }
+
 }
