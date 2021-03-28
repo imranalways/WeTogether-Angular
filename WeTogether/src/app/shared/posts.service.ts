@@ -9,6 +9,7 @@ import { Posts } from './posts.model';
 export class PostsService {
   formData:Posts=new Posts();
   list:Posts[];
+  comment:PostDetails=new PostDetails;
   comments:PostDetails[];
 
   constructor(private http:HttpClient) { }
@@ -43,6 +44,14 @@ export class PostsService {
     if(this.formData.PostBody!=""){
       return this.http.post(this.baseURL+"Submit",this.formData);
     }
-    
+  }
+
+  CommentSubmit(){
+    if(this.comment.CommentBody!=""){
+      this.comment.PostId=this.formData.PostId;
+      this.comment.C_UserId=localStorage.getItem('UserId');
+      this.comment.CommentBy=localStorage.getItem('Name')
+      return this.http.post("https://localhost:44388/api/Comment/Submit",this.comment);
+    }
   }
 }

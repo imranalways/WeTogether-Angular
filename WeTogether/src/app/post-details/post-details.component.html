@@ -52,21 +52,58 @@
                 <br>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
   </form>
 
-  <mdb-card *ngFor="let comment of service.comments">
-    <mdb-card-body>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <mdb-card>
+        <br>
+        <form #form="ngForm" (submit)="CommentSubmit(form)">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+              <textarea type="text" id="CommentBody" class="form-control form-control-sm"
+              placeholder="Write a comment...."
+              name="CommentBody" #CommentBody="ngModel" [(ngModel)]="service.comment.CommentBody" style="resize: none;"></textarea>
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-sm">Comment</button>
+            </div>
+          </div>
+        </form>
+        
+        <br>
+        <mdb-card-body *ngFor="let comment of service.comments">
+          <mdb-card-title>
+            <a routerLink="/Profile/{{comment.C_UserId}}">{{comment.CommentBy}}</a>
+           
+          </mdb-card-title>
+      
+          <mdb-card-text> 
+            <p>{{comment.CommentDate | date: 'longDate'}}</p>
+            
+            {{comment.CommentBody}}
+            <div class="form-group">
+              <table>
+                  <tr id="btnPost">
+                      <td id="">
+                          <button class="" name="Like" class="btn btn-sm" (click)="checkId(service.formData.PostId)"
+                          type="button" >Like</button>
+                      </td>
+                      <td id="LikeBtn"><button type="button" class="btn btn-sm">Reply</button></td>
+                  </tr>
+              </table>
+          </div>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
   
-     
-      <mdb-card-title>
-        <h4>{{comment.CommentBy}}</h4>
-      </mdb-card-title>
-  
-      <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-        content.
-      </mdb-card-text>
-  
-      <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
-    </mdb-card-body>
-  </mdb-card>

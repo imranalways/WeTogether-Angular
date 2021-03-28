@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../shared/posts.service';
 
@@ -25,6 +26,18 @@ export class PostDetailsComponent implements OnInit {
 
   optionClicked(){
     console.log("Okk");
+  }
+
+  CommentSubmit(form:NgForm){
+    this.service.CommentSubmit().subscribe(
+      res=>{
+         form.form.reset();
+         this.ngOnInit();
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 
 }
