@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LikeDetails } from './like-details.model';
 import { PostDetails } from './post-details.model';
 import { Posts } from './posts.model';
 
@@ -11,6 +12,7 @@ export class PostsService {
   list:Posts[];
   comment:PostDetails=new PostDetails;
   comments:PostDetails[];
+  likes:LikeDetails[];
 
   constructor(private http:HttpClient) { }
   readonly baseURL= 'https://localhost:44388/api/Posts/';
@@ -53,5 +55,16 @@ export class PostsService {
       this.comment.CommentBy=localStorage.getItem('Name')
       return this.http.post("https://localhost:44388/api/Comment/Submit",this.comment);
     }
+  }
+
+  LikesInsert(){
+    console.log("Like clickeed");
+    return this.http.post(this.baseURL+"Likes_Insert",this.formData);
+  }
+   
+  getLikes(){
+    return this.http.get(this.baseURL+"Likes")
+    .toPromise()
+    .then(res=>this.likes=res as LikeDetails[]);
   }
 }

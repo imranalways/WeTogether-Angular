@@ -32,9 +32,11 @@ export class PostsComponent implements OnInit {
     if(this.service.formData.PostPrivacy==""){
       this.service.formData.PostPrivacy='Public';
     }
-    
+    this.service.formData.PostBody="";
     console.log(this.PrivacyList);
     console.log(this.service.getAllPosts());
+    this.service.getLikes();
+    console.log(this.service.likes);
   }
 
 
@@ -48,9 +50,21 @@ export class PostsComponent implements OnInit {
     }
   }
  
- checkId(Id:String){
-   console.log(Id);
- }
+  LikeClicked(Id:String){
+    this.service.formData.Likes=1;
+    this.service.formData.PostId=Id;
+    this.service.formData.UserId=this.userid;
+    this.service.LikesInsert().subscribe(
+        res=>{
+         
+        },
+        err=>{
+          console.log(err);
+        }
+      )
+  }
+ 
+
   
  
   onSubmit(form:NgForm){
@@ -69,4 +83,14 @@ export class PostsComponent implements OnInit {
     console.log("Okk");
   }
 
+
+c:number=0;
+  count(id:String){
+    this.c+=1;
+    console.log(this.c);
+    console.log(id);
+  }
+  reset(){
+    this.c=0;
+  }
 }

@@ -77,9 +77,17 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
               <div *ngFor="let post of service.list">
+                
+                <div *ngFor="let like of service.likes">
+                  
+                
+                <div *ngIf="post.PostId == like.PostId">
+                  {{count(post.PostId)}}
+                </div>
+              </div>
                   <div id="post">
       
-                      <mdb-card>
+                      <mdb-card >
                           <mdb-card-body>
       
                             <mdb-card-title>
@@ -101,12 +109,15 @@
                               </div>
                               <div class="form-group">
                                   <p>{{ post.PostBody }}</p>
+                                  <p >
+                                    {{c}}
+                                  </p>
                               </div>
                               <div class="form-group">
                                   <table>
                                       <tr id="btnPost">
                                           <td id="">
-                                              <button class="" name="Like" (click)="checkId(post.PostId)"
+                                              <button class="" name="Like" (click)="LikeClicked(post.PostId)"
                                               type="button" id={{txt}} >Like</button>
                                           </td>
                                           <td id="LikeBtn"><a routerLink="/Post-Details/{{post.PostId}}"><button type="button">Comment</button></a></td>
@@ -120,6 +131,7 @@
                         </mdb-card>
                   </div>
                   <br>
+                  {{reset()}}
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
               <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( {{ service.list.length }} )" printSectionId="print-section" ngxPrint>

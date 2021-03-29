@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProfileComponent } from 'src/app/profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public pro:ProfileComponent, public router:Router) { }
 
   ngOnInit(): void {
   }
   userid:any=localStorage.getItem('UserId');
+  
 }

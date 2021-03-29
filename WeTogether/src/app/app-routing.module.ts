@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'Posts', component: PostsComponent }, 
   { path: 'Register', component: RegisterComponent }, 
   { path: '', component: LoginComponent },
+  { path: 'profile/:id',component: ProfileComponent},
   { path: 'Profile/:id',component: ProfileComponent},
   { path: 'Edit-Profile',component: EditProfileComponent},
   { path: 'Profile-Details/:id',component: ProfileDetailsComponent},

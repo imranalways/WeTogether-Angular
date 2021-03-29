@@ -8,4 +8,5 @@ export class Posts {
     PostUpdatedDate:Date;
     PostPrivacy:String="";
     IsDeleted;
+    Likes:Number;
 }
