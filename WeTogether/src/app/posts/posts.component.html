@@ -81,15 +81,11 @@
                 <div *ngFor="let like of service.likes">
                   
                 
-                <div *ngIf="post.PostId == like.PostId">
-                  {{count(post.PostId)}}
-                  <!-- {{like.PostId}}
-                  <p>=====</p> -->
+                <div *ngIf="post.PostId== like.PostId">
+                  {{count()}}
                 </div>
-                <!-- <p>#####</p>
-                {{like.PostId}} -->
               </div>
-                  <div id="post">
+                  <div id="post" *ngIf="checker==true">
       
                       <mdb-card >
                           <mdb-card-body>
@@ -134,11 +130,12 @@
                           </mdb-card-body>
                         </mdb-card>
                   </div>
+                
                   <br>
                   {{reset()}}
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
-              <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( {{ service.list.length }} )" printSectionId="print-section" ngxPrint>
+              <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
                   Print
                 </button>
       <br><br><br><br>

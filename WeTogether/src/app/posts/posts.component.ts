@@ -56,7 +56,7 @@ export class PostsComponent implements OnInit {
     this.service.formData.UserId=this.userid;
     this.service.LikesInsert().subscribe(
         res=>{
-         
+          this.service.getLikes();
         },
         err=>{
           console.log(err);
@@ -85,10 +85,11 @@ export class PostsComponent implements OnInit {
 
 
 c:number=0;
+checker:boolean=false;
   count(id:String){
     this.c+=1;
-    console.log(this.c);
-    console.log(id);
+    
+   this.checker=true;
   }
   reset(){
     this.c=0;
