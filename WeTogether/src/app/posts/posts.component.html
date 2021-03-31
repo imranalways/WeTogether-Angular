@@ -36,8 +36,8 @@
       <mdb-card-title> -->
         <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
           <div class="row">
-              <div class="col-md-3"></div>
-              <div class="col-md-6">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
                   <mdb-card style="padding: 30px;">
                       <mdb-card-title style="padding-left: 15px;">
                           <label><b>{{Name}}</b></label>
@@ -47,28 +47,23 @@
                                  <option Value="Public">Public</option>
                                   <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
                           </select>
-                        </mdb-card-title>
-                      <mdb-card-body>
-                        <mdb-card-text> 
                           <div class="md-form form-sm">
                             
                             <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
                             name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
                              placeholder="What's on your mind?"></textarea>
-                            
-                        </div>
-                         
-                      
+                             <button  id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary btn-sm">
+                              POST
+                          </button>
+                          </div>
+                        </mdb-card-title>
+                      <mdb-card-body>
+                        <mdb-card-text>
                         </mdb-card-text>
-                        
-                        <button id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary">
-                          POST
-                      </button>
-                     
                       </mdb-card-body>
                     </mdb-card>
               </div>
-              <div class="col-md-3"></div>
+              <div class="col-md-2"></div>
           </div>
       </form>
       <br>
@@ -79,9 +74,7 @@
               <div *ngFor="let post of service.list">
                 
                 <div *ngFor="let like of service.likes">
-                  
-                
-                <div *ngIf="post.PostId== like.PostId">
+                <div *ngIf="post.PostId == like.PostId">
                   {{count()}}
                 </div>
               </div>
@@ -93,30 +86,38 @@
                             <mdb-card-title>
                              
                                 <div class="row">
-                                  <div class="col-md-5">
-                                    <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
-
+                                   <div class="col-md-5">
+                                      <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
+                                      <p id="privacyTxt">{{ post.PostPrivacy }}</p>
+                                   </div>
+                                    <div class="col-md-6"></div>
+                                    <div class="col-md-1">
+                                    <div id="postOption" class="text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
                                   </div>
-                                  <div class="col-md-6"></div>
-                                  <div id="postOption" class="col-md-1 text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
-                                </div>
+                              </div>
                                 
                             </mdb-card-title>
       
                             <mdb-card-text>  
-                              <div class="form-group">
-                              <p>{{ post.PostPrivacy }}</p>
-                              </div>
+                            
                               <div class="form-group">
                                   <p>{{ post.PostBody }}</p>
-                                  <p >
-                                    {{c}}
+                                  <p *ngIf="c>0">
+                                    <i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i> {{c}}
                                   </p>
+                              </div>
+                              <div *ngFor="let like of service.likes">
+                                <p *ngIf="like.UserId==userid">
+                                  {{liked()}}
+                                </p>
+                                <p *ngIf="like.UserId!=userid">
+                                  {{unliked()}}
+                                </p>
                               </div>
                               <div class="form-group">
                                   <table>
                                       <tr id="btnPost">
-                                          <td id="">
+                                          <td>
                                               <button class="" name="Like" (click)="LikeClicked(post.PostId)"
                                               type="button" id={{txt}} >Like</button>
                                           </td>

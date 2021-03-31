@@ -3,4 +3,5 @@ export class LikeDetails {
     PostId:String="";
     UserId:String="";
     Likes:Number;
+    Unlikes:Number;
 }

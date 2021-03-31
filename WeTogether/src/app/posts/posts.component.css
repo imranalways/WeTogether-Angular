@@ -1,12 +1,22 @@
 
-#Clicked{
-    color:Green;
+#Liked{
+    background-color:Green;
+    color: red;
     font-weight: bolder;
 }
 
 
 #privacy{
     width:70px;
+}
+
+#privacyTxt{
+    font-size: 12px;
+    color:rgb(124, 124, 124);
+}
+
+#thumbs{
+    color:springgreen;
 }
 #PostBody{
 
@@ -33,5 +43,5 @@
 
 #postOption:hover{
     background-color: rgb(219, 217, 212);
-    border-radius: 60px;
+    border-radius: 20px;
 }

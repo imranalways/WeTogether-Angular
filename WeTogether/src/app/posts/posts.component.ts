@@ -15,7 +15,7 @@ export class PostsComponent implements OnInit {
    }
 
    
-  txt:String;
+ 
 
   PrivacyList:String[]=[
     'Friends',
@@ -36,19 +36,15 @@ export class PostsComponent implements OnInit {
     console.log(this.PrivacyList);
     console.log(this.service.getAllPosts());
     this.service.getLikes();
+    console.log(this.service.list);
+    if(this.service.list==undefined){
+      this.checker=true;
+    }
     console.log(this.service.likes);
   }
 
 
 
-  clickEvent(){
-    if(this.txt=="Clicked"){
-      this.txt="NotClicked";
-    }
-    else{
-      this.txt="Clicked";
-    }
-  }
  
   LikeClicked(Id:String){
     this.service.formData.Likes=1;
@@ -63,9 +59,6 @@ export class PostsComponent implements OnInit {
         }
       )
   }
- 
-
-  
  
   onSubmit(form:NgForm){
     this.service.submitPost().subscribe(
@@ -86,12 +79,27 @@ export class PostsComponent implements OnInit {
 
 c:number=0;
 checker:boolean=false;
-  count(id:String){
+  count(){
     this.c+=1;
     
    this.checker=true;
   }
   reset(){
     this.c=0;
+  }
+
+  ckreset(){
+    this.ck=false;
+  }
+
+  txt:String;
+  ck:boolean=false;
+  liked(){
+    this.txt="Liked";
+    this.ck=true;
+  }
+
+  unliked(){
+    this.txt="";
   }
 }
