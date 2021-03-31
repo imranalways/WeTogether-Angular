@@ -89,14 +89,14 @@ checker:boolean=false;
   }
 
   ckreset(){
-    this.ck=false;
+    this.chk=false;
   }
 
   txt:String;
-  ck:boolean=false;
+  chk:boolean=false;
   liked(){
     this.txt="Liked";
-    this.ck=true;
+    this.chk=true;
   }
 
   unliked(){

@@ -57,10 +57,10 @@
                           </button>
                           </div>
                         </mdb-card-title>
-                      <mdb-card-body>
+                      <!-- <mdb-card-body>
                         <mdb-card-text>
                         </mdb-card-text>
-                      </mdb-card-body>
+                      </mdb-card-body> -->
                     </mdb-card>
               </div>
               <div class="col-md-2"></div>
@@ -103,19 +103,17 @@
                               <div class="form-group">
                                   <p>{{ post.PostBody }}</p>
                                   <p *ngIf="c>0">
-                                    <i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i> {{c}}
+                                    <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
                                   </p>
                               </div>
                               <div *ngFor="let like of service.likes">
-                                <p *ngIf="like.UserId==userid">
+                                <p *ngIf="post.PostId==like.PostId && like.UserId==userid">
                                   {{liked()}}
                                 </p>
-                                <p *ngIf="like.UserId!=userid">
-                                  {{unliked()}}
-                                </p>
                               </div>
+                              <hr>
                               <div class="form-group">
-                                  <table>
+                                  <table *ngIf="error != 'hasError'">
                                       <tr id="btnPost">
                                           <td>
                                               <button class="" name="Like" (click)="LikeClicked(post.PostId)"
@@ -133,7 +131,9 @@
                   </div>
                 
                   <br>
+                  {{unliked()}}
                   {{reset()}}
+                  {{ckreset()}}
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
               <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
