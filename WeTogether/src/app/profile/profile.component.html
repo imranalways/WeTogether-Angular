@@ -67,7 +67,9 @@
                                 
 
                                 <div class="col-md-5">
-                                    <p><a routerLink="/Profile-Details/{{UrlId}}"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about you </a></p>
+                                    <p><a routerLink="/Profile-Details/{{UrlId}}" *ngIf='userid != UrlId'><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about {{service.formData.Name}} </a></p>
+
+                                    <p><a routerLink="/Profile-Details/{{UrlId}}" *ngIf='userid == UrlId'><i class="fa fa-ellipsis-h" aria-hidden="true"></i> See more about you </a></p>
                                 </div>
                                 </div>
                                 

@@ -83,8 +83,9 @@
            
           </mdb-card-title>
       
-          <mdb-card-text> 
-            <p>{{comment.CommentDate | date: 'longDate'}}</p>
+          <mdb-card-text>
+             {{postDate(comment.CommentDate)}}
+            <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p>
             
             {{comment.CommentBody}}
             <div class="form-group">
@@ -106,4 +107,4 @@
     <div class="col-md-2"></div>
   </div>
 
-  
+  <br>

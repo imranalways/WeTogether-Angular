@@ -18,6 +18,8 @@ export class PostDetailsComponent implements OnInit {
     this.service.getPostsById(this.UrlId);
     this.service.getCommentsByPostsId(this.UrlId);
     console.log(this.service.comments);
+    
+
   }
 
   checkId(Id:String){
@@ -31,13 +33,18 @@ export class PostDetailsComponent implements OnInit {
   CommentSubmit(form:NgForm){
     this.service.CommentSubmit().subscribe(
       res=>{
-         form.form.reset();
+        
          this.ngOnInit();
+         this.service.comment.CommentBody="";
       },
       err=>{
         console.log(err);
       }
     )
+  }
+
+  postDate(postdate:number){
+    this.service.getAgoTime(postdate);
   }
 
 }

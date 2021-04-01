@@ -40,8 +40,12 @@
               <div class="col-md-8">
                   <mdb-card style="padding: 30px;">
                       <mdb-card-title style="padding-left: 15px;">
-                          <label><b>{{Name}}</b></label>
-                          
+                          <label><b>{{Name}} </b> </label>
+                          <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe" aria-hidden="true"></i></label>
+                          <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+                          <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+
+                    
                           <select class="form-control form-control-sm" name="PostPrivacy"
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
                                  <option Value="Public">Public</option>
@@ -78,6 +82,11 @@
                   {{count()}}
                 </div>
               </div>
+              <div *ngFor="let comment of service.commentList">
+                <p *ngIf="post.PostId==comment.PostId">
+                  {{commented()}}
+                </p>
+              </div>
                   <div id="post" *ngIf="checker==true">
       
                       <mdb-card >
@@ -89,12 +98,10 @@
                                    <div class="col-md-5">
                                       {{postDate(post.PostDate)}}
                                       <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
-                                      <p id=privacyTxt> <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
-                                      <!-- <div class="row" id="privacyTxt">
-                                        <div class="col-md-4"> {{ post.PostPrivacy }} <ul><li>{{agoTime}}</li></ul></div>
-                                        <div class="col-md-3"></div>
-                                       
-                                      </div> -->
+                                      <p id=privacyTxt *ngIf="post.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p>
+                                      <p id=privacyTxt *ngIf="post.PostPrivacy=='Friends'"><i class="fa fa-users" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p>
+                                      <p id=privacyTxt *ngIf="post.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p>
+                                      <!-- <p id=privacyTxt > <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p> -->
                                       
                                       
                                    </div>
@@ -110,15 +117,28 @@
                             
                               <div class="form-group">
                                   <p>{{ post.PostBody }}</p>
-                                  <p *ngIf="c>0">
-                                    <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
-                                  </p>
+                                  <div class="row">
+                                    <div class="col-md-1" *ngIf="c>0">
+                                     
+                                        <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
+                                     
+                                    </div>
+                                    <div class="col-md-1" *ngIf="comment_count>0">
+                                     
+                                        <b><i id="comment" class="fa fa-comment-o" aria-hidden="true"></i> {{comment_count}} </b>
+                                     
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                  </div>
+                                  
+                                  
                               </div>
                               <div *ngFor="let like of service.likes">
                                 <p *ngIf="post.PostId==like.PostId && like.UserId==userid">
                                   {{liked()}}
                                 </p>
                               </div>
+                             
                               <hr>
                               <div class="form-group">
                                   <table *ngIf="error != 'hasError'">
@@ -142,6 +162,7 @@
                   {{unliked()}}
                   {{reset()}}
                   {{ckreset()}}
+                  {{comment_reset()}}
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
               <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
