@@ -87,8 +87,16 @@
                              
                                 <div class="row">
                                    <div class="col-md-5">
+                                      {{postDate(post.PostDate)}}
                                       <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
-                                      <p id="privacyTxt">{{ post.PostPrivacy }}</p>
+                                      <p id=privacyTxt> <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                                      <!-- <div class="row" id="privacyTxt">
+                                        <div class="col-md-4"> {{ post.PostPrivacy }} <ul><li>{{agoTime}}</li></ul></div>
+                                        <div class="col-md-3"></div>
+                                       
+                                      </div> -->
+                                      
+                                      
                                    </div>
                                     <div class="col-md-6"></div>
                                     <div class="col-md-1">

@@ -15,6 +15,11 @@
     color:rgb(124, 124, 124);
 }
 
+#agoTime{
+    font-size: 7px;
+    margin-left: 5px;
+}
+
 #thumbs{
     color:springgreen;
 }
