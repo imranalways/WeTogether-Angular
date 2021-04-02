@@ -41,12 +41,12 @@
                   <mdb-card style="padding: 30px;">
                       <mdb-card-title style="padding-left: 15px;">
                           <label><b>{{Name}} </b> </label>
-                          <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe" aria-hidden="true"></i></label>
+                          <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
                           <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
                           <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
 
                     
-                          <select class="form-control form-control-sm" name="PostPrivacy"
+                          <select class="form-control form-control-sm " name="PostPrivacy"
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
                                  <option Value="Public">Public</option>
                                   <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
@@ -107,7 +107,32 @@
                                    </div>
                                     <div class="col-md-6"></div>
                                     <div class="col-md-1">
-                                    <div id="postOption" class="text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
+                                    
+
+                                      <ul class="nav navbar-nav nav-flex-icons ml-auto">
+
+                                        <!-- Dropdown -->
+                                        <li class="nav-item dropdown notifications-nav">
+                                          <a class="nav-link waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                           
+                                            <span class="d-none d-md-inline-block"><h4><i class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="#">
+                                              <span>Edit</span>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                              <span>Delete</span>
+                                            </a>
+                                            <!-- <a class="dropdown-item" href="#">
+                                              <span></span>
+                                            </a> -->
+                                          </div>
+                                        </li>
+                                      </ul>
+
+                                  
                                   </div>
                               </div>
                                 
