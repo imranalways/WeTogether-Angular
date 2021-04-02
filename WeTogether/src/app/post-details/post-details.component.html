@@ -6,8 +6,13 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+          <div *ngFor="let like of service.likes">
+            <div *ngIf="service.formData.PostId == like.PostId">
+              {{count()}}
+            </div>
+          </div>
             <div >
-                <div id="post">
+                <div id="post" *ngIf="checker==true">
     
                     <mdb-card>
                         <mdb-card-body>
@@ -16,8 +21,11 @@
                            
                               <div class="row">
                                 <div class="col-md-5">
+                                  {{getAgoTime(service.formData.PostDate)}}
                                   <label><b><a routerLink="/Profile/{{service.formData.UserId}}"> {{ service.formData.PostBy }}</a> </b></label>
-
+                                  <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                                  <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Friends'"><i class="fa fa-users" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                                  <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                 </div>
                                 <div class="col-md-6"></div>
                                 <div id="postOption" class="col-md-1 text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
@@ -26,12 +34,15 @@
                           </mdb-card-title>
     
                           <mdb-card-text>  
-                            <div class="form-group">
-                            <p>{{ service.formData.PostPrivacy }}</p>
-                            </div>
+                           
                             <div class="form-group">
                                 <p>{{ service.formData.PostBody }}</p>
                             </div>
+                            <div class="col-md-1" *ngIf="c>0">
+                                     
+                              <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
+                           
+                          </div>
                             <div class="form-group">
                                 <table>
                                     <tr id="btnPost">
@@ -50,6 +61,10 @@
                       </mdb-card>
                 </div>
                 <br>
+                <!-- {{unliked()}} -->
+                  {{reset()}}
+                  {{ckreset()}}
+                  <!-- {{comment_reset()}} -->
             </div>
         </div>
         <div class="col-md-2"></div>
@@ -84,10 +99,15 @@
           </mdb-card-title>
       
           <mdb-card-text>
-             {{postDate(comment.CommentDate)}}
-            <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{service.agoTime}}</p>
-            
+             {{getAgoTime(comment.CommentDate)}}
+            <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
             {{comment.CommentBody}}
+
+            <div *ngFor="let like of service.likes">
+              <p *ngIf="post.PostId==like.PostId && like.UserId==userid">
+                {{liked()}}
+              </p>
+            </div>
             <div class="form-group">
               <table>
                   <tr id="btnPost">
