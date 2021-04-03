@@ -25,6 +25,7 @@
     "mdb-angular-ui-kit": "^1.0.0-beta1",
     "mdb-ui-kit": "^3.4.0",
     "ng-bootstrap": "^1.6.3",
+    "ng-bootstrap-modal": "^1.1.19",
     "ngx-bootstrap": "^2.0.5",
     "ngx-print": "^1.2.0-beta.5",
     "pdfmake": "^0.1.70",

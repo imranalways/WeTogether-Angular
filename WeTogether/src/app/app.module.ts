@@ -13,6 +13,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgxPrintModule,
     MDBBootstrapModule.forRoot(),
-    NgbNavModule,
+    NgbNavModule
     
   ],
   providers: [UserRegisterService],
