@@ -50,7 +50,7 @@
                                id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
                                  <option Value="Public">Public</option>
                                   <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
-                          </select>
+                                </select>
                           <div class="md-form form-sm">
                             
                             <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
@@ -106,30 +106,39 @@
                                       
                                    </div>
                                     <div class="col-md-6"></div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-1" *ngIf="error != 'hasError'">
                                     
 
                                       <ul class="nav navbar-nav nav-flex-icons ml-auto">
 
                                         <!-- Dropdown -->
-                                        <li class="nav-item dropdown notifications-nav">
-                                          <a class="nav-link waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                        <li class="nav-item dropdown">
+                                          <a class="nav-link waves-effect" id="" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                            
                                             <span class="d-none d-md-inline-block"><h4><i class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></span>
                                           </a>
-                                          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="#">
+
+                                          <div class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                            <a *ngIf="post.UserId == userid" class="dropdown-item" href="#">
                                               <span>Edit</span>
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a *ngIf="post.UserId == userid" class="dropdown-item" href="#">
                                               <span>Delete</span>
                                             </a>
+                                            <a class="dropdown-item" href="#">
+                                              <span>Save</span>
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                              <span>Report</span>
+                                            </a>
+                                            
                                             <!-- <a class="dropdown-item" href="#">
                                               <span></span>
                                             </a> -->
                                           </div>
                                         </li>
+                                        
                                       </ul>
 
                                   
@@ -219,6 +228,66 @@
     </mdb-card-body>
   </mdb-card> -->
 
+  <main>
+<div class="container-fluid">
+
+  <!-- Full Height Modal Bottom Danger Demo -->
+  <div class="modal fade bottom" id="fluidModalBottomDangerDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-full-height modal-bottom modal-notify modal-danger" role="document">
+      <!-- Content -->
+      <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+          <p class="heading lead">Modal Danger</p>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+          </div>
+          <ul class="list-group z-depth-0">
+            <li class="list-group-item justify-content-between">
+              Cras justo odio
+              <span class="badge badge-primary badge-pill">14</span>
+            </li>
+            <li class="list-group-item justify-content-between">
+              Dapibus ac facilisis in
+              <span class="badge badge-primary badge-pill">2</span>
+            </li>
+            <li class="list-group-item justify-content-between">
+              Morbi leo risus
+              <span class="badge badge-primary badge-pill">1</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <a type="button" class="btn btn-danger">Get it now <i class="far fa-gem ml-1"></i></a>
+          <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">No, thanks</a>
+        </div>
+      </div>
+      <!-- Content -->
+    </div>
+  </div>
+  <!-- Full Height Modal Bottom Danger Demo -->
 
 
 
+
+
+
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluidModalBottomDangerDemo" >Bottom</button>
+
+</div>
+
+</main>

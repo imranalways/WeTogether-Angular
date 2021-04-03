@@ -15,6 +15,7 @@ export class PostDetailsComponent implements OnInit {
   UrlId:String;
 
   ngOnInit(): void {
+    
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);
     this.service.getCommentsByPostsId(this.UrlId);
