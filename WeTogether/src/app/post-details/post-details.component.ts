@@ -18,9 +18,10 @@ export class PostDetailsComponent implements OnInit {
     
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);
+    console.log(this.UrlId)
     this.service.getCommentsByPostsId(this.UrlId);
     console.log(this.service.comments);
-    
+    this.service.getLikes();
     
 
   }
@@ -75,6 +76,8 @@ checker:boolean=false;
   hours:number;
   day:number;
   date:Date;
+  week:number;
+  month:number;
   dateToday: number = Date.now();
   agoTime:String="";
 
@@ -86,9 +89,10 @@ checker:boolean=false;
     this.minutes=this.sec/60;
     this.hours=this.minutes/60;
     this.day=this.hours/24;
+    this.week=this.day/7;
     
     if(this.day>=7){
-      this.agoTime=postdate+"";
+      this.agoTime=Math.floor(this.week)+"w";
     }
     else if(this.hours>=24){
       this.agoTime= Math.floor(this.day)+"d";

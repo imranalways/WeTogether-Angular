@@ -104,7 +104,7 @@
             {{comment.CommentBody}}
 
             <div *ngFor="let like of service.likes">
-              <p *ngIf="post.PostId==like.PostId && like.UserId==userid">
+              <p *ngIf="service.formData.PostId==like.PostId && like.UserId==userid">
                 {{liked()}}
               </p>
             </div>

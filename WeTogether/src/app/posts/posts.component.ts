@@ -124,6 +124,8 @@ checker:boolean=false;
   minutes:number;
   hours:number;
   day:number;
+  week:number;
+  month:number;
   date:Date;
   dateToday: number = Date.now();
   agoTime:String="";
@@ -136,9 +138,10 @@ checker:boolean=false;
     this.minutes=this.sec/60;
     this.hours=this.minutes/60;
     this.day=this.hours/24;
+    this.week=this.day/7;
     
     if(this.day>=7){
-      this.agoTime=postdate+"";
+      this.agoTime=Math.floor(this.week)+"w";
     }
     else if(this.hours>=24){
       this.agoTime= Math.floor(this.day)+"d";
