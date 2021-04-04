@@ -21,3 +21,17 @@
   font-size: 12px;
   color:rgb(124, 124, 124);
 }
+
+
+#Liked{
+  background-color:Green;
+  color: red;
+  font-weight: bolder;
+}
+
+#thumbs{
+  color:springgreen;
+}
+#comment{
+  color:springgreen;
+}

@@ -11,6 +11,12 @@
               {{count()}}
             </div>
           </div>
+
+          <div *ngFor="let comment of service.comments">
+            <p *ngIf="service.formData.PostId==comment.PostId">
+              {{commented()}}
+            </p>
+          </div>
             <div >
                 <div id="post">
     
@@ -38,17 +44,31 @@
                             <div class="form-group">
                                 <p>{{ service.formData.PostBody }}</p>
                             </div>
-                            <div class="col-md-1" *ngIf="c>0">
-                                     
-                              <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
-                           
+                            <div class="row">
+                              <div class="col-md-1" *ngIf="c>0">
+                               
+                                  <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
+                               
+                              </div>
+                              <div class="col-md-1" *ngIf="comment_count>0">
+                               
+                                  <b><i id="comment" class="fa fa-comment-o" aria-hidden="true"></i> {{comment_count}} </b>
+                               
+                              </div>
+                              <div class="col-md-4"></div>
+                            </div>
+
+                          <div *ngFor="let like of service.likes">
+                            <p *ngIf="service.formData.PostId==like.PostId && like.UserId==userid">
+                              {{liked()}}
+                            </p>
                           </div>
                             <div class="form-group">
                                 <table>
                                     <tr id="btnPost">
                                         <td id="">
-                                            <button class="" name="Like" (click)="checkId(service.formData.PostId)"
-                                            type="button" >Like</button>
+                                            <button class="" name="Like" (click)="LikeClicked(service.formData.PostId)"
+                                            type="button" id={{txt}} >Like</button>
                                         </td>
                                         <td id="LikeBtn"><a routerLink="/Post-Details/{{service.formData.PostId}}"><button type="button">Comment</button></a></td>
                                         <td id="LikeBtn"><button type="button">Share</button></td>
@@ -61,10 +81,10 @@
                       </mdb-card>
                 </div>
                 <br>
-                <!-- {{unliked()}} -->
+                  {{unliked()}}
                   {{reset()}}
                   {{ckreset()}}
-                  <!-- {{comment_reset()}} -->
+                  {{comment_reset()}}
             </div>
         </div>
         <div class="col-md-2"></div>
@@ -103,17 +123,13 @@
             <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
             {{comment.CommentBody}}
 
-            <div *ngFor="let like of service.likes">
-              <p *ngIf="service.formData.PostId==like.PostId && like.UserId==userid">
-                {{liked()}}
-              </p>
-            </div>
+           
             <div class="form-group">
               <table>
                   <tr id="btnPost">
                       <td id="">
                           <button class="" name="Like" class="btn btn-sm" (click)="checkId(service.formData.PostId)"
-                          type="button" >Like</button>
+                          type="button">Like</button>
                       </td>
                       <td id="LikeBtn"><button type="button" class="btn btn-sm">Reply</button></td>
                   </tr>

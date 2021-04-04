@@ -13,23 +13,34 @@ export class PostDetailsComponent implements OnInit {
   constructor(public service:PostsService,private activatedRoute: ActivatedRoute) { }
   
   UrlId:String;
-
+  userid:String=localStorage.getItem('UserId');
   ngOnInit(): void {
     
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);
-    console.log(this.UrlId)
+    
+    this.service.getLikes();
     this.service.getCommentsByPostsId(this.UrlId);
     console.log(this.service.comments);
-    this.service.getLikes();
+    console.log(this.UrlId)
+   
     
 
   }
 
-  checkId(Id:String){
-    console.log(Id);
+  LikeClicked(Id:String){
+    this.service.formData.Likes=1;
+    this.service.formData.PostId=Id;
+    this.service.formData.UserId=this.userid;
+    this.service.LikesInsert().subscribe(
+        res=>{
+          this.service.getLikes();
+        },
+        err=>{
+          console.log(err);
+        }
+      )
   }
-
   optionClicked(){
     console.log("Okk");
   }
@@ -67,9 +78,21 @@ checker:boolean=false;
   liked(){
     this.txt="Liked";
     this.chk=true;
+    console.log("liked");
+  }
+  unliked(){
+    this.txt="";
   }
 
 
+  comment_count:number=0;
+  commented(){
+    this.comment_count+=1;
+  }
+
+  comment_reset(){
+    this.comment_count=0;
+  }
 
   sec:number;
   minutes:number;
