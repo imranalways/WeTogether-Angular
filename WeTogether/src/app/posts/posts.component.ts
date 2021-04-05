@@ -157,4 +157,12 @@ checker:boolean=false;
       this.agoTime="Just now";
     }
   }
+ show:boolean=false;
+  Edit(){
+    this.show=true;
+  }
+
+  show_reset(){
+    this.show=false;
+  }
 }

@@ -59,3 +59,14 @@
     margin-left: 5px;
 }
 
+.modal-dialog {
+    /* width: 800px; */
+    height: 700px;
+ }
+ 
+.modal-header {
+    background-color: #337AB7;
+    padding:16px 16px;
+    color:#FFF;
+    border-bottom:2px dashed #337AB7;
+ }
