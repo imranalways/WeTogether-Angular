@@ -67,7 +67,7 @@ export class PostsComponent implements OnInit {
       )
   }
  
-  onSubmit(form:NgForm){
+  onSubmit(){
     this.service.submitPost().subscribe(
       res=>{
         this.ngOnInit();
@@ -157,12 +157,34 @@ checker:boolean=false;
       this.agoTime="Just now";
     }
   }
- show:boolean=false;
-  Edit(){
-    this.show=true;
-  }
 
-  show_reset(){
-    this.show=false;
+  getPostById(id:String){
+    this.service.getPostsByIdToEdit(id);
   }
+  updatePost(){
+    this.service.updatePost().subscribe(
+      res=>{
+        this.ngOnInit();
+        console.log(res);
+        this.service.editData.PostBody="";
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+  deletePost(){
+    this.service.editData.IsDeleted=true;
+    this.service.updatePost().subscribe(
+      res=>{
+        this.ngOnInit();
+        console.log(res);
+      
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+ 
 }

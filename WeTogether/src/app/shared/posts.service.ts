@@ -14,6 +14,7 @@ export class PostsService {
   comments:PostDetails[];
   commentList:PostDetails[];
   likes:LikeDetails[];
+  editData:Posts=new Posts();
 
   constructor(private http:HttpClient) { }
   readonly baseURL= 'https://localhost:44388/api/Posts/';
@@ -23,7 +24,11 @@ export class PostsService {
     .toPromise()
     .then(res=>this.formData=res as Posts);
   }
-
+  getPostsByIdToEdit(id:String){
+    return this.http.get(this.baseURL+id)
+    .toPromise()
+    .then(res=>this.editData=res as Posts);
+  }
   getCommentsByPostsId(id:String){
     return this.http.get('https://localhost:44388/api/Comment/GetById/'+id)
     .toPromise()
@@ -53,6 +58,19 @@ export class PostsService {
       return this.http.post(this.baseURL+"Submit",this.formData);
     }
   }
+
+  updatePost(){
+    if(this.editData.PostPrivacy==""){
+      this.editData.PostPrivacy="Public";
+    }
+    this.editData.PostBy=localStorage.getItem('Name');
+    this.editData.UserId=localStorage.getItem('UserId')
+    console.log(this.editData);
+    if(this.editData.PostBody!=""){
+      return this.http.post(this.baseURL+"Submit",this.editData);
+    }
+  }
+
   CommentSubmit(){
     if(this.comment.CommentBody!=""){
       this.comment.PostId=this.formData.PostId;

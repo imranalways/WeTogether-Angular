@@ -38,29 +38,25 @@
           <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8">
-                  <mdb-card style="padding: 30px;">
-                      <mdb-card-title style="padding-left: 15px;">
-                          <label><b>{{Name}} </b> </label>
-                          <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
-                          <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
-                          <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+                  <mdb-card id="postmaker">
+                      <mdb-card-text>
+                          
+                          
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><b>{{Name}}</b></span>
+                            </div>
+                            <input (click)="postModal.show()" type="text" class="form-control " placeholder="Whats on your mind?" aria-label="Username" aria-describedby="basic-addon1">
+                          </div>
 
-                    
-                          <select class="form-control form-control-sm " name="PostPrivacy"
-                               id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
-                                 <option Value="Public">Public</option>
-                                  <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
-                                </select>
-                          <div class="md-form form-sm">
-                            
-                            <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
+                            <!-- <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
                             name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
                              placeholder="What's on your mind?"></textarea>
                              <button  id="register" [disabled]="form.invalid" type="submit" class="btn btn-primary btn-sm">
                               POST
-                          </button>
-                          </div>
-                        </mdb-card-title>
+                          </button> -->
+                         
+                        </mdb-card-text>
                       <!-- <mdb-card-body>
                         <mdb-card-text>
                         </mdb-card-text>
@@ -70,7 +66,7 @@
               <div class="col-md-2"></div>
           </div>
       </form>
-      <br>
+      <br><br>
       <form #form="ngForm">
       <div class="row">
           <div class="col-md-2"></div>
@@ -116,14 +112,14 @@
                                           <a class="nav-link waves-effect" id="" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                            
-                                            <span class="d-none d-md-inline-block"><h4><i class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></span>
+                                            <span class="d-none d-md-inline-block" (click)="getPostById(post.PostId)"><h4><i class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></span>
                                           </a>
 
                                           <div class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                            <a *ngIf="post.UserId == userid" class="dropdown-item">
-                                              <span (click)="basicModal.show()">Edit</span>
+                                            <a *ngIf="post.UserId == userid" class="dropdown-item" (click)="updateModal.show()">
+                                              <span >Edit</span>
                                             </a>
-                                            <a *ngIf="post.UserId == userid" class="dropdown-item" href="#">
+                                            <a *ngIf="post.UserId == userid" class="dropdown-item" (click)="deletePost()">
                                               <span>Delete</span>
                                             </a>
                                             <a class="dropdown-item" href="#">
@@ -190,20 +186,21 @@
       
                           </mdb-card-body>
                         </mdb-card>
+                        
                   </div>
                 
-                  <br>
                   {{unliked()}}
                   {{reset()}}
                   {{ckreset()}}
                   {{comment_reset()}}
+                  <br>
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
-              <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
+              <!-- <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
                   Print
-                </button>
-      <br><br><br><br>
-              <div id="print-section" hidden>
+                </button> -->
+              <!-- <br><br><br><br> -->
+              <!-- <div id="print-section" hidden>
                   <div *ngFor="let post of service.list" id="post">
                     <div class="form-group">
                         <label><b>{{ post.PostBy }}</b></label>
@@ -214,7 +211,7 @@
                     </div>
                     <br><hr><br>
                 </div>
-              </div>
+              </div> -->
           </div>
           <div class="col-md-2"></div>
       </div>
@@ -228,33 +225,30 @@
     </mdb-card-body>
   </mdb-card> -->
 
-  <div mdbModal #basicModal="mdbModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  <!-- <div mdbModal #updateModal="mdbModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-            <span aria-hidden="true">×</span>
-          </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title w-100" id="myModalLabel">Update Post</h4>
         </div>
         <div class="modal-body">
           <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
             
               <label><b>{{Name}} </b> </label>
-              <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
-              <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
-              <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
 
         
               <select class="form-control form-control-sm " name="PostPrivacy"
-                    id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
+                    id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.editData.PostPrivacy">
                       <option Value="Public">Public</option>
                       <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
                     </select>
               <div class="md-form form-sm">
-                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
-                  name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
+                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+                  name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
                   placeholder="What's on your mind?">
                </textarea>
               </div>           
@@ -262,9 +256,161 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Cancle</button>
-          <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect>Update</button>
+          <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div mdbModal #postModal="mdbModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">-->
+        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="postModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button> -->
+        <!-- <h4 class="modal-title w-100" id="myModalLabel">New Post</h4>
+      </div>
+      <div class="modal-body">
+        <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
+          
+            <label><b>{{Name}} </b> </label>
+            <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
+            <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+            <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+
+      
+            <select class="form-control form-control-sm " name="PostPrivacy"
+            id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
+              <option Value="Public">Public</option>
+               <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+             </select>
+       <div class="md-form form-sm">
+         
+         <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+            name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
+            placeholder="What's on your mind?">
+        </textarea>
+          
+       </div>       
+      </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+<div id="modal" mdbModal #updateModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel"
+  aria-hidden="true">
+ <div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-6">
+     <div class="modal-dialog modal-full-height modal-top" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           
+           <h4 class="modal-title w-100" id="myModalLabel">Update Post</h4>
+         </div>
+         <div class="modal-body">
+          <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
+            
+              <label><b>{{Name}} </b> </label>
+              <label *ngIf="service.editData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+
+        
+              <select class="form-control form-control-sm " name="PostPrivacy"
+                    id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.editData.PostPrivacy">
+                      <option Value="Public">Public</option>
+                      <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+                    </select>
+              <div class="md-form form-sm">
+                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+                  name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
+                  placeholder="What's on your mind?">
+               </textarea>
+              </div>           
+        </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
         </div>
       </div>
     </div>
   </div>
+  </div>
+   <div class="col-md-3"></div>
+ </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
+  aria-hidden="true">
+ <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-8">
+
+
+     <div class="modal-dialog modal-full-height modal-top" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           
+           <h4 class="modal-title w-100" id="myModalLabel">Write a Post</h4>
+         </div>
+         <div class="modal-body">
+           <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
+             
+               <label><b>{{Name}} </b> </label>
+               <label *ngIf="service.formData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
+               <label *ngIf="service.formData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+               <label *ngIf="service.formData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+   
+         
+               <select class="form-control form-control-sm " name="PostPrivacy"
+               id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.formData.PostPrivacy">
+                 <option Value="Public">Public</option>
+                  <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+                </select>
+          <div class="md-form form-sm">
+            
+            <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+               name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
+               placeholder="What's on your mind?">
+           </textarea>
+             
+          </div>       
+         </form>
+           
+         </div>
+         <div class="modal-footer">
+           <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button>
+           <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   </div>
+   <div class="col-md-2"></div>
+ </div> 
