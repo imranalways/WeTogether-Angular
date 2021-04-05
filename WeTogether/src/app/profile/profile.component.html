@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <br>
 
-
-<mdb-card class="text-center">
+<div *ngIf="this.service.formData.Name != ''">
+<mdb-card class="text-center" *ngIf="error != 'hasError'">
     <br>
     <div class="row">
         <div class="col-md-4"></div>
@@ -25,7 +25,7 @@
 
   
 
-<form #form="ngForm">
+<form #form="ngForm" *ngIf="error != 'hasError'">
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
@@ -92,4 +92,25 @@
         </div>
     </div>
 </form>
+
 <br><br>
+<div  class="row" *ngIf="error == 'hasError'">
+    <div class="col-md-3"></div>
+    <div id="err" class="col-md-6 text-center">
+        <h3>
+            Oppsss... Something bad happened!
+        </h3>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</div>
+<br><br>
+<div  class="row" *ngIf="this.service.formData.Name == ''">
+    <div class="col-md-3"></div>
+    <div id="err" class="col-md-6 text-center">
+        <h3>
+            Oppsss... Something bad happened!
+        </h3>
+    </div>
+    <div class="col-md-3"></div>
+</div>

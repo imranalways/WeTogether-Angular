@@ -14,7 +14,13 @@ export class PostDetailsComponent implements OnInit {
   
   UrlId:String;
   userid:String=localStorage.getItem('UserId');
+  error:String="hasError";
+
   ngOnInit(): void {
+    
+    if(this.userid != null){
+      this.error="";
+    }
     
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);

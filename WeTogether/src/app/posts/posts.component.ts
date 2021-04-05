@@ -71,6 +71,7 @@ export class PostsComponent implements OnInit {
     this.service.submitPost().subscribe(
       res=>{
         this.ngOnInit();
+        console.log(res);
         this.service.formData.PostBody="";
       },
       err=>{

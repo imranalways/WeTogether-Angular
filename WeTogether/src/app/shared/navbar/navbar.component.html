@@ -19,7 +19,7 @@
             <nav>
                 <a routerLink="/Posts" routerLinkActive="active" (click)="refresh()">Home</a>
                 <a routerLink="/Register" routerLinkActive="active">Register</a>
-                <a routerLink="/profile/me" routerLinkActive="active" >Profile</a>
+                <a *ngIf="error != 'hasError'" routerLink="/profile/me" routerLinkActive="active" >Profile</a>
                 <a routerLink="/Group" routerLinkActive="active">Group</a>
                 <a routerLink="" routerLinkActive="">Login</a>
                 <a routerLink="/Logout" routerLinkActive="active">Logout</a>

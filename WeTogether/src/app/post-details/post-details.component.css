@@ -35,3 +35,9 @@
 #comment{
   color:springgreen;
 }
+
+#err{
+  color:white;
+  background-color: coral;
+  padding:20px;
+}

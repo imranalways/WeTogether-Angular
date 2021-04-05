@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PostsComponent } from 'src/app/posts/posts.component';
-import { ProfileComponent } from 'src/app/profile/profile.component';
+import { PostsComponent } from '../../posts/posts.component';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +11,16 @@ import { ProfileComponent } from 'src/app/profile/profile.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public pro:ProfileComponent, public router:Router,public component:PostsComponent) { }
+  constructor( public router:Router,public component:PostsComponent) { }
 
-  ngOnInit(): void {
-  }
   userid:any=localStorage.getItem('UserId');
+  error:String="hasError";
+  
+  ngOnInit(): void {
+    if(this.userid != null){
+      this.error="";
+    }
+  }
   refresh(){
     this.component.ngOnInit();
   }

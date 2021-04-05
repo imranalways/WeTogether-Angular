@@ -41,6 +41,7 @@ export class PostsService {
     .then(res=>this.list=res as Posts[]);
   }
 
+
   submitPost(){
     if(this.formData.PostPrivacy==""){
       this.formData.PostPrivacy="Public";
@@ -52,7 +53,6 @@ export class PostsService {
       return this.http.post(this.baseURL+"Submit",this.formData);
     }
   }
-
   CommentSubmit(){
     if(this.comment.CommentBody!=""){
       this.comment.PostId=this.formData.PostId;

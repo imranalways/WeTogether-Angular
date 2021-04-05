@@ -17,9 +17,13 @@ export class ProfileComponent implements OnInit{
 
   userid:any=localStorage.getItem('UserId');
   UrlId:String;
-
+  error:String="hasError";
   
   ngOnInit(): void {
+
+    if(this.userid != null){
+      this.error="";
+    }
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     if(this.UrlId !='me'){
       this.service.formData.UserId=this.UrlId;
