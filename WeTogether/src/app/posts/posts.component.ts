@@ -208,5 +208,9 @@ checker:boolean=false;
       }
     )
   }
+
+  getImage(attachment:string){
+    localStorage.setItem('Attachment',attachment) 
+  }
  
 }

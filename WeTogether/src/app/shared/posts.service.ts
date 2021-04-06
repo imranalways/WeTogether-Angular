@@ -15,7 +15,7 @@ export class PostsService {
   commentList:PostDetails[];
   likes:LikeDetails[];
   editData:Posts=new Posts();
- 
+  imgData:Posts;
   constructor(private http:HttpClient) { }
   readonly baseURL= 'https://localhost:44388/api/Posts/';
 
@@ -29,6 +29,13 @@ export class PostsService {
     .toPromise()
     .then(res=>this.editData=res as Posts);
   }
+
+  getImage(id:String){
+    return this.http.get(this.baseURL+id)
+    .toPromise()
+    .then(res=>this.imgData=res as Posts);
+  }
+
   getCommentsByPostsId(id:String){
     return this.http.get('https://localhost:44388/api/Comment/GetById/'+id)
     .toPromise()

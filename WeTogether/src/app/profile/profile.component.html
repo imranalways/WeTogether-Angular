@@ -209,7 +209,15 @@
                             <mdb-card-text>  
                             
                               <div class="form-group">
-                                  <p>{{ post.PostBody }}</p>
+                                  <p id="pbody">{{ post.PostBody }}</p>
+                                  <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                      <a routerLink="/Imageview" target="_blank"><img *ngIf="post.Attachment!=null" [src]="post.Attachment" style="height: 300px; width:500px;" (click)="getImage(post.Attachment)"></a>
+
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                  </div>
                                   <div class="row">
                                     <div class="col-md-1" *ngIf="c>0">
                                      

@@ -208,5 +208,7 @@ export class ProfileComponent implements OnInit{
       }
     )
   }
-
+  getImage(attachment:string){
+    localStorage.setItem('Attachment',attachment) 
+  }
 }

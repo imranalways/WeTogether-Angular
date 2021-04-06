@@ -1,0 +1,14 @@
+img {
+    width: 100%;
+    height: auto;
+    border: 5px solid black;
+    /* padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: black; */
+}
+.container{
+    margin-top: 20px;
+    
+}
