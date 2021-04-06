@@ -6,3 +6,8 @@ body{
 #pbody{
     color:black;
 }
+
+#pimg{
+    height: auto; 
+    width:100%;
+}

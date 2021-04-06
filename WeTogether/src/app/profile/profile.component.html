@@ -211,12 +211,12 @@
                               <div class="form-group">
                                   <p id="pbody">{{ post.PostBody }}</p>
                                   <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
-                                      <a routerLink="/Imageview" target="_blank"><img *ngIf="post.Attachment!=null" [src]="post.Attachment" style="height: 300px; width:500px;" (click)="getImage(post.Attachment)"></a>
+                                    
+                                    <div class="col-md-12">
+                                      <a routerLink="/Imageview" target="_blank"><img id="pimg" *ngIf="post.Attachment!=null" [src]="post.Attachment" (click)="getImage(post.Attachment)"></a>
 
                                     </div>
-                                    <div class="col-md-2"></div>
+                                   
                                   </div>
                                   <div class="row">
                                     <div class="col-md-1" *ngIf="c>0">

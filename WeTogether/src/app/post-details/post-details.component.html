@@ -80,12 +80,12 @@
                             <div class="form-group">
                                 <p id="pbody">{{ service.formData.PostBody }}</p>
                                 <div class="row">
-                                  <div class="col-md-2"></div>
-                                  <div class="col-md-8">
-                                    <a routerLink="/Imageview" target="_blank"><img *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" style="height: 300px; width:500px;" (click)="getImage(service.formData.Attachment)"></a>
+                                 
+                                  <div class="col-md-12">
+                                    <a routerLink="/Imageview" target="_blank"><img id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
 
                                   </div>
-                                  <div class="col-md-2"></div>
+                                 
                                 </div>
                             </div>
                             <div class="row">
