@@ -408,7 +408,7 @@
           </div>   
           <div class="row">
             <div class="col-md-2">
-              <input formControlName="file" id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
+              <input id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-7"><img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:400px">    

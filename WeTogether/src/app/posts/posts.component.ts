@@ -59,6 +59,7 @@ export class PostsComponent implements OnInit {
       }
 
       this.service.formData.PostBody="";
+      this.service.formData.PostId="";
       console.log(this.PrivacyList);
 
       console.log(this.service.getAllPosts());
@@ -88,14 +89,15 @@ export class PostsComponent implements OnInit {
         }
       )
   }
- submitted:boolean=false;
+
   onSubmit(){
     this.service.submitPost().subscribe(
       res=>{
         this.ngOnInit();
         console.log(res);
         this.service.formData.PostBody="";
-        this.submitted=true;
+        this.service.formData.PostId="";
+        
       },
       err=>{
         console.log(err);

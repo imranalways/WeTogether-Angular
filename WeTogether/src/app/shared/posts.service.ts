@@ -15,7 +15,7 @@ export class PostsService {
   commentList:PostDetails[];
   likes:LikeDetails[];
   editData:Posts=new Posts();
-
+ 
   constructor(private http:HttpClient) { }
   readonly baseURL= 'https://localhost:44388/api/Posts/';
 
@@ -45,6 +45,7 @@ export class PostsService {
     .toPromise()
     .then(res=>this.list=res as Posts[]);
   }
+
 
 
   submitPost(){
