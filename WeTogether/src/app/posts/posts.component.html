@@ -46,7 +46,8 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1"><b>{{Name}}</b></span>
                             </div>
-                            <input (click)="postModal.show()" type="text" class="form-control " placeholder="Whats on your mind?" aria-label="Username" aria-describedby="basic-addon1">
+                            <input (click)="postModal.show()" type="text" class="form-control " placeholder="Whats on your mind?" aria-label="Username" aria-describedby="basic-addon1"
+                            name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody">
                           </div>
 
                             <!-- <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="2"
@@ -318,7 +319,9 @@
      <div class="modal-dialog modal-full-height modal-top" role="document">
        <div class="modal-content">
          <div class="modal-header">
-           
+          <button type="button" class="close pull-right" aria-label="Close" (click)="updateModal.hide()">
+            <span aria-hidden="true">X</span>
+          </button>
            <h4 class="modal-title w-100" id="myModalLabel">Update Post</h4>
          </div>
          <div class="modal-body">
@@ -336,7 +339,7 @@
                       <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
                     </select>
               <div class="md-form form-sm">
-                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="4"
                   name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
                   placeholder="What's on your mind?">
                </textarea>
@@ -345,7 +348,7 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button>
+          <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button> -->
           <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
         </div>
       </div>
@@ -369,14 +372,16 @@
 <div id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
   aria-hidden="true">
  <div class="row">
-   <div class="col-md-2"></div>
-   <div class="col-md-8">
+   <div class="col-md-3"></div>
+   <div class="col-md-6">
 
 
      <div class="modal-dialog modal-full-height modal-top" role="document">
        <div class="modal-content">
          <div class="modal-header">
-           
+          <button type="button" class="close pull-right" aria-label="Close" (click)="postModal.hide()">
+            <span aria-hidden="true">X</span>
+          </button>
            <h4 class="modal-title w-100" id="myModalLabel">Write a Post</h4>
          </div>
          <div class="modal-body">
@@ -395,7 +400,7 @@
                 </select>
           <div class="md-form form-sm">
             
-            <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="7"
+            <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="4"
                name="PostBody" #PostBody="ngModel" [(ngModel)]="service.formData.PostBody"
                placeholder="What's on your mind?">
            </textarea>
@@ -405,12 +410,12 @@
            
          </div>
          <div class="modal-footer">
-           <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button>
+           <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button> -->
            <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
          </div>
        </div>
      </div>
    </div>
    </div>
-   <div class="col-md-2"></div>
+   <div class="col-md-3"></div>
  </div> 

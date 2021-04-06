@@ -83,4 +83,8 @@
  }
  textarea{
      color:indigo;
+     resize: none;
+ }
+ .relative{
+     width:100%;
  }

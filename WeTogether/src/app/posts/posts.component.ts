@@ -66,13 +66,14 @@ export class PostsComponent implements OnInit {
         }
       )
   }
- 
+ submitted:boolean=false;
   onSubmit(){
     this.service.submitPost().subscribe(
       res=>{
         this.ngOnInit();
         console.log(res);
         this.service.formData.PostBody="";
+        this.submitted=true;
       },
       err=>{
         console.log(err);

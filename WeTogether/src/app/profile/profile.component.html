@@ -16,7 +16,8 @@
       </mdb-card-title>
       <mdb-card-text >
       </mdb-card-text>
-      <button *ngIf='userid == UrlId' routerLink="/Edit-Profile" mdbBtn color="primary" mdbWavesEffect>Edit<i class="fas fa-pencil-alt"></i></button>
+      <a *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
+      <!-- <i class="fas fa-pencil-alt"></i> -->
      
     </mdb-card-body>
   </mdb-card>
@@ -94,7 +95,7 @@
 </form>
 
 <br><br>
-<div  class="row" *ngIf="error == 'hasError'">
+<!-- <div  class="row" *ngIf="error == 'hasError'">
     <div class="col-md-3"></div>
     <div id="err" class="col-md-6 text-center">
         <h3>
@@ -104,7 +105,7 @@
     <div class="col-md-3"></div>
 </div>
 </div>
-<br><br>
+<br><br> -->
 <div  class="row" *ngIf="this.service.formData.Name == ''">
     <div class="col-md-3"></div>
     <div id="err" class="col-md-6 text-center">
