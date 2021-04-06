@@ -105,10 +105,6 @@ export class PostsComponent implements OnInit {
     )
   }
 
-  optionClicked(){
-    console.log("Okk");
-  }
-
 
 c:number=0;
 checker:boolean=false;

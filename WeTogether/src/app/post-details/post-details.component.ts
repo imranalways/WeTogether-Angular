@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../shared/posts.service';
 
 @Component({
@@ -10,11 +10,17 @@ import { PostsService } from '../shared/posts.service';
 })
 export class PostDetailsComponent implements OnInit {
 
-  constructor(public service:PostsService,private activatedRoute: ActivatedRoute) { }
+  constructor(public service:PostsService,private activatedRoute: ActivatedRoute,public router:Router) { }
   
   UrlId:String;
   userid:String=localStorage.getItem('UserId');
+  Name:any=localStorage.getItem('Name');
   error:String="hasError";
+
+  PrivacyList:String[]=[
+    'Friends',
+    'Only Me'
+  ];
 
   ngOnInit(): void {
     
@@ -135,5 +141,35 @@ checker:boolean=false;
     else if(this.sec<60){
       this.agoTime="Just now";
     }
+  }
+
+
+  getPostById(id:String){
+    this.service.getPostsByIdToEdit(id);
+  }
+  updatePost(){
+    this.service.updatePost().subscribe(
+      res=>{
+        this.ngOnInit();
+        console.log(res);
+        this.service.editData.PostBody="";
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+  deletePost(){
+    this.service.editData.IsDeleted=true;
+    this.service.updatePost().subscribe(
+      res=>{
+        this.router.navigate(['/Posts']);
+        console.log(res);
+      
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 }

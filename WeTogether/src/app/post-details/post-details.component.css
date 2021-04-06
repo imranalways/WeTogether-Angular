@@ -41,3 +41,33 @@
   background-color: coral;
   padding:20px;
 }
+
+.modal-dialog {
+  /* width: 800px; */
+  height: 700px;
+}
+
+.modal-header {
+  background-color: #337AB7;
+  padding:16px 16px;
+  color:#FFF;
+  border-bottom:2px dashed #337AB7;
+}
+
+#postmaker{
+   border-radius: 60px;
+   padding-top: 15px;
+   padding-left: 25px;
+   padding-right: 25px;
+}
+
+#modal{
+   margin-top: 120px;
+}
+textarea{
+   color:indigo;
+   resize: none;
+}
+.relative{
+   width:100%;
+}

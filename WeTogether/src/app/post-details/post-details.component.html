@@ -34,7 +34,43 @@
                                   <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                 </div>
                                 <div class="col-md-6"></div>
-                                <div id="postOption" class="col-md-1 text-center" (click)="optionClicked()"><h4><i  class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></div>
+                                <div class="col-md-1" *ngIf="error != 'hasError'">
+                                    
+
+                                  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+
+                                    <!-- Dropdown -->
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link waves-effect" id="" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                       
+                                        <span class="d-none d-md-inline-block" (click)="getPostById(service.formData.PostId)"><h4><i class="fa fa-ellipsis-h" aria-hidden="true"></i></h4></span>
+                                      </a>
+
+                                      <div class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                        <a *ngIf="service.formData.UserId == userid" class="dropdown-item" (click)="updateModal.show()">
+                                          <span >Edit</span>
+                                        </a>
+                                        <a *ngIf="service.formData.UserId == userid" class="dropdown-item" (click)="deletePost()">
+                                          <span>Delete</span>
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                          <span>Save</span>
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                          <span>Report</span>
+                                        </a>
+                                        
+                                        <!-- <a class="dropdown-item" href="#">
+                                          <span></span>
+                                        </a> -->
+                                      </div>
+                                    </li>
+                                    
+                                  </ul>
+
+                              
+                              </div>
                               </div>
                               
                           </mdb-card-title>
@@ -76,7 +112,49 @@
                                 </table>
                             </div>
                           </mdb-card-text>
-    
+                          <form #form="ngForm" (submit)="CommentSubmit(form)">
+                            <div class="row">
+                              <div class="col-md-10">
+                                <div class="input-group mb-3">
+                                  <!-- <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Comment</span>
+                                  </div> -->
+                                  <input type="text" id="CommentBody" class="form-control"
+                                  placeholder="Write a comment...."
+                                  name="CommentBody" #CommentBody="ngModel" [(ngModel)]="service.comment.CommentBody" /> 
+                                </div>
+                              </div>
+                              <div class="col-md-1" *ngIf="service.comment.CommentBody !=''">
+                                <button type="submit" class="btn btn-sm">Comment</button>
+                              </div>
+                              <div class="col-md-1"></div>
+                            </div>
+                          </form>
+                        </mdb-card-body>
+                        <mdb-card-body *ngFor="let comment of service.comments">
+                          <mdb-card-title>
+                            <a routerLink="/Profile/{{comment.C_UserId}}">{{comment.CommentBy}}</a>
+                           
+                          </mdb-card-title>
+                      
+                          <mdb-card-text>
+                             {{getAgoTime(comment.CommentDate)}}
+                            <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                            {{comment.CommentBody}}
+                
+                           
+                            <div class="form-group">
+                              <table>
+                                  <tr id="btnPost">
+                                      <td id="">
+                                          <button class="" name="Like" class="btn btn-sm" (click)="checkId(service.formData.PostId)"
+                                          type="button">Like</button>
+                                      </td>
+                                      <td id="LikeBtn"><button type="button" class="btn btn-sm">Reply</button></td>
+                                  </tr>
+                              </table>
+                          </div>
+                          </mdb-card-text>
                         </mdb-card-body>
                       </mdb-card>
                 </div>
@@ -86,13 +164,14 @@
                   {{ckreset()}}
                   {{comment_reset()}}
             </div>
+            
         </div>
         <div class="col-md-2"></div>
     </div>
   </form>
 
 
-  <div class="row" *ngIf="error != 'hasError'">
+  <!-- <div class="row" *ngIf="error != 'hasError'">
     <div class="col-md-2"></div>
     <div class="col-md-8">
       <mdb-card>
@@ -141,7 +220,7 @@
     
     </div>
     <div class="col-md-2"></div>
-  </div>
+  </div> -->
 
   <br><br>
   <div  class="row" *ngIf="error == 'hasError'">
@@ -153,3 +232,51 @@
       </div>
       <div class="col-md-3"></div>
   </div>
+
+
+  <div id="modal" mdbModal #updateModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myUpdateModalLabel"
+  aria-hidden="true">
+ <div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-6">
+     <div class="modal-dialog modal-full-height modal-top" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="updateModal.hide()">
+            <span aria-hidden="true">X</span>
+          </button>
+           <h4 class="modal-title w-100" id="myModalLabel">Update Post</h4>
+         </div>
+         <div class="modal-body">
+          <form #formPostSubmit="ngForm" (submit)="onSubmit(formPostSubmit)" *ngIf="error != 'hasError'">
+            
+              <label><b>{{Name}} </b> </label>
+              <label *ngIf="service.editData.PostPrivacy=='Public'"> <i id="postprivacy" class="fa fa-globe " aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Friends'"><i id="postprivacy" class="fa fa-users" aria-hidden="true"></i></label>
+              <label *ngIf="service.editData.PostPrivacy=='Only Me'"><i id="postprivacy" class="fa fa-lock" aria-hidden="true"></i></label>
+
+        
+              <select class="form-control form-control-sm " name="PostPrivacy"
+                    id="privacy" #PostPrivacy="ngModel" [(ngModel)]="service.editData.PostPrivacy">
+                      <option Value="Public">Public</option>
+                      <option *ngFor="let PostPrivacy of PrivacyList"   Value="{{PostPrivacy}}">{{PostPrivacy}} </option>
+                    </select>
+              <div class="md-form form-sm">
+                <textarea type="text" id="PostBody" class="md-textarea form-control form-control-sm" rows="4"
+                  name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
+                  placeholder="What's on your mind?">
+               </textarea>
+              </div>           
+        </form>
+          
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button> -->
+          <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+   <div class="col-md-3"></div>
+ </div> 
