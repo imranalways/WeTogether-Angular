@@ -18,7 +18,6 @@ const routes: Routes = [
   { path: 'Profile-Details/:id',component: ProfileDetailsComponent},
   { path: 'Post-Details/:id',component: PostDetailsComponent}
 
-
   ]; 
 
 @NgModule({

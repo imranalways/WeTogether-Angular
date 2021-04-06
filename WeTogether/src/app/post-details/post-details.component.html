@@ -79,6 +79,14 @@
                            
                             <div class="form-group">
                                 <p>{{ service.formData.PostBody }}</p>
+                                <div class="row">
+                                  <div class="col-md-2"></div>
+                                  <div class="col-md-8">
+                                    <a href="{{service.formData.Attachment}}" target="_blank"><img *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" style="height: 300px; width:500px;"></a>
+
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>
                             </div>
                             <div class="row">
                               <div class="col-md-1" *ngIf="c>0">

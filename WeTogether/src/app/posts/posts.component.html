@@ -149,6 +149,14 @@
                               <div class="form-group">
                                   <p>{{ post.PostBody }}</p>
                                   <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                      <a href="{{post.Attachment}}" target="_blank"><img *ngIf="post.Attachment!=null" [src]="post.Attachment" style="height: 300px; width:500px;"></a>
+
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                  </div>
+                                  <div class="row">
                                     <div class="col-md-1" *ngIf="c>0">
                                      
                                         <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
@@ -343,7 +351,7 @@
                   name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
                   placeholder="What's on your mind?">
                </textarea>
-              </div>           
+              </div>          
         </form>
           
         </div>

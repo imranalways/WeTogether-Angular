@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { PostsService } from '../shared/posts.service';
 import { NgForm } from '@angular/forms';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +28,7 @@ export class PostsComponent implements OnInit {
       reader.onload = () => {
    
         this.imageSrc = reader.result as string;  
+        console.log(this.imageSrc);
       };
    
     }
@@ -91,6 +91,7 @@ export class PostsComponent implements OnInit {
   }
 
   onSubmit(){
+    this.service.formData.Attachment=this.imageSrc;
     this.service.submitPost().subscribe(
       res=>{
         this.ngOnInit();
