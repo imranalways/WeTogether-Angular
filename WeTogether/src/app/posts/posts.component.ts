@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { PostsService } from '../shared/posts.service';
 import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,27 @@ export class PostsComponent implements OnInit {
   constructor(public service:PostsService) {
     
    }
+   imageSrc: string;
+
+   onFileChange(event) {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+   
+        this.imageSrc = reader.result as string;  
+      };
+   
+    }
+  }
+
+  CloseImg(){
+    this.imageSrc=null;
+  }
+
 
   PrivacyList:String[]=[
     'Friends',

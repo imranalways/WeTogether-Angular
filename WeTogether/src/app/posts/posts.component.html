@@ -369,14 +369,14 @@
 
 
 
-<div id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
+<div style="overflow-y: auto" id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
   aria-hidden="true">
  <div class="row">
    <div class="col-md-3"></div>
    <div class="col-md-6">
 
 
-     <div class="modal-dialog modal-full-height modal-top" role="document">
+     <div class="modal-dialog modal-dialog-scrollable  modal-full-height modal-top" role="document">
        <div class="modal-content">
          <div class="modal-header">
           <button type="button" class="close pull-right" aria-label="Close" (click)="postModal.hide()">
@@ -405,14 +405,30 @@
                placeholder="What's on your mind?">
            </textarea>
              
-          </div>       
+          </div>   
+          <div class="row">
+            <div class="col-md-2">
+              <input formControlName="file" id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-7"><img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:400px">    
+            </div>
+            <div class="col-md-2" *ngIf="imageSrc != null">
+              <button type="button" class="" aria-label="Close" (click)="CloseImg()">
+                <span aria-hidden="true">x</span>
+              </button>
+            </div>
+          </div>
+          
          </form>
            
          </div>
          <div class="modal-footer">
+           
            <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button> -->
            <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
-         </div>
+        
+          </div>
        </div>
      </div>
    </div>
