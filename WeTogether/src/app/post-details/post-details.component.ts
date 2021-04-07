@@ -12,6 +12,30 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(public service:PostsService,private activatedRoute: ActivatedRoute,public router:Router) { }
   
+  imageSrc: string;
+
+  onFileChange(event) {
+   const reader = new FileReader();
+   
+   if(event.target.files && event.target.files.length) {
+     const [file] = event.target.files;
+     reader.readAsDataURL(file);
+   
+     reader.onload = () => {
+  
+       this.imageSrc = reader.result as string;  
+       console.log(this.imageSrc);
+       this.service.editData.Attachment=this.imageSrc;
+     };
+  
+   }
+ }
+
+ CloseImg(){
+   this.imageSrc=null;
+   this.service.editData.Attachment=null;
+ }
+
   UrlId:String;
   userid:String=localStorage.getItem('UserId');
   Name:any=localStorage.getItem('Name');
@@ -22,10 +46,7 @@ export class PostDetailsComponent implements OnInit {
     'Only Me'
   ];
 
-  CloseImg(){
-    
-    this.service.editData.Attachment=null;
-  }
+ 
 
   ngOnInit(): void {
     
