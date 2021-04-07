@@ -62,9 +62,8 @@ export class PostsService {
     this.formData.PostBy=localStorage.getItem('Name');
     this.formData.UserId=localStorage.getItem('UserId')
     console.log(this.formData);
-    if(this.formData.PostBody!=""){
-      return this.http.post(this.baseURL+"Submit",this.formData);
-    }
+    return this.http.post(this.baseURL+"Submit",this.formData);
+    
   }
 
   updatePost(){
@@ -74,9 +73,11 @@ export class PostsService {
     this.editData.PostBy=localStorage.getItem('Name');
     this.editData.UserId=localStorage.getItem('UserId')
     console.log(this.editData);
-    if(this.editData.PostBody!=""){
-      return this.http.post(this.baseURL+"Submit",this.editData);
-    }
+    // if(this.editData.PostBody!="" || this.editData.Attachment!=null || this.editData.Attachment!=""){
+    // console.log(this.editData.PostBody);
+    // console.log(this.editData.Attachment)
+    return this.http.post(this.baseURL+"Submit",this.editData);
+    // }
   }
 
   CommentSubmit(){

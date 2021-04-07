@@ -23,9 +23,8 @@ export class ProfileService {
     this.postData.PostBy=localStorage.getItem('Name');
     this.postData.UserId=localStorage.getItem('UserId')
     console.log(this.postData);
-    if(this.postData.PostBody!=""){
-      return this.http.post('https://localhost:44388/api/Posts/Submit',this.postData);
-    }
+    return this.http.post('https://localhost:44388/api/Posts/Submit',this.postData);
+    
   }
   getPostsByUserId(id:String){
     return this.http.get('https://localhost:44388/api/Posts/GetbyUser/'+id)

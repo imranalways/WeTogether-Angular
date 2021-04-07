@@ -92,6 +92,7 @@ export class ProfileComponent implements OnInit{
         this.service.postData.PostId="";
         this.service.postData.Attachment=null;
        this.postService.editData.Attachment=null; 
+       
         
       },
       err=>{
@@ -196,6 +197,7 @@ export class ProfileComponent implements OnInit{
         this.ngOnInit();
         console.log(res);
         this.postService.editData.PostBody="";
+        this.postService.editData.Attachment=null;
       },
       err=>{
         console.log(err);

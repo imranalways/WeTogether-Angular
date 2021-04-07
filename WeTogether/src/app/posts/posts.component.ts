@@ -192,6 +192,7 @@ checker:boolean=false;
         this.ngOnInit();
         console.log(res);
         this.service.editData.PostBody="";
+        this.service.editData.Attachment=null;
       },
       err=>{
         console.log(err);
