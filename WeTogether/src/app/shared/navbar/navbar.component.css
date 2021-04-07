@@ -31,3 +31,20 @@ nav a {
     color: #039be5;
     border-bottom: 3px solid blue;
   }
+
+h3 i{
+  padding: 13px 20px;
+  margin-top: 10px;
+  background-color: white;
+  display: inline-block;
+  border-radius: 40px;
+  color:blue;
+}
+
+.dropdown-menu{
+  font-size: 17px;
+}
+.dropdown-item{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

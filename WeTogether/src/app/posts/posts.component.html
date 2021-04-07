@@ -184,7 +184,7 @@
                                   <table *ngIf="error != 'hasError'">
                                       <tr id="btnPost">
                                           <td>
-                                              <button class="" name="Like" (click)="LikeClicked(post.PostId)"
+                                              <button class="" name="Like" (click)="LikeClicked(post.PostId,post.UserId)"
                                               type="button" id={{txt}} >Like</button>
                                           </td>
                                           <td id="LikeBtn"><a routerLink="/Post-Details/{{post.PostId}}"><button type="button">Comment</button></a></td>
