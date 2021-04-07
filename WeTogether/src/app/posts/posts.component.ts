@@ -100,6 +100,7 @@ export class PostsComponent implements OnInit {
         console.log(res);
         this.service.formData.PostBody="";
         this.service.formData.PostId="";
+        this.service.editData.Attachment=null;
         
       },
       err=>{

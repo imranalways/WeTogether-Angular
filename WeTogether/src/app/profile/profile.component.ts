@@ -90,6 +90,8 @@ export class ProfileComponent implements OnInit{
         console.log(res);
         this.service.postData.PostBody="";
         this.service.postData.PostId="";
+        this.service.postData.Attachment=null;
+       this.postService.editData.Attachment=null; 
         
       },
       err=>{
