@@ -9,9 +9,11 @@ import { PostsService } from '../shared/posts.service';
 export class ImageViewComponent implements OnInit {
 
   constructor(public service:PostsService) { }
-  attachment:String=localStorage.getItem('Attachment');
+  attachment:any=localStorage.getItem('Attachment');
   ngOnInit(): void {
    
   }
-
+  viewImage(){
+    //window.open(this.attachment, "_blank");
+  }
 }
