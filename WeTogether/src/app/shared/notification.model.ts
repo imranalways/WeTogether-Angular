@@ -6,5 +6,5 @@ export class Notification {
     L_UserId:String="";
     LikedBy:String="";
     LikedDate:Date;
-    Unliked;
+    Unliked:number;
 }

@@ -79,6 +79,10 @@ export class PostsComponent implements OnInit {
 
  
   LikeClicked(Id:String,Uid:String){
+
+    this.service.formData.Likes=1;
+    this.service.formData.PostId=Id;
+    this.service.formData.UserId=this.userid;
     this.service.NotificationInsert(Uid).subscribe(
       res=>{
 
@@ -87,9 +91,7 @@ export class PostsComponent implements OnInit {
         console.log(err);
       }
     )
-    this.service.formData.Likes=1;
-    this.service.formData.PostId=Id;
-    this.service.formData.UserId=this.userid;
+    
     this.service.LikesInsert().subscribe(
         res=>{
           this.service.getLikes();
