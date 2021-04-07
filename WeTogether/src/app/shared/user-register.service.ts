@@ -10,7 +10,10 @@ export class UserRegisterService {
   constructor(private http:HttpClient) { }
   formData:UserRegister=new UserRegister();
 
-  readonly baseURL = 'http://wetogether.local/api/Account/Register';
+  // readonly baseURL = 'http://wetogether.local/api/Account/Register';
+  readonly baseURL = 'https://localhost:44388/api/Account/Register';
+
+  
   postRegister(){
     console.log(this.formData);
     return this.http.post(this.baseURL,this.formData);
