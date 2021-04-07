@@ -18,9 +18,9 @@
         <div class="col-md-8 text-center">
             <nav>
                 <a routerLink="/Posts" routerLinkActive="active" (click)="refresh()">Home</a>
-                <a routerLink="/Register" routerLinkActive="active">Register</a>
-                <a *ngIf="error != 'hasError'" routerLink="/profile/me" routerLinkActive="active" >Profile</a>
                 <a routerLink="/Group" routerLinkActive="active">Group</a>
+                <a *ngIf="error != 'hasError'" routerLink="/profile/me" routerLinkActive="active" >Profile</a>
+                <a routerLink="/Notification" routerLinkActive="active">Notification</a>
                 <a routerLink="" routerLinkActive="">Login</a>
                 <a routerLink="/Logout" routerLinkActive="active">Logout</a>
             </nav>

@@ -156,6 +156,7 @@
                                     </div>
                                   
                                   </div>
+                                   <p></p> <!--line breaks between image and likes comments -->
                                   <div class="row">
                                     <div class="col-md-1" *ngIf="c>0">
                                      
@@ -195,14 +196,14 @@
       
                           </mdb-card-body>
                         </mdb-card>
-                        
+                        <br>
                   </div>
                 
                   {{unliked()}}
                   {{reset()}}
                   {{ckreset()}}
                   {{comment_reset()}}
-                  <br>
+                 
               </div>
               <!-- <button type="button" (click)="printPdf(form)">Print ALL</button> -->
               <!-- <button mdbBtn color="primary" mdbWavesEffect printTitle="All Posts( )" printSectionId="print-section" ngxPrint>
