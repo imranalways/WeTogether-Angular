@@ -325,7 +325,20 @@
                     name="PostBody" #PostBody="ngModel" [(ngModel)]="postService.editData.PostBody"
                     placeholder="What's on your mind?">
                  </textarea>
-                </div>           
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">
+                    <input id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-7"><img [src]="postService.editData.Attachment" *ngIf="postService.editData.Attachment" style="height: 200px; width:400px">    
+                  </div>
+                  <div class="col-md-2" *ngIf="postService.editData.Attachment">
+                    <button type="button" class="" aria-label="Close" (click)="CloseImg()">
+                      <span aria-hidden="true">x</span>
+                    </button>
+                  </div>
+                </div>          
           </form>
             
           </div>
@@ -351,7 +364,7 @@
   
   
   
-  <div style="overflow-y: auto" id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
+  <div id="modal" mdbModal #postModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel"
     aria-hidden="true">
    <div class="row">
      <div class="col-md-3"></div>
@@ -386,16 +399,15 @@
                  name="PostBody" #PostBody="ngModel" [(ngModel)]="service.postData.PostBody"
                  placeholder="What's on your mind?">
              </textarea>
-               
             </div>   
             <div class="row">
               <div class="col-md-2">
                 <input id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
               </div>
               <div class="col-md-1"></div>
-              <div class="col-md-7"><img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:400px">    
+              <div class="col-md-7"><img [src]="service.postData.Attachment" *ngIf="service.postData.Attachment" style="height: 200px; width:400px">    
               </div>
-              <div class="col-md-2" *ngIf="imageSrc != null">
+              <div class="col-md-2" *ngIf="service.postData.Attachment">
                 <button type="button" class="" aria-label="Close" (click)="CloseImg()">
                   <span aria-hidden="true">x</span>
                 </button>

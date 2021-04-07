@@ -22,6 +22,11 @@ export class PostDetailsComponent implements OnInit {
     'Only Me'
   ];
 
+  CloseImg(){
+    
+    this.service.editData.Attachment=null;
+  }
+
   ngOnInit(): void {
     
     if(this.userid != null){

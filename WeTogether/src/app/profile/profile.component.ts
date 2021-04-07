@@ -26,7 +26,9 @@ export class ProfileComponent implements OnInit{
    
      reader.onload = () => {
   
-       this.imageSrc = reader.result as string;  
+       this.imageSrc = reader.result as string; 
+       this.service.postData.Attachment=this.imageSrc;
+       this.postService.editData.Attachment=this.imageSrc; 
      };
   
    }
@@ -34,6 +36,9 @@ export class ProfileComponent implements OnInit{
 
  CloseImg(){
    this.imageSrc=null;
+   this.service.postData.Attachment=null;
+   this.postService.editData.Attachment=null;
+
  }
 
 

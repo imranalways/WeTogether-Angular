@@ -275,7 +275,20 @@
                   name="PostBody" #PostBody="ngModel" [(ngModel)]="service.editData.PostBody"
                   placeholder="What's on your mind?">
                </textarea>
-              </div>           
+              </div> 
+              <div class="row">
+                <div class="col-md-2">
+                  <input id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7"><img [src]="service.editData.Attachment" *ngIf="service.editData.Attachment" style="height: 200px; width:400px">    
+                </div>
+                <div class="col-md-2" *ngIf="service.editData.Attachment">
+                  <button type="button" class="" aria-label="Close" (click)="CloseImg()">
+                    <span aria-hidden="true">x</span>
+                  </button>
+                </div>
+              </div>          
         </form>
           
         </div>

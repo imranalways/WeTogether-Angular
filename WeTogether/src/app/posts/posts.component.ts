@@ -29,6 +29,7 @@ export class PostsComponent implements OnInit {
    
         this.imageSrc = reader.result as string;  
         console.log(this.imageSrc);
+        this.service.editData.Attachment=this.imageSrc;
       };
    
     }
@@ -36,6 +37,7 @@ export class PostsComponent implements OnInit {
 
   CloseImg(){
     this.imageSrc=null;
+    this.service.editData.Attachment=null;
   }
 
 
