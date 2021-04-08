@@ -56,10 +56,14 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item">
-                      <span><b>Imran Hossain Liked your Post.</b></span>
+                    
+                    <a class="dropdown-item" *ngFor="let notification of component.service.notificationList">
+                      {{getAgoTime(notification.LikedDate)}}
+                      <span>
+                        <a routerLink="/post-Details/{{notification.PostId}}"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
+                      </span>
                     </a>
-                    <a class="dropdown-item">
+                    <!-- <a class="dropdown-item">
                       <span>Delete</span>
                     </a>
                     <a class="dropdown-item" >
@@ -67,7 +71,7 @@
                     </a>
                     <a class="dropdown-item">
                       <span>Report</span>
-                    </a>
+                    </a> -->
                     
                     <!-- <a class="dropdown-item" href="#">
                       <span></span>

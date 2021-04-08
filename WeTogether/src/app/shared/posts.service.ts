@@ -112,4 +112,11 @@ export class PostsService {
     this.notification.LikedBy=localStorage.getItem('Name');
     return this.http.post(this.baseURL+"Notification_Insert",this.notification);
   }
+
+  getAllNotification(userid:String){
+    return this.http.get(this.baseURL+"Notification/GetAll/"+userid)
+    .toPromise()
+    .then(res=>this.notificationList=res as Notification[]);
+  }
+
 }

@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'Edit-Profile',component: EditProfileComponent},
   { path: 'Profile-Details/:id',component: ProfileDetailsComponent},
   { path: 'Post-Details/:id',component: PostDetailsComponent},
+  { path: 'post-Details/:id',component: PostDetailsComponent},
+
   { path: 'Imageview',component: ImageViewComponent}
 
 
