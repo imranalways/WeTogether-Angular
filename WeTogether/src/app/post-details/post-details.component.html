@@ -12,7 +12,7 @@
             </div>
           </div>
 
-          <div *ngFor="let comment of service.comments">
+          <div *ngFor="let comment of service.comments" >
             <p *ngIf="service.formData.PostId==comment.PostId">
               {{commented()}}
             </p>

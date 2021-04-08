@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { PostsService } from '../shared/posts.service';
 
 @Injectable({
@@ -14,7 +14,9 @@ import { PostsService } from '../shared/posts.service';
 })
 export class PostDetailsComponent implements OnInit {
 
-  constructor(public service:PostsService,private activatedRoute: ActivatedRoute,public router:Router) { }
+  constructor(public service:PostsService,private activatedRoute: ActivatedRoute,public router:Router) { 
+   
+  }
   
   imageSrc: string;
 
@@ -54,21 +56,27 @@ export class PostDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if(this.userid != null){
-      this.error="";
-    }
+    // this.router.events.subscribe((val) => {
+      // see also 
+      // console.log(val instanceof NavigationEnd ) 
+  //     if(val instanceof NavigationEnd){
+  //       this.ngOnInit();
+  //     }
+  // });
     
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);
-    
-    this.service.getLikes();
     this.service.getCommentsByPostsId(this.UrlId);
+    this.service.getLikes();
     console.log(this.service.comments);
-    console.log(this.UrlId)
-   
-    
 
+    console.log(this.UrlId)
+    if(this.userid != null){
+      this.error="";
+    }
   }
+
+
 
   LikeClicked(Id:String){
     this.service.formData.Likes=1;

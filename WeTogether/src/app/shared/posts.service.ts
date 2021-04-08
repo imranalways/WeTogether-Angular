@@ -25,9 +25,11 @@ export class PostsService {
 
 
   getPostsById(id:String){
-    return this.http.get(this.baseURL+id)
-    .toPromise()
-    .then(res=>this.formData=res as Posts);
+    if(id!=null){
+      return this.http.get(this.baseURL+id)
+      .toPromise()
+      .then(res=>this.formData=res as Posts);
+    }
   }
   getPostsByIdToEdit(id:String){
     return this.http.get(this.baseURL+id)

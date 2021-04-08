@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit {
   }
 
   notifi(){
-    this.postdetails.ngOnInit();
-    console.log("OKK");
+    
+      //this.postdetails.ngOnInit();
   }
 
   sec:number;
