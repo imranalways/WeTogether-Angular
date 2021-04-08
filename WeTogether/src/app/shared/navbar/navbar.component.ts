@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostDetailsComponent } from 'src/app/post-details/post-details.component';
 import { PostsComponent } from '../../posts/posts.component';
 
 
@@ -11,7 +12,7 @@ import { PostsComponent } from '../../posts/posts.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( public router:Router,public component:PostsComponent) { }
+  constructor( public router:Router,public component:PostsComponent,public postdetails:PostDetailsComponent) { }
 
   userid:any=localStorage.getItem('UserId');
   error:String="hasError";
@@ -25,6 +26,11 @@ export class NavbarComponent implements OnInit {
   refresh(){
     this.component.ngOnInit();
     
+  }
+
+  notifi(){
+    this.postdetails.ngOnInit();
+    console.log("OKK");
   }
 
   sec:number;
