@@ -18,11 +18,13 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 .form-group label{
-    color: gray;
+    color: black;
+    font-weight: 500;
 }
 
 .form-group input{
     font-weight:300;
+    
 }
 
 thead th{
@@ -41,6 +43,7 @@ input.invalid{
     color:white; */
     color:red;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 .form-group #register{

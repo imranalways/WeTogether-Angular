@@ -1,3 +1,5 @@
+<title>Posts | WT</title>
+
 <app-navbar></app-navbar>
 <br>
 
@@ -371,7 +373,7 @@
         </div>
         <div class="modal-footer">
           <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button> -->
-          <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
+          <button [disabled]="service.formData.PostBody =='' && !service.editData.Attachment" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
         </div>
       </div>
     </div>
@@ -447,7 +449,7 @@
          <div class="modal-footer">
            
            <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button> -->
-           <button type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
+           <button [disabled]="service.formData.PostBody =='' && !service.editData.Attachment" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
         
           </div>
        </div>
