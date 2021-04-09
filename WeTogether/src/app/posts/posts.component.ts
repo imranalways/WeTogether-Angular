@@ -65,7 +65,6 @@ export class PostsComponent implements OnInit {
       console.log(this.PrivacyList);
 
       console.log(this.service.getAllPosts());
-      this.service.getAllNotification(this.userid);
 
       this.service.getLikes();
       console.log(this.service.getAllComments());

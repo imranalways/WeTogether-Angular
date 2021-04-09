@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostDetailsComponent } from 'src/app/post-details/post-details.component';
 import { PostsComponent } from '../../posts/posts.component';
+import { PostsService } from '../posts.service';
 
 
 
@@ -12,7 +13,7 @@ import { PostsComponent } from '../../posts/posts.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( public router:Router,public component:PostsComponent,public postdetails:PostDetailsComponent) { }
+  constructor( public router:Router,public component:PostsComponent,public postdetails:PostDetailsComponent,public service:PostsService) { }
 
   userid:any=localStorage.getItem('UserId');
   error:String="hasError";
@@ -21,6 +22,8 @@ export class NavbarComponent implements OnInit {
     if(this.userid != null){
       this.error="";
       console.log(this.component.service.notificationList);
+      this.service.getAllNotification(this.userid);
+
     }
   }
   refresh(){
