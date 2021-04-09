@@ -31,9 +31,11 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  notifi(){
-    
-      this.postdetails.ngOnInit();
+  notifi(pid:String){
+    this.service.getPostsById(pid);
+    this.service.getCommentsByPostsId(pid);
+    this.service.getLikes();
+      //this.postdetails.ngOnInit();
   }
 
   sec:number;

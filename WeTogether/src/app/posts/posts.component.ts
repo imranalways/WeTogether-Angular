@@ -51,7 +51,7 @@ export class PostsComponent implements OnInit {
   error:String="hasError";
 
   ngOnInit(): void {
-
+    this.service.editData.Attachment=null;
       if(this.userid != null){
         this.error="";
       }

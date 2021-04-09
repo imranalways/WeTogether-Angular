@@ -60,7 +60,7 @@
                     <a class="dropdown-item" *ngFor="let notification of component.service.notificationList">
                       {{getAgoTime(notification.LikedDate)}}
                       <span>
-                        <a routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi()" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
+                        <a routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
                       </span>
                     </a>
                     <!-- <a class="dropdown-item">
