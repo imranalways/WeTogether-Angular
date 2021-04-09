@@ -13,11 +13,11 @@
     <mdb-card-body>
       <mdb-card-title>
         <h2>{{ service.formData.Name }}</h2>
-        <p>{{ service.formData.Bio }}</p>
+        <p id="bio">{{ service.formData.Bio }}</p>
       </mdb-card-title>
       <mdb-card-text >
       </mdb-card-text>
-      <a *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
+      <a id="edit" *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
       <!-- <i class="fas fa-pencil-alt"></i> -->
      
     </mdb-card-body>

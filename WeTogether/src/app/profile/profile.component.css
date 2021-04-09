@@ -92,3 +92,12 @@
  .relative{
      width:100%;
  }
+
+ #edit{
+     font-weight: 700;
+     text-decoration: none;
+ }
+
+ #bio{
+     color:grey;
+ }

@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
 
   notifi(){
     
-      //this.postdetails.ngOnInit();
+      this.postdetails.ngOnInit();
   }
 
   sec:number;
