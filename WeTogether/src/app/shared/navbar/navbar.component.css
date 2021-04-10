@@ -15,7 +15,7 @@ a {
 }
 #nav #a {
     
-    padding: 10px 20px;
+    padding: 12px 20px;
     text-decoration: none;
     margin-top: 10px;
     display: inline-block;
@@ -61,3 +61,8 @@ h3 i{
 /* .navbar:not(.top-nav-collapse) {
   background: transparent!important;
 } */
+
+#notifi{
+  font-weight: 800;
+
+}

@@ -18,12 +18,12 @@
         <h3 class=" text-center">WE TOGETHER</h3>
       </div>
       <div class="col-md-8">
-        <a id="a" routerLink="/Posts" routerLinkActive="active" (click)="refresh()">Home</a>
-        <a id="a" routerLink="/Group" routerLinkActive="active">Group</a>
-        <a id="a" *ngIf="error != 'hasError'" routerLink="/profile/me" routerLinkActive="active" >Profile</a>
-        <a id="a" routerLink="/Notification" routerLinkActive="active">Notification</a>
-        <a id="a" routerLink="" routerLinkActive="">Login</a>
-        <a id="a" routerLink="/Logout" routerLinkActive="active">Logout</a>
+        <a id="a" routerLink="/Posts" routerLinkActive="active" (click)="refresh()"  title="Home">Home</a>
+        <a id="a" routerLink="/Group" routerLinkActive="active" title="Group">Group</a>
+        <a id="a" *ngIf="error != 'hasError'" routerLink="/profile/me" routerLinkActive="active" title="Profile">Profile</a>
+        <a id="a" routerLink="/Notification" routerLinkActive="active" title="Notification">Notification</a>
+        <a id="a" routerLink="" routerLinkActive="" title="Login">Login</a>
+        <a id="a" routerLink="/Logout" routerLinkActive="active" title="Logout">Logout</a>
 
       </div>
       <div class="col-md-1"></div>
@@ -39,7 +39,7 @@
               <a class="dropdown-item" *ngFor="let notification of component.service.notificationList">
                 {{getAgoTime(notification.LikedDate)}}
                 <span>
-                  <a routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
+                  <a id="notifi" routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
                 </span>
               </a>
             </div>
