@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class PostsComponent implements OnInit {
 
   constructor(public service:PostsService) {
-    
+    // window.scroll(0,0);
    }
    imageSrc: string;
 

@@ -15,7 +15,7 @@ import { PostsService } from '../shared/posts.service';
 export class PostDetailsComponent implements OnInit {
 
   constructor(public service:PostsService,private activatedRoute: ActivatedRoute,public router:Router) { 
-   
+    window.scroll(0,0);
   }
   
   imageSrc: string;

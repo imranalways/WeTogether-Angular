@@ -9,7 +9,9 @@ import { ProfileService } from '../shared/profile.service';
 })
 export class ProfileDetailsComponent implements OnInit {
 
-  constructor(public service:ProfileService,private activatedRoute: ActivatedRoute) { }
+  constructor(public service:ProfileService,private activatedRoute: ActivatedRoute) {
+    window.scroll(0,0);
+   }
 
   userid:any=localStorage.getItem('UserId');
   UrlId:String;

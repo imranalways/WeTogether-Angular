@@ -13,7 +13,7 @@ import { ProfileService } from '../shared/profile.service';
 export class ProfileComponent implements OnInit{
 
   constructor(public service:ProfileService,public postService:PostsService, private activatedRoute: ActivatedRoute) { 
-    console.log("Okk");
+    window.scroll(0,0);
   }
   imageSrc: string;
 

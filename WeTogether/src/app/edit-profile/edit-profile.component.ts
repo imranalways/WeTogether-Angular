@@ -11,8 +11,8 @@ import { ProfileService } from '../shared/profile.service';
 export class EditProfileComponent implements OnInit {
 
   constructor(public service:ProfileService,private activatedRoute: ActivatedRoute) { 
-    this.service.getUserById();
-   
+    // this.service.getUserById();
+    window.scroll(0,0);
   }
 
   userid:String=localStorage.getItem('UserId');
