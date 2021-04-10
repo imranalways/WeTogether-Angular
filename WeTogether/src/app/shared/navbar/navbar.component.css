@@ -9,25 +9,31 @@ a {
     cursor: pointer;
     cursor: hand;
 }
-nav a {
-    padding: 20px 30px;
+
+#nav{
+  background-color: white;
+}
+#nav #a {
+    
+    padding: 10px 20px;
     text-decoration: none;
     margin-top: 10px;
     display: inline-block;
     background-color: white;
     border-radius: 4px;
     margin-left: 5px;
+    font-weight: 800;
     
   }
-  nav a:visited, a:link {
+  #nav #a:visited, #a:link {
     color: #607D8B;
   }
-  nav a:hover {
+  #nav #a:hover {
     color: #039be5;
     background-color: #CFD8DC;
     
   }
-  nav a.active {
+  #nav #a.active {
     color: #039be5;
     border-bottom: 3px solid blue;
   }
@@ -48,3 +54,10 @@ h3 i{
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.top-nav-collapse {
+  background-color: white!important;
+}
+/* .navbar:not(.top-nav-collapse) {
+  background: transparent!important;
+} */
