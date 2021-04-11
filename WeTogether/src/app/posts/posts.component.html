@@ -372,7 +372,7 @@
         </div>
         <div class="modal-footer">
           <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="updateModal.hide()" mdbWavesEffect>Cancle</button> -->
-          <button [disabled]="service.formData.PostBody =='' && !service.editData.Attachment" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
+          <button [disabled]="service.editData.PostBody =='' && !service.editData.Attachment" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="updatePost()">Update</button>
         </div>
       </div>
     </div>

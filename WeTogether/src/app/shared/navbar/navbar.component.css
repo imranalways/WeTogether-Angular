@@ -81,3 +81,8 @@ h3 i:hover{
 .d-none:hover{
   background-color: #CFD8DC;
 } */
+
+#notifiLabel{
+  padding-left:10px;
+  color:blue;
+}
