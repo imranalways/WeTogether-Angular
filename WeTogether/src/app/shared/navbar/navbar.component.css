@@ -39,12 +39,16 @@ a {
   }
 
 h3 i{
-  padding: 13px 20px;
+  padding: 12px 12px;
   margin-top: 10px;
   background-color: white;
   display: inline-block;
   border-radius: 40px;
   color:blue;
+}
+
+h3 i:hover{
+  background-color:#CFD8DC;
 }
 
 .dropdown-menu{
@@ -65,5 +69,10 @@ h3 i{
 #notifi{
   font-weight: 400;
   font-size: 16px;
-
 }
+/* .d-none{
+  padding: 5px 5px;
+}
+.d-none:hover{
+  background-color: #CFD8DC;
+} */
