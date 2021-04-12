@@ -21,6 +21,8 @@ export class ProfileDetailsComponent implements OnInit {
     console.log(this.UrlId);
     this.service.getUserById();
     console.log(this.service.formData.Name);
+
+    
     
   }
 

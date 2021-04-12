@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
       this.error="";
       console.log(this.component.service.notificationList);
       this.service.getAllNotification(this.userid);
+      localStorage.setItem('notificationCount',this.service.notificationList.length.toString())
 
     }
   }

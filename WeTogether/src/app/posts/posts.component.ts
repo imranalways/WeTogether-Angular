@@ -63,7 +63,7 @@ export class PostsComponent implements OnInit {
       this.service.formData.PostBody="";
       this.service.formData.PostId="";
       console.log(this.PrivacyList);
-
+      this.service.getAllNotification(this.userid);
       console.log(this.service.getAllPosts());
 
       this.service.getLikes();
@@ -75,6 +75,9 @@ export class PostsComponent implements OnInit {
       }
       console.log(this.service.likes);
 
+      
+      localStorage.setItem('notificationCount',this.service.notificationList.length.toString())
+
   }
 
 
@@ -85,6 +88,8 @@ export class PostsComponent implements OnInit {
     this.service.formData.Likes=1;
     this.service.formData.PostId=Id;
     this.service.formData.UserId=this.userid;
+
+    this.service.notification.IsComment=0;
     this.service.NotificationInsert(Uid).subscribe(
       res=>{
 

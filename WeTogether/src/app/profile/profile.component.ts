@@ -82,6 +82,9 @@ export class ProfileComponent implements OnInit{
     if(this.service.usersPosts==undefined){
       this.checker=true;
     }
+
+    this.postService.getAllNotification(this.userid);
+    localStorage.setItem('notificationCount',this.postService.notificationList.length.toString())
   }
   onSubmit(){
     this.service.submitPost().subscribe(

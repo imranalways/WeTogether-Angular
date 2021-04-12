@@ -110,7 +110,7 @@ export class PostsService {
   NotificationInsert(Uid:String){
     this.notification.PostId=this.formData.PostId;
     this.notification.UserId=Uid;
-    this.notification.L_UserId=this.formData.UserId;
+    this.notification.L_UserId=localStorage.getItem('UserId');
     this.notification.LikedBy=localStorage.getItem('Name');
     return this.http.post(this.baseURL+"Notification_Insert",this.notification);
   }

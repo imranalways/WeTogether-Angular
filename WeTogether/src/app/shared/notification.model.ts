@@ -7,4 +7,5 @@ export class Notification {
     LikedBy:String="";
     LikedDate:Date;
     Unliked:number;
+    IsComment:number;
 }

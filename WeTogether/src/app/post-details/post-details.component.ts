@@ -74,6 +74,9 @@ export class PostDetailsComponent implements OnInit {
     if(this.userid != null){
       this.error="";
     }
+
+    this.service.getAllNotification(this.userid);
+      localStorage.setItem('notificationCount',this.service.notificationList.length.toString())
   }
 
 
@@ -81,6 +84,17 @@ export class PostDetailsComponent implements OnInit {
   LikeClicked(Id:String){
     this.service.formData.Likes=1;
     this.service.formData.PostId=Id;
+    
+
+    this.service.notification.IsComment=0;
+    this.service.NotificationInsert(this.service.formData.UserId).subscribe(
+      res=>{
+
+      },
+      err=>{
+        console.log(err);
+      }
+    )
     this.service.formData.UserId=this.userid;
     this.service.LikesInsert().subscribe(
         res=>{
@@ -96,6 +110,18 @@ export class PostDetailsComponent implements OnInit {
   }
 
   CommentSubmit(form:NgForm){
+
+    this.service.notification.IsComment=1;
+    this.service.NotificationInsert(this.service.formData.UserId).subscribe(
+      res=>{
+
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+
+
     this.service.CommentSubmit().subscribe(
       res=>{
         
