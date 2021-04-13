@@ -52,11 +52,11 @@ h3 i:hover{
 }
 
 .dropdown-menu{
-  font-size: 17px;
+  font-size: 15px;
 }
 .dropdown-item{
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .top-nav-collapse {
@@ -66,14 +66,16 @@ h3 i:hover{
   background: transparent!important;
 } */
 
-#notifi{
+#notifiTxt{
   font-weight: 400;
   font-size: 16px;
 }
 
-#notifi:hover{
+#notifiTxt:hover{
   color:white;
-  background-color: rgb(117, 117, 117);
+}
+#notifi:hover{
+  background-color: rgb(185, 184, 184);
 }
 /* .d-none{
   padding: 5px 5px;
