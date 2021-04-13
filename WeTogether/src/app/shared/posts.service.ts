@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CommentLike } from './comment-like.model';
 import { LikeDetails } from './like-details.model';
 import { Notification } from './notification.model';
 import { PostDetails } from './post-details.model';
@@ -19,6 +20,10 @@ export class PostsService {
   imgData:Posts;
   notification:Notification=new Notification();
   notificationList:Notification[];
+
+  commentLike:CommentLike=new CommentLike();
+  cLikeList:CommentLike[];
+
   constructor(private http:HttpClient) { }
   // readonly baseURL= 'http://wetogether.local/api/Posts/';
   readonly baseURL= 'https://localhost:44388/api/Posts/';
@@ -100,13 +105,19 @@ export class PostsService {
     
     return this.http.post(this.baseURL+"Likes_Insert",this.formData);
   }
-   
+  CLikesInsert(){
+    return this.http.post(this.baseURL+"CLikes_Insert",this.commentLike);
+  }
   getLikes(){
     return this.http.get(this.baseURL+"Likes")
     .toPromise()
     .then(res=>this.likes=res as LikeDetails[]);
   }
-  
+  getCLikes(){
+    return this.http.get(this.baseURL+"CLikes")
+    .toPromise()
+    .then(res=>this.cLikeList=res as CommentLike[]);
+  }
   NotificationInsert(Uid:String){
     this.notification.PostId=this.formData.PostId;
     this.notification.UserId=Uid;

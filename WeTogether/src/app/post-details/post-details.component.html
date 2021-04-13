@@ -109,6 +109,7 @@
                               {{liked()}}
                             </p>
                           </div>
+                          <hr>
                             <div class="form-group">
                                 <table>
                                     <tr id="btnPost">
@@ -142,24 +143,51 @@
                           </form>
                         </mdb-card-body>
                        
-                        <mdb-card-body *ngFor="let comment of service.comments">
+                        <mdb-card-body *ngFor="let comment of service.comments" >
+                          <div *ngFor="let clike of service.cLikeList">
+                            <p *ngIf="comment.CommentId==clike.CommentId && clike.UserId==userid">
+                              {{ccount()}}
+                            </p>
+                          </div>
+
                           <mdb-card-title>
                             <a routerLink="/Profile/{{comment.C_UserId}}">{{comment.CommentBy}}</a>
                            
                           </mdb-card-title>
                       
-                          <mdb-card-text>
+                         
+
+                          <mdb-card-text *ngIf="checker">
                              {{getAgoTime(comment.CommentDate)}}
-                            <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                            
+                             <p id="agoTime"><i  class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                             {{comment.CommentBody}}
-                
-                           
-                            <div class="form-group">
+                            
+                            <div *ngFor="let clike of service.cLikeList">
+                              <p *ngIf="comment.CommentId==clike.CommentId && clike.UserId==userid">
+                                {{cliked()}}
+                              </p>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-1" *ngIf="cl>0">
+                               
+                                  <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{cl}} </b>
+                               
+                              </div>
+                              <!-- <div class="col-md-1" *ngIf="comment_count>0">
+                               
+                                  <b><i id="comment" class="fa fa-comment-o" aria-hidden="true"></i> {{comment_count}} </b>
+                               
+                              </div> -->
+                              <div class="col-md-4"></div>
+                            </div>
+                          <hr>
+                            <div class="form-group" *ngIf="checker">
                               <table>
                                   <tr id="btnPost">
                                       <td id="">
-                                          <button class="" name="Like" class="btn btn-sm" (click)="checkId(service.formData.PostId)"
-                                          type="button">Like</button>
+                                          <button class="" name="Like" class="btn btn-sm" (click)="commentLiked(comment.CommentId)"
+                                          type="button" id={{ctxt}}>Like</button>
                                       </td>
                                       <td id="LikeBtn"><button type="button" class="btn btn-sm">Reply</button></td>
                                   </tr>

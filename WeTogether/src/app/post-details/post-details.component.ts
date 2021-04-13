@@ -63,7 +63,9 @@ export class PostDetailsComponent implements OnInit {
   //       this.ngOnInit();
   //     }
   // });
-    
+    this.service.getCLikes();
+    console.log(this.service.cLikeList);
+
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
     this.service.getPostsById(this.UrlId);
     this.service.getCommentsByPostsId(this.UrlId);
@@ -105,9 +107,7 @@ export class PostDetailsComponent implements OnInit {
         }
       )
   }
-  optionClicked(){
-    console.log("Okk");
-  }
+ 
 
   CommentSubmit(form:NgForm){
 
@@ -134,111 +134,149 @@ export class PostDetailsComponent implements OnInit {
     )
   }
 
-  c:number=0;
+c:number=0;
+cl:number=0;
 checker:boolean=false;
-  count(){
-    this.c+=1;
+cchecker:boolean=false;
+
+count(){
+  this.c+=1;
+  this.checker=true;
+}
+
+ccount(){
+  this.cl+=1;
+}
+reset(){
+  this.c=0;
+  this.cl=0;
+}
+
+ckreset(){
+  this.chk=false;
+}
+
+txt:String;
+ctxt:String;
+chk:boolean=false;
+liked(){
+  this.txt="Liked";
+  this.chk=true;
+}
+unliked(){
+  this.txt="";
+  this.ctxt="";
+}
+
+cliked(){
+  this.ctxt="Liked";
+}
+
+comment_count:number=0;
+commented(){
+  this.comment_count+=1;
+}
+
+comment_reset(){
+  this.comment_count=0;
+}
+
+sec:number;
+minutes:number;
+hours:number;
+day:number;
+date:Date;
+week:number;
+month:number;
+dateToday: number = Date.now();
+agoTime:String="";
+
+getAgoTime(postdate:Date){
+  const diffInMilliseconds = Math.abs(this.dateToday-new Date(postdate).valueOf());
+  
+
+  this.sec=diffInMilliseconds/1000
+  this.minutes=this.sec/60;
+  this.hours=this.minutes/60;
+  this.day=this.hours/24;
+  this.week=this.day/7;
+  
+  if(this.day>=7){
+    this.agoTime=Math.floor(this.week)+"w";
+  }
+  else if(this.hours>=24){
+    this.agoTime= Math.floor(this.day)+"d";
+  }
+  else if(this.minutes>=60){
+    this.agoTime= Math.floor(this.hours)+"h";
+  }
+  else if(this.minutes>=1){
+    this.agoTime= Math.floor(this.minutes)+"m";
+  }
+  else if(this.sec<60){
+    this.agoTime="Just now";
+  }
+}
+
+
+getPostById(id:String){
+  this.service.getPostsByIdToEdit(id);
+}
+updatePost(){
+  this.service.updatePost().subscribe(
+    res=>{
+      this.ngOnInit();
+      console.log(res);
+      this.service.editData.PostBody="";
+    },
+    err=>{
+      console.log(err);
+    }
+  )
+}
+deletePost(){
+  this.service.editData.IsDeleted=true;
+  this.service.updatePost().subscribe(
+    res=>{
+      this.router.navigate(['/Posts']);
+      console.log(res);
     
-   this.checker=true;
-  }
-  reset(){
-    this.c=0;
-  }
-
-  ckreset(){
-    this.chk=false;
-  }
-
-  txt:String;
-  chk:boolean=false;
-  liked(){
-    this.txt="Liked";
-    this.chk=true;
-    console.log("liked");
-  }
-  unliked(){
-    this.txt="";
-  }
-
-
-  comment_count:number=0;
-  commented(){
-    this.comment_count+=1;
-  }
-
-  comment_reset(){
-    this.comment_count=0;
-  }
-
-  sec:number;
-  minutes:number;
-  hours:number;
-  day:number;
-  date:Date;
-  week:number;
-  month:number;
-  dateToday: number = Date.now();
-  agoTime:String="";
-
-  getAgoTime(postdate:Date){
-    const diffInMilliseconds = Math.abs(this.dateToday-new Date(postdate).valueOf());
-    
-
-    this.sec=diffInMilliseconds/1000
-    this.minutes=this.sec/60;
-    this.hours=this.minutes/60;
-    this.day=this.hours/24;
-    this.week=this.day/7;
-    
-    if(this.day>=7){
-      this.agoTime=Math.floor(this.week)+"w";
+    },
+    err=>{
+      console.log(err);
     }
-    else if(this.hours>=24){
-      this.agoTime= Math.floor(this.day)+"d";
-    }
-    else if(this.minutes>=60){
-      this.agoTime= Math.floor(this.hours)+"h";
-    }
-    else if(this.minutes>=1){
-      this.agoTime= Math.floor(this.minutes)+"m";
-    }
-    else if(this.sec<60){
-      this.agoTime="Just now";
-    }
-  }
+  )
+}
 
-
-  getPostById(id:String){
-    this.service.getPostsByIdToEdit(id);
-  }
-  updatePost(){
-    this.service.updatePost().subscribe(
-      res=>{
-        this.ngOnInit();
-        console.log(res);
-        this.service.editData.PostBody="";
-      },
-      err=>{
-        console.log(err);
-      }
-    )
-  }
-  deletePost(){
-    this.service.editData.IsDeleted=true;
-    this.service.updatePost().subscribe(
-      res=>{
-        this.router.navigate(['/Posts']);
-        console.log(res);
-      
-      },
-      err=>{
-        console.log(err);
-      }
-    )
-  }
-
-  getImage(attachment:string){
-    localStorage.setItem('Attachment',attachment) 
-  }
+getImage(attachment:string){
+  localStorage.setItem('Attachment',attachment) 
+}
  
+commentLiked(Id:String){
+  console.log(Id);
+  this.service.commentLike.Likes=1;
+  this.service.commentLike.CommentId=Id;
+  
+
+  // this.service.notification.IsComment=0;
+  // this.service.NotificationInsert(this.service.formData.UserId).subscribe(
+  //   res=>{
+
+  //   },
+  //   err=>{
+  //     console.log(err);
+  //   }
+  // )
+  this.service.commentLike.UserId=this.userid;
+  this.service.CLikesInsert().subscribe(
+      res=>{
+        this.service.getCLikes();
+        console.log(this.service.cLikeList);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+
+}
 }
