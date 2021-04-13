@@ -2,6 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { PostsService } from '../shared/posts.service';
 import { NgForm } from '@angular/forms';
 
+
 @Injectable({
   providedIn: 'root'
 })
