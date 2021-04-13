@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsComponent } from './charts/charts.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ImageViewComponent } from './image-view/image-view.component';
 import { LoginComponent } from './login/login.component';
@@ -19,8 +20,8 @@ const routes: Routes = [
   { path: 'Profile-Details/:id',component: ProfileDetailsComponent},
   { path: 'Post-Details/:id',component: PostDetailsComponent},
   { path: 'post-Details/:id',component: PostDetailsComponent},
-
-  { path: 'Imageview',component: ImageViewComponent}
+  { path: 'Imageview',component: ImageViewComponent},
+  { path: 'Chart' ,component: ChartsComponent }
 
 
   ]; 
@@ -32,4 +33,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents=[PostsComponent,RegisterComponent,LoginComponent,
                                 ProfileComponent,EditProfileComponent,ProfileDetailsComponent,
-                                PostDetailsComponent,ImageViewComponent]
+                                PostDetailsComponent,ImageViewComponent,ChartsComponent]

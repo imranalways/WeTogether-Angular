@@ -9,7 +9,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ChartsModule } from 'ng2-charts';
 // import { ModalModule } from 'ngx-bootstrap/modal';
 
 
@@ -29,7 +29,8 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgxPrintModule,
     MDBBootstrapModule.forRoot(),
-    NgbNavModule
+    NgbNavModule,
+    ChartsModule
     
   ],
   providers: [UserRegisterService],
