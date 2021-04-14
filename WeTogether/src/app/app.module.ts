@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserRegisterService } from './shared/user-register.service';
@@ -28,7 +32,9 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgxPrintModule,
     MDBBootstrapModule.forRoot(),
-    NgbNavModule
+    NgbNavModule,
+    BrowserAnimationsModule,
+    NgxChartsModule
     
   ],
   providers: [UserRegisterService],

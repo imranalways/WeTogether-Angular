@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'chart.js';
+import { productSales, productSalesMulti } from '../data/products'
+
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -7,44 +8,82 @@ import {Chart} from 'chart.js';
 })
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  productSales: any[]
+  productSalesMulti: any[]
+
+  view: any[] = [700, 370];
+
+  // options
+  legendTitle: string = 'Products';
+  legendTitleMulti: string = 'Months';
+  legendPosition: string = 'below'; // ['right', 'below']
+  legend: boolean = true;
+
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+
+  yAxisLabel: string = 'Sales';
+  xAxisLabel: string = 'Products';
+  showXAxisLabel: boolean = true;
+  showYAxisLabel: boolean = true;
+
+  maxXAxisTickLength: number = 30;
+  maxYAxisTickLength: number = 30;
+  trimXAxisTicks: boolean = false;
+  trimYAxisTicks: boolean = false;
+  rotateXAxisTicks: boolean = false;
+
+  xAxisTicks: any[] = ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4', 'Genre 5', 'Genre 6', 'Genre 7']
+  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000]
+
+  animations: boolean = true; // animations on load
+
+  showGridLines: boolean = true; // grid lines
+
+  showDataLabel: boolean = true; // numbers on bars
+
+  gradient: boolean = false;
+  colorScheme = {
+    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
+  };
+  schemeType: string = 'ordinal'; // 'ordinal' or 'linear'
+
+  activeEntries: any[] = ['book']
+  barPadding: number = 5
+  tooltipDisabled: boolean = false;
+
+  yScaleMax: number = 9000;
+
+  roundEdges: boolean = false;
+  count:Number;
+  constructor() {
+    
+    this.count=Number(localStorage.getItem('notificationCount'))
+     Object.assign(this, {productSales,productSalesMulti}); 
+    }
 
   ngOnInit(): void {
-    var myChart = new Chart("myChart", {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
+    
   }
 
-  
+  onSelect(event: any) {
+    console.log(event);
+  }
+
+  // onActivate(data: any): void {
+  //   console.log('Activate', JSON.parse(JSON.stringify(data)));
+  // }
+
+  // onDeactivate(data: any): void {
+  //   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  // }
+
+  formatString(input: string): string {
+    return input.toUpperCase()
+  }
+
+  formatNumber(input: number): number {
+    return input
+  }
+
 }
