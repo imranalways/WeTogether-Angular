@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FRequest } from './frequest.model';
 import { Posts } from './posts.model';
 import { Profile } from './profile.model';
 
@@ -13,6 +14,9 @@ export class ProfileService {
   list:Profile;
   usersPosts:Posts[];
   postData:Posts=new Posts();
+
+  frequest:FRequest=new FRequest();
+  freqList:FRequest[];
   
   // readonly baseURL= 'http://wetogether.local/api/Profile/';
   readonly baseURL= 'https://localhost:44388/api/Profile/';
@@ -61,5 +65,13 @@ export class ProfileService {
     console.log(this.formData);
     return this.http.post(this.baseURL+"Address_Info_Save/",this.formData);
   }
-  
+  sendFriendRequest(){
+    return this.http.post(this.baseURL+"Request/Submit",this.frequest);
+  }
+
+  FRequestGetByReceiverId(Id:String){
+    return this.http.get(this.baseURL+"GetFRequestByReceiver/"+Id)
+    .toPromise()
+    .then(res=>this.freqList=res as FRequest[]);
+  }
 }

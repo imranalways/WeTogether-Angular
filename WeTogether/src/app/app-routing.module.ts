@@ -9,6 +9,7 @@ import { PostsComponent } from './posts/posts.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { RequestComponent } from './request/request.component';
 
 const routes: Routes = [ 
   { path: 'Posts', component: PostsComponent }, 
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'Post-Details/:id',component: PostDetailsComponent},
   { path: 'post-Details/:id',component: PostDetailsComponent},
   { path: 'Imageview',component: ImageViewComponent},
-  { path: 'Chart' ,component: ChartsComponent }
+  { path: 'Chart' ,component: ChartsComponent },
+  { path: 'Request' ,component: RequestComponent }
+
 
 
   ]; 
@@ -33,4 +36,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents=[PostsComponent,RegisterComponent,LoginComponent,
                                 ProfileComponent,EditProfileComponent,ProfileDetailsComponent,
-                                PostDetailsComponent,ImageViewComponent,ChartsComponent]
+                                PostDetailsComponent,ImageViewComponent,ChartsComponent,RequestComponent]

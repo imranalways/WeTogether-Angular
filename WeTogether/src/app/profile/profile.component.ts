@@ -235,7 +235,19 @@ export class ProfileComponent implements OnInit{
     this.postService.getCommentsByPostsId(Id);
   }
 
-  sendFriendRequest(Id:String){
-    console.log(Id);
+  sendFriendRequest(Id:String,Rname:String){
+    this.service.frequest.SenderId=this.userid;
+    this.service.frequest.ReceiverId=Id;
+    this.service.frequest.SenderName=this.Name;
+    this.service.frequest.ReceiverName=Rname;
+    this.service.frequest.IsAccepted=false;
+    this.service.sendFriendRequest().subscribe(
+      res=>{
+        console.log(res);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 }
