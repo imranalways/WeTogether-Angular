@@ -18,7 +18,14 @@
       <mdb-card-text >
       </mdb-card-text>
       <a id="edit" *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
-      <button *ngIf='userid != UrlId' class="btn btn-primary btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
+
+      <div *ngFor="let req of service.freqList">
+        <button *ngIf='userid != UrlId && req.SenderId!=UrlId' class="btn btn-primary btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
+
+        <button *ngIf='userid != UrlId && req.SenderId==UrlId' class="btn btn-success btn-sm" >Accept</button>
+        <button *ngIf='userid != UrlId && req.SenderId==UrlId' class="btn btn-danger btn-sm">Reject</button>
+
+      </div>
       <!-- <i class="fas fa-pencil-alt"></i> -->
      
     </mdb-card-body>

@@ -1,3 +1,33 @@
 <title>Friend Request | WT</title>
 <app-navbar></app-navbar>
 <br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <mdb-card>
+            <mdb-card-body>
+              <mdb-card-title>
+               <h4><b>Friend Requests</b></h4>
+               <hr>
+              </mdb-card-title>
+              <mdb-card-text>
+                <div *ngFor="let req of service.freqList">
+                    <div class="row">
+                       
+                        <div class="col-md-8">
+                            <a routerLink="/Profile/{{req.SenderId}}"><h5 id="name">{{req.SenderName}}</h5></a>
+                         
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-success btn-sm">Accept</button>
+                            <button class="btn btn-danger btn-sm">Reject</button>
+
+                        </div>
+                    </div>
+                </div>
+              </mdb-card-text>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+    <div class="col-md-2"></div>
+</div>

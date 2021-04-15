@@ -9,8 +9,10 @@ import { ProfileService } from '../shared/profile.service';
 export class RequestComponent implements OnInit {
 
   constructor(public service:ProfileService) { }
+  userid:any=localStorage.getItem('UserId');
 
   ngOnInit(): void {
+    this.service.FRequestGetByReceiverId(this.userid);
     console.log(this.service.freqList);
   }
 
