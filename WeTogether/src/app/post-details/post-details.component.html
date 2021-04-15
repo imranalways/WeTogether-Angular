@@ -93,12 +93,12 @@
                             <div class="row">
                               <div class="col-md-1" *ngIf="c>0">
                                
-                                <a (mouseenter)="getLikersByPostId(post.PostId)" (click)="likesModal.show()"><b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b></a>
+                                <a (mouseenter)="getLikersByPostId(service.formData.PostId)" (click)="likesModal.show()"><b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b></a>
                                
                               </div>
                               <div class="col-md-1" *ngIf="comment_count>0">
                                
-                                  <b><i id="comment" class="fa fa-comment-o" aria-hidden="true"></i> {{comment_count}} </b>
+                                <a (mouseenter)="getcommentorsByPostId(service.formData.PostId)" (click)="commentsModal.show()"><b><i id="comment" class="fa fa-comment-o" aria-hidden="true"></i> {{comment_count}} </b></a>
                                
                               </div>
                               <div class="col-md-4"></div>
@@ -181,7 +181,7 @@
                               </div> -->
                               <div class="col-md-4"></div>
                             </div>
-                          <hr>
+                          
                             <div class="form-group" *ngIf="checker">
                               <table>
                                   <tr id="btnPost">
@@ -189,7 +189,7 @@
                                           <button class="" name="Like" class="btn btn-sm" (click)="commentLiked(comment.CommentId)"
                                           type="button" id={{ctxt}}>Like</button>
                                       </td>
-                                      <td id="LikeBtn"><button type="button" class="btn btn-sm">Reply</button></td>
+                                      <td id="LikeBtn"><button *ngIf="comment.C_UserId==userid" type="button" class="btn btn-sm">Delete</button></td>
                                   </tr>
                               </table>
                           </div>
@@ -351,11 +351,46 @@
         <div *ngFor="let postliker of service.postLikes">
           <div class="row">
             <div class="col-md-8">
-              <a routerLink="/Profile/{{postliker.UserId}}" style="text-decoration: none;"><h5>{{postliker.LikedBy}}</h5></a>
+              <a *ngIf="postliker.UserId==userid" routerLink="/Profile/me" style="text-decoration: none;"><h5>You</h5></a>
+
+              <a *ngIf="postliker.UserId!=userid" routerLink="/Profile/{{postliker.UserId}}" style="text-decoration: none;"><h5>{{postliker.LikedBy}}</h5></a>
              
             </div>
             <div class="col-md-4 pull-right">
               <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+            </div>
+          </div>  
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" mdbBtn color="dark" class="waves-light" aria-label="Close" (click)="likesModal.hide()" mdbWavesEffect>Close</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div mdbModal #commentsModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myCommentsModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="commentsModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Commented People</h4>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let postCommentor of service.comments">
+          <div class="row">
+            <div class="col-md-8">
+              <a *ngIf="postCommentor.C_UserId==userid" routerLink="/Profile/me" style="text-decoration: none;"><h5>You</h5></a>
+
+              <a *ngIf="postCommentor.C_UserId!=userid" routerLink="/Profile/{{postCommentor.C_UserId}}" style="text-decoration: none;"><h5>{{postCommentor.CommentBy}}</h5></a>
+             
+            </div>
+            <div class="col-md-4 pull-right">
+              <button *ngIf="postCommentor.C_UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+              
             </div>
           </div>  
         </div>

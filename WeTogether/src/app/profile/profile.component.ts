@@ -224,9 +224,14 @@ export class ProfileComponent implements OnInit{
     localStorage.setItem('Attachment',attachment) 
   }
 
-  
+
   getLikersByPostId(Id:String){
     console.log("Okk"+Id);
     this.postService.getLikesByPostId(Id);
+  }
+
+  getcommentorsByPostId(Id:String){
+    console.log("Okk"+Id);
+    this.postService.getCommentsByPostsId(Id);
   }
 }

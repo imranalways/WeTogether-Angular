@@ -289,4 +289,9 @@ getLikersByPostId(Id:String){
   this.service.getLikesByPostId(Id);
 }
 
+getcommentorsByPostId(Id:String){
+  console.log("Okk"+Id);
+  this.service.getCommentsByPostsId(Id);
+}
+
 }

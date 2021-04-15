@@ -239,4 +239,9 @@ checker:boolean=false;
     console.log("Okk"+Id);
     this.service.getLikesByPostId(Id);
   }
+  
+  getcommentorsByPostId(Id:String){
+    console.log("Okk"+Id);
+    this.service.getCommentsByPostsId(Id);
+  }
 }
