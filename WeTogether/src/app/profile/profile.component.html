@@ -18,6 +18,7 @@
       <mdb-card-text >
       </mdb-card-text>
       <a id="edit" *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
+      <button *ngIf='userid != UrlId' class="btn btn-primary btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId)">Send Friend Request</button>
       <!-- <i class="fas fa-pencil-alt"></i> -->
      
     </mdb-card-body>

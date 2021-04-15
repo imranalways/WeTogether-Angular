@@ -234,4 +234,8 @@ export class ProfileComponent implements OnInit{
     console.log("Okk"+Id);
     this.postService.getCommentsByPostsId(Id);
   }
+
+  sendFriendRequest(Id:String){
+    console.log(Id);
+  }
 }
