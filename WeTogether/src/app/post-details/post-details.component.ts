@@ -149,9 +149,12 @@ ccount(){
 }
 reset(){
   this.c=0;
+  
+}
+creset(){
+  
   this.cl=0;
 }
-
 ckreset(){
   this.chk=false;
 }
@@ -165,9 +168,11 @@ liked(){
 }
 unliked(){
   this.txt="";
+  
+}
+cunliked(){
   this.ctxt="";
 }
-
 cliked(){
   this.ctxt="Liked";
 }
@@ -277,6 +282,11 @@ commentLiked(Id:String){
         console.log(err);
       }
     )
-
 }
+
+getLikersByPostId(Id:String){
+  console.log("Okk"+Id);
+  this.service.getLikesByPostId(Id);
+}
+
 }

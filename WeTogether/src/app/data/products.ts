@@ -15,6 +15,7 @@ export var productSales = [
     "name": "monitor",
     "value": 705
   }
+  
 ];
 
 

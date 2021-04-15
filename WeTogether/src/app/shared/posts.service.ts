@@ -16,6 +16,8 @@ export class PostsService {
   comments:PostDetails[];
   commentList:PostDetails[];
   likes:LikeDetails[];
+  postLikes:LikeDetails[];
+
   editData:Posts=new Posts();
   imgData:Posts;
   notification:Notification=new Notification();
@@ -102,7 +104,7 @@ export class PostsService {
   }
 
   LikesInsert(){
-    
+    this.formData.LikedBy=localStorage.getItem('Name');
     return this.http.post(this.baseURL+"Likes_Insert",this.formData);
   }
   CLikesInsert(){
@@ -113,6 +115,13 @@ export class PostsService {
     .toPromise()
     .then(res=>this.likes=res as LikeDetails[]);
   }
+
+  getLikesByPostId(Id:String){
+    return this.http.get(this.baseURL+"Likes/"+Id)
+    .toPromise()
+    .then(res=>this.postLikes=res as LikeDetails[]);
+  }
+
   getCLikes(){
     return this.http.get(this.baseURL+"CLikes")
     .toPromise()

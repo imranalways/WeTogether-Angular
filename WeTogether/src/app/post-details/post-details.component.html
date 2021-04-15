@@ -83,8 +83,8 @@
                                 <p id="pbody">{{ service.formData.PostBody }}</p>
                                 <div class="row">
                                  
-                                  <div class="col-md-12">
-                                    <a routerLink="/Imageview" target="_blank"><img id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
+                                  <div class="col-md-12 view overlay zoom">
+                                    <a routerLink="/Imageview" target="_blank"><img class="img-fluid" id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
 
                                   </div>
                                  
@@ -93,7 +93,7 @@
                             <div class="row">
                               <div class="col-md-1" *ngIf="c>0">
                                
-                                  <b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b>
+                                <a (mouseenter)="getLikersByPostId(post.PostId)" (click)="likesModal.show()"><b><i id="thumbs" class="fa fa-thumbs-up" aria-hidden="true"></i>  {{c}} </b></a>
                                
                               </div>
                               <div class="col-md-1" *ngIf="comment_count>0">
@@ -125,27 +125,27 @@
                           </mdb-card-text>
                           <form #form="ngForm" (submit)="CommentSubmit(form)">
                             <div class="row">
-                              <div class="col-md-10">
+                              <div class="col-md-12">
                                 <div class="input-group mb-3">
                                   <!-- <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">Comment</span>
                                   </div> -->
                                   <input type="text" id="CommentBody" class="form-control"
                                   placeholder="Write a comment...."
-                                  name="CommentBody" #CommentBody="ngModel" [(ngModel)]="service.comment.CommentBody" /> 
+                                  name="CommentBody" #CommentBody="ngModel" [(ngModel)]="service.comment.CommentBody"/> 
                                 </div>
                               </div>
-                              <div class="col-md-1" *ngIf="service.comment.CommentBody !=''">
+                              <!-- <div class="col-md-1" *ngIf="service.comment.CommentBody !=''">
                                 <button type="submit" class="btn btn-sm">Comment</button>
                               </div>
-                              <div class="col-md-1"></div>
+                              <div class="col-md-1"></div> -->
                             </div>
                           </form>
                         </mdb-card-body>
                        
                         <mdb-card-body *ngFor="let comment of service.comments" >
                           <div *ngFor="let clike of service.cLikeList">
-                            <p *ngIf="comment.CommentId==clike.CommentId && clike.UserId==userid">
+                            <p *ngIf="comment.CommentId==clike.CommentId">
                               {{ccount()}}
                             </p>
                           </div>
@@ -194,6 +194,9 @@
                               </table>
                           </div>
                           </mdb-card-text>
+                          {{cunliked()}}
+                          {{creset()}}
+                          
                         </mdb-card-body>
                       </mdb-card>
                 </div>
@@ -332,3 +335,34 @@
   </div>
    <div class="col-md-3"></div>
  </div> 
+
+
+ <div mdbModal #likesModal="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myLikesModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="likesModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Liked People</h4>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let postliker of service.postLikes">
+          <div class="row">
+            <div class="col-md-8">
+              <a routerLink="/Profile/{{postliker.UserId}}" style="text-decoration: none;"><h5>{{postliker.LikedBy}}</h5></a>
+             
+            </div>
+            <div class="col-md-4 pull-right">
+              <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+            </div>
+          </div>  
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" mdbBtn color="dark" class="waves-light" aria-label="Close" (click)="likesModal.hide()" mdbWavesEffect>Close</button>
+      </div> -->
+    </div>
+  </div>
+</div>

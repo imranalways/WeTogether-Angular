@@ -223,4 +223,10 @@ export class ProfileComponent implements OnInit{
   getImage(attachment:string){
     localStorage.setItem('Attachment',attachment) 
   }
+
+  
+  getLikersByPostId(Id:String){
+    console.log("Okk"+Id);
+    this.postService.getLikesByPostId(Id);
+  }
 }

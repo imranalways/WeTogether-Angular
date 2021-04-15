@@ -10,4 +10,5 @@ export class Posts {
     PostPrivacy:String="";
     IsDeleted;
     Likes:Number;
+    LikedBy:String="";
 }

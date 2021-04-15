@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { productSales, productSalesMulti } from '../data/products'
+import { ChartService } from '../shared/chart.service';
+import {Chart} from 'chart.js';
+
+// import{ Chartmodel } from '../shared/chartmodel.model'
 
 @Component({
   selector: 'app-charts',
@@ -7,83 +10,51 @@ import { productSales, productSalesMulti } from '../data/products'
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-
-  productSales: any[]
-  productSalesMulti: any[]
-
-  view: any[] = [700, 370];
-
-  // options
-  legendTitle: string = 'Products';
-  legendTitleMulti: string = 'Months';
-  legendPosition: string = 'below'; // ['right', 'below']
-  legend: boolean = true;
-
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-
-  yAxisLabel: string = 'Sales';
-  xAxisLabel: string = 'Products';
-  showXAxisLabel: boolean = true;
-  showYAxisLabel: boolean = true;
-
-  maxXAxisTickLength: number = 30;
-  maxYAxisTickLength: number = 30;
-  trimXAxisTicks: boolean = false;
-  trimYAxisTicks: boolean = false;
-  rotateXAxisTicks: boolean = false;
-
-  xAxisTicks: any[] = ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4', 'Genre 5', 'Genre 6', 'Genre 7']
-  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000]
-
-  animations: boolean = true; // animations on load
-
-  showGridLines: boolean = true; // grid lines
-
-  showDataLabel: boolean = true; // numbers on bars
-
-  gradient: boolean = false;
-  colorScheme = {
-    domain: ['#704FC4', '#4B852C', '#B67A3D', '#5B6FC8', '#25706F']
+  public canvas: any;
+  public ctx: any;
+  public labels: any = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  public dataCases: any = {
+    chart1: [2000, 10000, 12000, 14000, 6000, 0, 0, 0, 0, 0, 0, 0],
+    chart2: [200, 1000, 1200, 1400, 600, 0, 0, 0, 0, 0, 0, 0]
   };
-  schemeType: string = 'ordinal'; // 'ordinal' or 'linear'
 
-  activeEntries: any[] = ['book']
-  barPadding: number = 5
-  tooltipDisabled: boolean = false;
+  constructor(public service:ChartService) {}
 
-  yScaleMax: number = 9000;
-
-  roundEdges: boolean = false;
-  count:Number;
-  constructor() {
-    
-    this.count=Number(localStorage.getItem('notificationCount'))
-     Object.assign(this, {productSales,productSalesMulti}); 
-    }
-
-  ngOnInit(): void {
-    
+  ngOnInit(){
+    this.createLineChart(this.labels, this.dataCases, 'myChart');
   }
+  private createLineChart(labels, dataCases, chartId) {
+    this.canvas = document.getElementById(chartId);
+    this.ctx = this.canvas.getContext('2d');
 
-  onSelect(event: any) {
-    console.log(event);
-  }
-
-  // onActivate(data: any): void {
-  //   console.log('Activate', JSON.parse(JSON.stringify(data)));
-  // }
-
-  // onDeactivate(data: any): void {
-  //   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  // }
-
-  formatString(input: string): string {
-    return input.toUpperCase()
-  }
-
-  formatNumber(input: number): number {
-    return input
-  }
-
+    let chart = new Chart(this.ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Chart 1",
+          data: dataCases.chart1,
+          backgroundColor: '#ffbb33',
+          borderColor: '#ffbb33',
+          fill: false,
+          borderWidth: 2
+        },
+        {
+          label: "Chart 2",
+          data: dataCases.chart2,
+          backgroundColor: '#ff4444',
+          borderColor: '#ff4444',
+          fill: false,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        
+      }
+    });
+}
 }

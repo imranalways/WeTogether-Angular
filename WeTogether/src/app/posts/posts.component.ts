@@ -234,5 +234,9 @@ checker:boolean=false;
   getImage(attachment:string){
     localStorage.setItem('Attachment',attachment) 
   }
- 
+  
+  getLikersByPostId(Id:String){
+    console.log("Okk"+Id);
+    this.service.getLikesByPostId(Id);
+  }
 }
