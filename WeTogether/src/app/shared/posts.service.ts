@@ -140,5 +140,8 @@ export class PostsService {
     .toPromise()
     .then(res=>this.notificationList=res as Notification[]);
   }
-
+  DeleteComment(Id:String){
+    this.comment.CommentId=Id;
+    return this.http.post("https://localhost:44388/api/Comment/Delete",this.comment);
+  }
 }

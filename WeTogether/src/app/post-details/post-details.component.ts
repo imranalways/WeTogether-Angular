@@ -293,5 +293,17 @@ getcommentorsByPostId(Id:String){
   console.log("Okk"+Id);
   this.service.getCommentsByPostsId(Id);
 }
-
+commentDelete(Id:String){
+  this.service.comment.C_IsDeleted=true;
+  this.service.DeleteComment(Id).subscribe(
+    res=>{
+      this.ngOnInit();
+      console.log(res);
+    
+    },
+    err=>{
+      console.log(err);
+    }
+  )
+}
 }

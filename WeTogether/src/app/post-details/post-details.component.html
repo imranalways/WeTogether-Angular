@@ -189,7 +189,7 @@
                                           <button class="" name="Like" class="btn btn-sm" (click)="commentLiked(comment.CommentId)"
                                           type="button" id={{ctxt}}>Like</button>
                                       </td>
-                                      <td id="LikeBtn"><button *ngIf="comment.C_UserId==userid" type="button" class="btn btn-sm">Delete</button></td>
+                                      <td id="LikeBtn"><button *ngIf="comment.C_UserId==userid" type="button" class="btn btn-sm" (click)="commentDelete(comment.CommentId)">Delete</button></td>
                                   </tr>
                               </table>
                           </div>
