@@ -82,9 +82,10 @@
                             <div class="form-group">
                                 <p id="pbody">{{ service.formData.PostBody }}</p>
                                 <div class="row">
-                                 
-                                  <div class="col-md-12 view overlay zoom">
-                                    <a routerLink="/Imageview" target="_blank"><img class="img-fluid" id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
+                                  <!-- view overlay zoom -->
+                                  <!-- class="img-fluid" -->
+                                  <div class="col-md-12 ">
+                                    <a routerLink="/Imageview" target="_blank"><img  id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
 
                                   </div>
                                  
