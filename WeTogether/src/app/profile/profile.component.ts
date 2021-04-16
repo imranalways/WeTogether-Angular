@@ -255,6 +255,24 @@ export class ProfileComponent implements OnInit{
     )
   }
 
+  acceptFriendRequest(Id:String,Rname:String,Requestid:String){
+    this.service.frequest.RequestId=Requestid;
+    this.service.frequest.ReceiverId=this.userid;
+    this.service.frequest.SenderId=Id;
+    this.service.frequest.ReceiverName=this.Name;
+    this.service.frequest.SenderName=Rname;
+    this.service.frequest.IsAccepted=true;
+    this.service.acceptFriendRequest().subscribe(
+      res=>{
+        console.log(res);
+        this.ngOnInit();
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
   hasReceiverId:boolean=false;
   hasReceiver(){
     this.hasReceiverId=true;

@@ -74,4 +74,8 @@ export class ProfileService {
     .toPromise()
     .then(res=>this.freqList=res as FRequest[]);
   }
+  acceptFriendRequest(){
+    return this.http.post(this.baseURL+"Request/Submit",this.frequest);
+  }
+  
 }
