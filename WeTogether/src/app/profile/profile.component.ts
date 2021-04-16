@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.service.FRequestGetByReceiverId();
 
     if(this.userid != null){
       this.error="";
@@ -84,7 +85,9 @@ export class ProfileComponent implements OnInit{
     }
 
     this.postService.getAllNotification(this.userid);
-    localStorage.setItem('notificationCount',this.postService.notificationList.length.toString())
+    localStorage.setItem('notificationCount',this.postService.notificationList.length.toString());
+
+
   }
   onSubmit(){
     this.service.submitPost().subscribe(
@@ -244,10 +247,20 @@ export class ProfileComponent implements OnInit{
     this.service.sendFriendRequest().subscribe(
       res=>{
         console.log(res);
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
       }
     )
+  }
+
+  hasReceiverId:boolean=false;
+  hasReceiver(){
+    this.hasReceiverId=true;
+  }
+
+  hasReceiverReset(){
+    this.hasReceiverId=false;
   }
 }

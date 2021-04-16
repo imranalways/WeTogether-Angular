@@ -20,14 +20,23 @@
       <a id="edit" *ngIf='userid == UrlId' routerLink="/Edit-Profile">EDIT</a>
 
       <div *ngFor="let req of service.freqList">
-        <button *ngIf='userid != UrlId && req.SenderId!=UrlId' class="btn btn-primary btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
-
-        <button *ngIf='userid != UrlId && req.SenderId==UrlId' class="btn btn-success btn-sm" >Accept</button>
-        <button *ngIf='userid != UrlId && req.SenderId==UrlId' class="btn btn-danger btn-sm">Reject</button>
-
+       
+        <div *ngIf="req.SenderId==userid && req.ReceiverId==UrlId">
+          {{hasReceiver()}}
+          <button *ngIf='userid != UrlId' class="btn btn-danger btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Cancle Friend Request</button>
+        </div>
+        <div *ngIf="req.SenderId==UrlId">
+          {{hasReceiver()}}
+          <button *ngIf='userid != UrlId' class="btn btn-success btn-sm">Accept</button>
+          <button *ngIf='userid != UrlId' class="btn btn-danger btn-sm">Reject</button>
+        </div>
+      </div>
+      
+      <div *ngIf="!hasReceiverId">
+        <button *ngIf='userid != UrlId' class="btn btn-success btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
       </div>
       <!-- <i class="fas fa-pencil-alt"></i> -->
-     
+      {{hasReceiverReset()}}
     </mdb-card-body>
   </mdb-card>
 

@@ -12,7 +12,7 @@ export class RequestComponent implements OnInit {
   userid:any=localStorage.getItem('UserId');
 
   ngOnInit(): void {
-    this.service.FRequestGetByReceiverId(this.userid);
+    this.service.FRequestGetByReceiverId();
     console.log(this.service.freqList);
   }
 

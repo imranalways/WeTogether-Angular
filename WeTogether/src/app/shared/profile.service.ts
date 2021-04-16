@@ -69,8 +69,8 @@ export class ProfileService {
     return this.http.post(this.baseURL+"Request/Submit",this.frequest);
   }
 
-  FRequestGetByReceiverId(Id:String){
-    return this.http.get(this.baseURL+"GetFRequestByReceiver/"+Id)
+  FRequestGetByReceiverId(){
+    return this.http.get(this.baseURL+"GetFRequestByReceiver")
     .toPromise()
     .then(res=>this.freqList=res as FRequest[]);
   }
