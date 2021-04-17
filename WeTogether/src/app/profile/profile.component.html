@@ -29,7 +29,7 @@
           <!-- <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-danger btn-sm" style="font-size: 15px; border-radius: 30px;"><i class="fa fa-times" aria-hidden="true"></i> u n f r i e n d</button> -->
 
         </div>
-        <div *ngIf="req.SenderId==UrlId">
+        <div *ngIf="req.SenderId==UrlId && req.ReceiverId==userid">
           {{hasReceiver()}}
           <!-- <div class="row">
             <div class="col-md-4"></div>
@@ -48,7 +48,7 @@
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-success btn-sm" style="border-radius: 30px;" (click)="acceptFriendRequest(UrlId,service.formData.Name,req.RequestId)">A c c e p t</button>
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="border-radius: 30px;">R e j e c t</button>
         </div>
-        <div *ngIf="req.SenderId==UrlId">
+        <div *ngIf="req.SenderId==UrlId  && req.ReceiverId==userid">
           <div *ngIf="req.IsAccepted==true">
             {{hasReceiver()}}
           </div>
