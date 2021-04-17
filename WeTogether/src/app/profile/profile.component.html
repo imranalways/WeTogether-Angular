@@ -24,9 +24,27 @@
         <div *ngIf="req.SenderId==userid && req.ReceiverId==UrlId">
           {{hasReceiver()}}
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Cancle Friend Request</button>
+          <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-success btn-sm" style="font-size: 15px;border-radius: 30px;">c o n n e c t e d</button>
+
+          <!-- <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-danger btn-sm" style="font-size: 15px; border-radius: 30px;"><i class="fa fa-times" aria-hidden="true"></i> u n f r i e n d</button> -->
+
         </div>
         <div *ngIf="req.SenderId==UrlId">
           {{hasReceiver()}}
+          <!-- <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"> -->
+              <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-success btn-sm" style="font-size: 15px;border-radius: 30px;">c o n n e c t e d</button>
+
+            <!-- </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+              <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-danger btn-sm" style="font-size: 15px;border-radius: 30px;"><i class="fa fa-times" aria-hidden="true"></i> u n f r i e n d</button>
+
+            </div>
+          </div> -->
+
+
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-success btn-sm" (click)="acceptFriendRequest(UrlId,service.formData.Name,req.RequestId)">Accept</button>
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm">Reject</button>
         </div>
