@@ -23,7 +23,7 @@
        
         <div *ngIf="req.SenderId==userid && req.ReceiverId==UrlId">
           {{hasReceiver()}}
-          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Cancle Friend Request</button>
+          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="font-size: 15px;border-radius: 30px;" (click)="sendFriendRequest(UrlId,service.formData.Name)"><i class="fa fa-times" aria-hidden="true"></i> cancle Friend Request</button>
           <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-success btn-sm" style="font-size: 15px;border-radius: 30px;">c o n n e c t e d</button>
 
           <!-- <button *ngIf='userid != UrlId && req.IsAccepted==true' class="btn btn-danger btn-sm" style="font-size: 15px; border-radius: 30px;"><i class="fa fa-times" aria-hidden="true"></i> u n f r i e n d</button> -->
@@ -45,8 +45,8 @@
           </div> -->
 
 
-          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-success btn-sm" (click)="acceptFriendRequest(UrlId,service.formData.Name,req.RequestId)">Accept</button>
-          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm">Reject</button>
+          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-success btn-sm" style="border-radius: 30px;" (click)="acceptFriendRequest(UrlId,service.formData.Name,req.RequestId)">A c c e p t</button>
+          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="border-radius: 30px;">R e j e c t</button>
         </div>
         <div *ngIf="req.SenderId==UrlId">
           <div *ngIf="req.IsAccepted==true">
@@ -56,7 +56,7 @@
       </div>
       
       <div *ngIf="!hasReceiverId">
-        <button *ngIf='userid != UrlId' class="btn btn-success btn-sm" style="font-size: 15px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
+        <button *ngIf='userid != UrlId' class="btn btn-info btn-sm" style="font-size: 15px;border-radius: 30px;" (click)="sendFriendRequest(UrlId,service.formData.Name)">Send Friend Request</button>
       </div>
       <!-- <i class="fas fa-pencil-alt"></i> -->
       {{hasReceiverReset()}}
