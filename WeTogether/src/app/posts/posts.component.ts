@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { PostsService } from '../shared/posts.service';
 import { NgForm } from '@angular/forms';
+import { ProfileService } from '../shared/profile.service';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ import { NgForm } from '@angular/forms';
 })
 export class PostsComponent implements OnInit {
 
-  constructor(public service:PostsService) {
+  constructor(public service:PostsService,public profileService:ProfileService) {
     window.scroll(0,0);
    }
    imageSrc: string;
@@ -52,6 +53,8 @@ export class PostsComponent implements OnInit {
   error:String="hasError";
 
   ngOnInit(): void {
+    this.profileService.FRequestGetByReceiverId();
+
     this.service.editData.Attachment=null;
       if(this.userid != null){
         this.error="";
@@ -78,6 +81,7 @@ export class PostsComponent implements OnInit {
 
       
       localStorage.setItem('notificationCount',this.service.notificationList.length.toString())
+      console.log(this.profileService.freqList);
 
   }
 
@@ -244,4 +248,14 @@ checker:boolean=false;
     console.log("Okk"+Id);
     this.service.getCommentsByPostsId(Id);
   }
+
+  isConnected:boolean=false;
+  hasConnection(){
+    this.isConnected=true;
+  }
+
+  resethasConnection(){
+    this.isConnected=false;
+  }
+  
 }

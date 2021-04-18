@@ -34,4 +34,23 @@ export class RequestComponent implements OnInit {
     )
   }
 
+  rejectFriendRequest(Id:String,Rname:String,Requestid:String){
+    this.service.frequest.RequestId=Requestid;
+    this.service.frequest.ReceiverId=this.userid;
+    this.service.frequest.SenderId=Id;
+    this.service.frequest.ReceiverName=this.Name;
+    this.service.frequest.SenderName=Rname;
+    this.service.frequest.IsAccepted=false;
+
+    this.service.acceptFriendRequest().subscribe(
+      res=>{
+        console.log(res);
+        this.ngOnInit();
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
 }

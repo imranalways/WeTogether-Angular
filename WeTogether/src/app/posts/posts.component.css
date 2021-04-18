@@ -96,3 +96,7 @@
  h4 i:hover{
     background-color:#CFD8DC;
   }
+
+  #postBox{
+      border-radius: 20px;
+  }

@@ -53,6 +53,15 @@ h3 i:hover{
 
 .dropdown-menu{
   font-size: 15px;
+ 
+}
+
+
+#child {
+  max-height: 450px;
+  margin-right: -50px; /* Maximum width of scrollbar */
+  padding-right: 50px; /* Maximum width of scrollbar */
+  overflow-y: scroll;
 }
 .dropdown-item{
   padding-top: 7px;

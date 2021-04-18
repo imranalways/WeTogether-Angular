@@ -95,7 +95,10 @@
                                 <div class="row">
                                    <div class="col-md-5">
                                       {{getAgoTime(post.PostDate)}}
-                                      <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
+                                      <label><b>
+                                        <a *ngIf="post.UserId==userid" routerLink="/Profile/me">You</a>
+                                        <a *ngIf="post.UserId!=userid" routerLink="/Profile/{{post.UserId}}">{{post.PostBy}}</a>
+                                      </b></label>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Friends'"><i class="fa fa-users" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
@@ -483,7 +486,7 @@
              
             </div>
             <div class="col-md-4 pull-right">
-              <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+              <!-- <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button> -->
             </div>
           </div>  
         </div>
@@ -516,9 +519,56 @@
              
             </div>
             <div class="col-md-4 pull-right">
-              <button *ngIf="postCommentor.C_UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+              <!-- <div *ngFor="let req of profileService.freqList">
+                
+                <div *ngIf="postCommentor.C_UserId!=userid && req.SenderId==postCommentor.C_UserId && req.ReceiverId==userid && req.IsAccepted==true">
+                  <button class="btn btn-success btn-sm pull-right">connected1</button>
+                  {{hasConnection()}}
+                </div>
+
+                <div *ngIf="postCommentor.C_UserId!=userid && req.SenderId==userid && req.ReceiverId==postCommentor.C_UserId && req.IsAccepted==true">
+                  <button class="btn btn-success btn-sm pull-right">connected2</button>
+                  {{hasConnection()}}
+                </div>
+
+                <div *ngIf="postCommentor.C_UserId!=userid && req.SenderId==postCommentor.C_UserId && req.ReceiverId==userid && req.IsAccepted!=true">
+                  <button class="btn btn-info btn-sm pull-right">Respond</button>
+                  {{hasConnection()}}
+                </div>
+                <div *ngIf="postCommentor.C_UserId!=userid && req.SenderId==userid && req.ReceiverId==postCommentor.C_UserId && req.IsAccepted!=true">
+                  <button class="btn btn-danger btn-sm pull-right">Cancle</button>
+                  {{hasConnection()}}
+                </div> -->
+                <!-- <div *ngIf="req.SenderId==postCommentor.C_UserId || req.ReceiverId==postCommentor.C_UserId">
+
+                  <div *ngIf="req.SenderId==userid && req.ReceiverId==postCommentor.C_UserId && req.IsAccepted==true && req.IsDeleted==0">
+                    <button class="btn btn-primary btn-sm pull-right">connected </button>
+                    {{hasConnection()}}
+                  </div>
+                  <div *ngIf="req.SenderId==postCommentor.C_UserId && req.ReceiverId==userid && req.IsAccepted==true && req.IsDeleted==0">
+                   <button  class="btn btn-primary btn-sm pull-right">connected </button>
+                    {{hasConnection()}}
+                  </div>
+                  
+                  <div *ngIf="postCommentor.C_UserId!=userid && req.IsAccepted!=true && req.IsDeleted==0">
+                    <button *ngIf="req.SenderId==postCommentor.C_UserId && req.ReceiverId==userid" class="btn btn-primary btn-sm pull-right">Respond</button>
+                    {{hasConnection()}}
+                  </div>
+                  <div *ngIf="postCommentor.C_UserId!=userid && !isConnected">
+                    <button class="btn btn-primary btn-sm pull-right">Add friend</button>
+                  </div>
+                  {{resethasConnection()}}
+                </div> -->
+                
+              <!-- </div>
               
-            </div>
+              <div *ngIf="!isConnected && postCommentor.C_UserId!=userid">
+                <button class="btn btn-primary btn-sm pull-right">Add friend</button>
+              </div>
+            
+             
+            </div> -->
+              <!-- <hr> -->
           </div>  
         </div>
       </div>

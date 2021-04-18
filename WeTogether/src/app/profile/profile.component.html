@@ -46,7 +46,7 @@
 
 
           <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-success btn-sm" style="border-radius: 30px;" (click)="acceptFriendRequest(UrlId,service.formData.Name,req.RequestId)">A c c e p t</button>
-          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="border-radius: 30px;">R e j e c t</button>
+          <button *ngIf='userid != UrlId && req.IsAccepted!=true' class="btn btn-danger btn-sm" style="border-radius: 30px;" (click)="rejectFriendRequest(UrlId,service.formData.Name,req.RequestId)">R e j e c t</button>
         </div>
         <div *ngIf="req.SenderId==UrlId  && req.ReceiverId==userid">
           <div *ngIf="req.IsAccepted==true">
@@ -528,7 +528,7 @@
              
             </div>
             <div class="col-md-4 pull-right">
-              <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+              <!-- <button *ngIf="postliker.UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button> -->
             </div>
           </div>  
         </div>
@@ -560,7 +560,7 @@
              
             </div>
             <div class="col-md-4 pull-right">
-              <button *ngIf="postCommentor.C_UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button>
+              <!-- <button *ngIf="postCommentor.C_UserId!=userid" class="btn btn-primary btn-sm pull-right">Add Friend</button> -->
               
             </div>
           </div>  

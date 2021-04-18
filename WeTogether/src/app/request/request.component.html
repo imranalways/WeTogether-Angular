@@ -12,7 +12,7 @@
               </mdb-card-title>
               <mdb-card-text>
                 <div *ngFor="let req of service.freqList">
-                    <div class="row" *ngIf="req.SenderId!=userid && req.IsAccepted!=true && req.IsDeleted!=1">
+                    <div class="row" *ngIf="req.SenderId!=userid && req.ReceiverId==userid && req.IsAccepted!=true && req.IsDeleted!=1">
                        
                         <div class="col-md-7">
                             <a routerLink="/Profile/{{req.SenderId}}"><h5 id="name">{{req.SenderName}}</h5></a>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-md-5">
                             <button class="btn btn-success btn-sm" (click)="acceptFriendRequest(req.SenderId,req.SenderName,req.RequestId)">a c c e p t</button>
-                            <button class="btn btn-danger btn-sm">R e j e c t</button>
+                            <button class="btn btn-danger btn-sm" (click)="rejectFriendRequest(req.SenderId,req.SenderName,req.RequestId)">R e j e c t</button>
 
                         </div>
                     </div>

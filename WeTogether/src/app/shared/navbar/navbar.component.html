@@ -28,7 +28,29 @@
 
 
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="" id="" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="d-none d-md-inline-block"><h3><i class="fa fa-telegram" aria-hidden="true"></i></h3></span>
+            </a>
+            <div id="child1" class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <h4 ><b id="notifiLabel">Messages</b> </h4>
+              <hr>
+              <a id="notifi" class="dropdown-item" *ngFor="let notification of component.service.notificationList">
+                {{getAgoTime(notification.LikedDate)}}
+               
+                  <a *ngIf="notification.IsComment==0" id="notifiTxt"  routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
+                  <a *ngIf="notification.IsComment==1" id="notifiTxt" routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Commented on your Post. </b>{{agoTime}}</a>
+
+               
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
       <div class="col-md-1">
           <ul class="nav navbar-nav nav-flex-icons ml-auto">
           <!-- Dropdown -->
@@ -37,7 +59,7 @@
               aria-haspopup="true" aria-expanded="false">
               <span class="d-none d-md-inline-block"><h3><i class="fa fa-bell" aria-hidden="true"></i></h3></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <div id="child2" class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
               <h4 ><b id="notifiLabel">Notifications</b> </h4>
               <hr>
               <a id="notifi" class="dropdown-item" *ngFor="let notification of component.service.notificationList">
