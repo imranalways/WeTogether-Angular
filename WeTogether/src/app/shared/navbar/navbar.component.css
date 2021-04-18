@@ -53,8 +53,10 @@ h3 i:hover{
 
 .dropdown-menu{
   font-size: 15px;
- 
+ position: absolute;
+ margin-left: -120px;
 }
+
 
 
 #child {

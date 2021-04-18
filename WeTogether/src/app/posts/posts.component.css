@@ -100,3 +100,10 @@
   #postBox{
       border-radius: 20px;
   }
+
+  .dropdown-menu{
+    background-color:#d5d8da;
+    max-width: 50px;
+    position: absolute;
+    margin-left: -120px;
+  }

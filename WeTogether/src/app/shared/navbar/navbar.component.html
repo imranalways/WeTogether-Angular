@@ -39,13 +39,8 @@
             <div id="child1" class="dropdown-menu dropdown-menu-left dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
               <h4 ><b id="notifiLabel">Messages</b> </h4>
               <hr>
-              <a id="notifi" class="dropdown-item" *ngFor="let notification of component.service.notificationList">
-                {{getAgoTime(notification.LikedDate)}}
-               
-                  <a *ngIf="notification.IsComment==0" id="notifiTxt"  routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Liked your Post. </b>{{agoTime}}</a>
-                  <a *ngIf="notification.IsComment==1" id="notifiTxt" routerLink="/Post-Details/{{notification.PostId}}" (click)="notifi(notification.PostId)" style="text-decoration: none;"> <b>{{notification.LikedBy}} Commented on your Post. </b>{{agoTime}}</a>
-
-               
+              <a id="notifi" class="dropdown-item">
+               <b>Imran Hossain</b> 
               </a>
             </div>
           </li>
