@@ -197,7 +197,10 @@
                                 <div class="row">
                                    <div class="col-md-5">
                                       {{getAgoTime(post.PostDate)}}
-                                      <label><b><a routerLink="/Profile/{{post.UserId}}"> {{ post.PostBy }}</a> </b></label>
+                                      <label><b>
+                                        <a *ngIf="post.UserId==userid" routerLink="/Profile/me">You</a>
+                                        <a *ngIf="post.UserId!=userid" routerLink="/Profile/{{post.UserId}}">{{post.PostBy}}</a>
+                                      </b></label>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Friends'"><i class="fa fa-users" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                       <p id=privacyTxt *ngIf="post.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ post.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>

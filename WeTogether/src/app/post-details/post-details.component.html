@@ -30,8 +30,10 @@
                               <div class="row">
                                 <div class="col-md-5">
                                   {{getAgoTime(service.formData.PostDate)}}
-                                  <label><b><a routerLink="/Profile/{{service.formData.UserId}}"> {{ service.formData.PostBy }}</a> </b></label>
-                                  <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
+                                  <label><b>
+                                    <a *ngIf="service.formData.UserId==userid" routerLink="/Profile/me">You</a>
+                                    <a *ngIf="service.formData.UserId!=userid" routerLink="/Profile/{{service.formData.UserId}}">{{service.formData.PostBy}}</a>
+                                  </b></label>                                  <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Public'"> <i class="fa fa-globe" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                   <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Friends'"><i class="fa fa-users" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                   <p id=privacyTxt *ngIf="service.formData.PostPrivacy=='Only Me'"><i class="fa fa-lock" aria-hidden="true"></i> {{ service.formData.PostPrivacy }} <i id="agoTime" class="fa fa-circle" aria-hidden="true"></i> {{agoTime}}</p>
                                 </div>
