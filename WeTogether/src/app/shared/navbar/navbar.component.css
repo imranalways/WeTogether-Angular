@@ -58,7 +58,7 @@ h3 i:hover{
 }
 
 
-#child {
+#child{
   max-height: 450px;
   margin-right: -50px; /* Maximum width of scrollbar */
   padding-right: 50px; /* Maximum width of scrollbar */
