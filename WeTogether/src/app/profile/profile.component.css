@@ -67,7 +67,7 @@
     /* width: 800px; */
     height: 700px;
  }
- 
+
 .modal-header {
     background-color: #337AB7;
     padding:16px 16px;
@@ -108,6 +108,7 @@
   }
  h4 i:hover{
     background-color:#CFD8DC;
+    color:blue;
   }
 
   .dropdown-menu{
@@ -116,3 +117,10 @@
     position: absolute;
     margin-left: -120px;
   }
+
+  #profilePic{
+      color: blue;
+  }
+  /* #profilePic:hover{
+    color: blue;
+} */

@@ -98,3 +98,12 @@ h3 i:hover{
   padding-left:10px;
   color:blue;
 }
+
+#search{
+  border:1px solid slateblue;
+  width: 100%;
+  margin-top: 20px;
+}
+#search:hover{
+  border: 3px solid slateblue;
+}
