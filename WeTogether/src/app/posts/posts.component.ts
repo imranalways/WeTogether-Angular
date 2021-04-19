@@ -19,7 +19,7 @@ export class PostsComponent implements OnInit {
     window.scroll(0,0);
    }
    imageSrc: string;
-
+   postImage: string;
    onFileChange(event) {
     const reader = new FileReader();
     
@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
    
         this.imageSrc = reader.result as string;  
         console.log(this.imageSrc);
-        this.service.editData.Attachment=this.imageSrc;
+        this.postImage=this.imageSrc;
       };
    
     }
@@ -40,6 +40,7 @@ export class PostsComponent implements OnInit {
   CloseImg(){
     this.imageSrc=null;
     this.service.editData.Attachment=null;
+    this.postImage=null;
   }
 
 
@@ -56,6 +57,7 @@ export class PostsComponent implements OnInit {
     this.profileService.FRequestGetByReceiverId();
 
     this.service.editData.Attachment=null;
+    this.postImage=null;
       if(this.userid != null){
         this.error="";
       }

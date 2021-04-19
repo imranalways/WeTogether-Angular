@@ -434,9 +434,9 @@
               <input id="file" type="file" class="form-control" (change)="onFileChange($event)"/>
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-7"><img [src]="service.editData.Attachment" *ngIf="service.editData.Attachment" style="height: 200px; width:400px">    
+            <div class="col-md-7"><img [src]="postImage" *ngIf="postImage" style="height: 200px; width:400px">    
             </div>
-            <div class="col-md-2" *ngIf="service.editData.Attachment">
+            <div class="col-md-2" *ngIf="postImage">
               <button type="button" class="" aria-label="Close" (click)="CloseImg()">
                 <span aria-hidden="true">x</span>
               </button>
@@ -449,7 +449,7 @@
          <div class="modal-footer">
            
            <!-- <button type="button" mdbBtn color="secondary" class="waves-light btn-sm" aria-label="Close" (click)="postModal.hide()" mdbWavesEffect>Cancle</button> -->
-           <button [disabled]="service.formData.PostBody =='' && !service.editData.Attachment" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
+           <button [disabled]="service.formData.PostBody =='' && !postImage" type="button" mdbBtn color="primary" class="relative waves-light btn-sm" mdbWavesEffect (click)="onSubmit()">Post</button>
         
           </div>
        </div>
