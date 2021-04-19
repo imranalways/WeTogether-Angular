@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartService } from '../shared/chart.service';
-import {Chart} from 'chart.js';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 
-// import{ Chartmodel } from '../shared/chartmodel.model'
 
 @Component({
   selector: 'app-charts',
@@ -10,51 +10,54 @@ import {Chart} from 'chart.js';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-  public canvas: any;
-  public ctx: any;
-  public labels: any = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-  public dataCases: any = {
-    chart1: [2000, 10000, 12000, 14000, 6000, 0, 0, 0, 0, 0, 0, 0],
-    chart2: [200, 1000, 1200, 1400, 600, 0, 0, 0, 0, 0, 0, 0]
-  };
+  
 
   constructor(public service:ChartService) {}
 
   ngOnInit(){
-    this.createLineChart(this.labels, this.dataCases, 'myChart');
+    
   }
-  private createLineChart(labels, dataCases, chartId) {
-    this.canvas = document.getElementById(chartId);
-    this.ctx = this.canvas.getContext('2d');
+  
+  lineChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Product A' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Product B' }
+  ];
 
-    let chart = new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: "Chart 1",
-          data: dataCases.chart1,
-          backgroundColor: '#ffbb33',
-          borderColor: '#ffbb33',
-          fill: false,
-          borderWidth: 2
-        },
-        {
-          label: "Chart 2",
-          data: dataCases.chart2,
-          backgroundColor: '#ff4444',
-          borderColor: '#ff4444',
-          fill: false,
-          borderWidth: 2
-        }]
-      },
-      options: {
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
-        
-      }
-    });
-}
+  //Labels shown on the x-axis
+  lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+  // Define chart options
+  lineChartOptions: ChartOptions = {
+    responsive: true
+  };
+
+  // Define colors of chart segments
+  lineChartColors: Color[] = [
+
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+    },
+    { // red
+      backgroundColor: 'rgba(255,0,0,0.3)',
+      borderColor: 'red',
+    }
+  ];
+
+  // Set true to show legends
+  lineChartLegend = true;
+
+  // Define type of chart
+  lineChartType = 'line';
+
+  lineChartPlugins = [];
+
+  // events
+  chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
 }

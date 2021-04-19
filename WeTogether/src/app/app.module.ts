@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
@@ -13,7 +13,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-// import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 
@@ -34,7 +34,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     MDBBootstrapModule.forRoot(),
     NgbNavModule,
     BrowserAnimationsModule,
-    NgxChartsModule
+    ChartsModule
     
   ],
   providers: [UserRegisterService],
