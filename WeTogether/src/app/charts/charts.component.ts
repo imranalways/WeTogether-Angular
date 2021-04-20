@@ -30,7 +30,7 @@ export class ChartsComponent implements OnInit {
   barChartPlugins = [];
 
   barChartData: ChartDataSets[] = [
-    { data: [this.service.chartData.TotalUser, this.service.chartData.MaleUser, this.service.chartData.FemaleUser, 0], label: 'Users'},
+    { data: [this.service.chartData.TotalUser, this.service.chartData.MaleUser, this.service.chartData.FemaleUser], label: 'Users'},
   ];
 
 
