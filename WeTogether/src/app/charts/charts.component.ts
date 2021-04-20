@@ -13,10 +13,11 @@ export class ChartsComponent implements OnInit {
   
 
   constructor(public service:ChartService) {}
+  
 
   ngOnInit(){
-    this.service.getChartData();
-    console.log(this.service.chartData);
+    console.log(this.service.chartList);
+    
   }
 
 
@@ -30,7 +31,7 @@ export class ChartsComponent implements OnInit {
   barChartPlugins = [];
 
   barChartData: ChartDataSets[] = [
-    { data: [this.service.chartData.TotalUser, this.service.chartData.MaleUser, this.service.chartData.FemaleUser, 0], label: 'Company A' },
+    { data: [this.service.chartData.TotalUser, this.service.chartData.MaleUser, this.service.chartData.FemaleUser, 0], label: 'Users' },
   ];
 
 

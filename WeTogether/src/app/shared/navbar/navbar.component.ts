@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostDetailsComponent } from 'src/app/post-details/post-details.component';
 import { PostsComponent } from '../../posts/posts.component';
+import { ChartService } from '../chart.service';
 import { PostsService } from '../posts.service';
 import { ProfileService } from '../profile.service';
 
@@ -15,7 +16,7 @@ import { ProfileService } from '../profile.service';
 export class NavbarComponent implements OnInit {
 
   constructor( public router:Router,public component:PostsComponent,public postdetails:PostDetailsComponent,public service:PostsService,
-              public profileService:ProfileService) { }
+              public profileService:ProfileService,public chartService:ChartService) { }
 
   userid:any=localStorage.getItem('UserId');
   error:String="hasError";
@@ -23,10 +24,18 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if(this.userid != null){
       this.error="";
+      this.chartService.getChartData();
       console.log(this.component.service.notificationList);
       this.service.getAllNotification(this.userid);
       localStorage.setItem('notificationCount',this.service.notificationList.length.toString())
       this.profileService.FRequestGetByReceiverId();
+     
+
+      this.chartService.chartList.forEach(element => {
+        this.chartService.chartData.TotalUser=element.TotalUser;
+        this.chartService.chartData.MaleUser=element.MaleUser;
+        this.chartService.chartData.FemaleUser=element.FemaleUser;
+      });
     }
   }
   refresh(){

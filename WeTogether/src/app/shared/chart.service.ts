@@ -17,6 +17,6 @@ export class ChartService {
   getChartData(){
     return this.http.get(this.baseURL)
     .toPromise()
-    .then(res=>this.chartData=res as Chartmodel);
+    .then(res=>this.chartList=res as Chartmodel[]);
   }
 }
