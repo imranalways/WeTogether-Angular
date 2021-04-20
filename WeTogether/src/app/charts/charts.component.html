@@ -2,7 +2,7 @@
 <br>
 <br>
 
-<div class="chartjs-container">
+<!-- <div class="chartjs-container">
     <canvas baseChart 
         [datasets]="lineChartData" 
         [labels]="lineChartLabels" 
@@ -13,5 +13,16 @@
         [plugins]="lineChartPlugins"
         (chartHover)="chartHovered($event)" 
         (chartClick)="chartClicked($event)">
+    </canvas>
+</div> -->
+
+<div class="chartjs-container">
+    <canvas baseChart 
+        [datasets]="barChartData" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins" 
+        [legend]="barChartLegend" 
+        [chartType]="barChartType">
     </canvas>
 </div>
