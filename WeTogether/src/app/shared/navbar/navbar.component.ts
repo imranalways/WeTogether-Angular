@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
               public profileService:ProfileService,public chartService:ChartService) { }
 
   userid:any=localStorage.getItem('UserId');
+  email:any=localStorage.getItem('Email');
   error:String="hasError";
   
   ngOnInit(): void {
