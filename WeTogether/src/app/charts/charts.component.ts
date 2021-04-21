@@ -24,7 +24,7 @@ export class ChartsComponent implements OnInit {
     responsive: true,
     scales: { xAxes: [{}], yAxes: [{}] },
   };
-  barChartLabels: Label[] = ['Toatal Users', 'Male Users', 'Female Users', 'Others'];
+  barChartLabels: Label[] = ['', 'Male Users', 'Female Users', 'Others'];
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartPlugins = [];
