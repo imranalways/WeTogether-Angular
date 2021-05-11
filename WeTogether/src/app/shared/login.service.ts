@@ -11,7 +11,7 @@ export class LoginService {
   constructor(private http:HttpClient,public baseurl:BaseURLService) { }
   formData:Login=new Login();
   // readonly baseURL = 'http://wetogether.local/api/Account/Login';
-  readonly baseURL = 'https://localhost:44388/api/Account/Login';
+  readonly baseURL = this.baseurl.baseUrl+'/api/Account/Login';
 
   Verify_Login(){
     console.log(this.formData);
