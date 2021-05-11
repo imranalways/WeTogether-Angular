@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseURLService } from './base-url.service';
 import { FRequest } from './frequest.model';
 import { Posts } from './posts.model';
 import { Profile } from './profile.model';
@@ -9,7 +10,7 @@ import { Profile } from './profile.model';
 })
 export class ProfileService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public baseurl:BaseURLService) { }
   formData:Profile=new Profile();
   list:Profile;
   usersPosts:Posts[];
