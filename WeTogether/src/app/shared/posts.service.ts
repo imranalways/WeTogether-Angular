@@ -17,6 +17,7 @@ export class PostsService {
   commentList:PostDetails[];
   likes:LikeDetails[];
   postLikes:LikeDetails[];
+  likeInsert:LikeDetails=new LikeDetails();
 
   editData:Posts=new Posts();
   imgData:Posts;
@@ -104,8 +105,10 @@ export class PostsService {
   }
 
   LikesInsert(){
-    this.formData.LikedBy=localStorage.getItem('Name');
-    return this.http.post(this.baseURL+"Likes_Insert",this.formData);
+    this.likeInsert.LikedBy=localStorage.getItem('Name');
+    this.likeInsert.PostId=this.formData.PostId;
+    this.likeInsert.UserId=localStorage.getItem("UserId");
+    return this.http.post(this.baseURL+"Likes_Insert",this.likeInsert);
   }
   CLikesInsert(){
     return this.http.post(this.baseURL+"CLikes_Insert",this.commentLike);

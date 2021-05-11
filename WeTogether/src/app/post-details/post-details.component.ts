@@ -97,7 +97,6 @@ export class PostDetailsComponent implements OnInit {
         console.log(err);
       }
     )
-    this.service.formData.UserId=this.userid;
     this.service.LikesInsert().subscribe(
         res=>{
           this.service.getLikes();
