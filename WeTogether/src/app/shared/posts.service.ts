@@ -30,7 +30,7 @@ export class PostsService {
 
   constructor(private http:HttpClient,public baseurl:BaseURLService) { }
   // readonly baseURL= 'http://wetogether.local/api/Posts/';
-  readonly baseURL= 'https://localhost:44388/api/Posts/';
+  readonly baseURL= this.baseurl.baseUrl+'/api/Posts/';
 
 
   getPostsById(id:String){
@@ -53,12 +53,12 @@ export class PostsService {
   }
 
   getCommentsByPostsId(id:String){
-    return this.http.get('https://localhost:44388/api/Comment/GetById/'+id)
+    return this.http.get(this.baseurl.baseUrl+'/api/Comment/GetById/'+id)
     .toPromise()
     .then(res=>this.comments=res as PostDetails[]);
   }
   getAllComments(){
-    return this.http.get('https://localhost:44388/api/Comment/GetAll')
+    return this.http.get(this.baseurl.baseUrl+'/api/Comment/GetAll')
     .toPromise()
     .then(res=>this.commentList=res as PostDetails[]);
   }
@@ -101,7 +101,7 @@ export class PostsService {
       this.comment.PostId=this.formData.PostId;
       this.comment.C_UserId=localStorage.getItem('UserId');
       this.comment.CommentBy=localStorage.getItem('Name')
-      return this.http.post("https://localhost:44388/api/Comment/Submit",this.comment);
+      return this.http.post(this.baseurl.baseUrl+"/api/Comment/Submit",this.comment);
     }
   }
 
@@ -146,6 +146,6 @@ export class PostsService {
   }
   DeleteComment(Id:String){
     this.comment.CommentId=Id;
-    return this.http.post("https://localhost:44388/api/Comment/Delete",this.comment);
+    return this.http.post(this.baseurl.baseUrl+"/api/Comment/Delete",this.comment);
   }
 }
