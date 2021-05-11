@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseURLService } from './base-url.service';
 import { CommentLike } from './comment-like.model';
 import { LikeDetails } from './like-details.model';
 import { Notification } from './notification.model';
@@ -27,7 +28,7 @@ export class PostsService {
   commentLike:CommentLike=new CommentLike();
   cLikeList:CommentLike[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public baseurl:BaseURLService) { }
   // readonly baseURL= 'http://wetogether.local/api/Posts/';
   readonly baseURL= 'https://localhost:44388/api/Posts/';
 
