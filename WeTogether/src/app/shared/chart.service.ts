@@ -13,7 +13,7 @@ export class ChartService {
 
   chartList:Chartmodel[];
   chartData:Chartmodel=new Chartmodel();
-  readonly baseURL = baseurl '/api/Chart';
+  readonly baseURL = this.baseurl.baseURL+'/api/Chart';
 
   getChartData(){
     return this.http.get(this.baseURL)
