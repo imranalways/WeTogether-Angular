@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseURLService } from './base-url.service';
 import { UserRegister } from './user-register.model';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { UserRegister } from './user-register.model';
 })
 export class UserRegisterService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,public baseurl:BaseURLService) { }
   formData:UserRegister=new UserRegister();
 
   // readonly baseURL = 'http://wetogether.local/api/Account/Register';
