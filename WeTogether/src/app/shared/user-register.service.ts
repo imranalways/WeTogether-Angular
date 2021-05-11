@@ -12,7 +12,7 @@ export class UserRegisterService {
   formData:UserRegister=new UserRegister();
 
   // readonly baseURL = 'http://wetogether.local/api/Account/Register';
-  readonly baseURL = 'https://localhost:44388/api/Account/Register';
+  readonly baseURL = this.baseurl.baseUrl+'/api/Account/Register';
 
   
   postRegister(){
