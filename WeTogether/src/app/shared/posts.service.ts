@@ -107,7 +107,7 @@ export class PostsService {
 
   LikesInsert(){
     this.likeInsert.LikedBy=localStorage.getItem('Name');
-    this.likeInsert.PostId=this.formData.PostId;
+    this.likeInsert.PostId=localStorage.getItem('PostId');
     this.likeInsert.UserId=localStorage.getItem("UserId");
     return this.http.post(this.baseURL+"Likes_Insert",this.likeInsert);
   }
@@ -132,7 +132,7 @@ export class PostsService {
     .then(res=>this.cLikeList=res as CommentLike[]);
   }
   NotificationInsert(Uid:String){
-    this.notification.PostId=this.formData.PostId;
+    this.notification.PostId=localStorage.getItem('PostId');
     this.notification.UserId=Uid;
     this.notification.L_UserId=localStorage.getItem('UserId');
     this.notification.LikedBy=localStorage.getItem('Name');
