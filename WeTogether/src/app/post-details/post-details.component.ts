@@ -85,8 +85,8 @@ export class PostDetailsComponent implements OnInit {
 
   LikeClicked(Id:String){
     this.service.formData.Likes=1;
-    this.service.formData.PostId=Id;
-    
+    // this.service.formData.PostId=Id;
+    localStorage.setItem("PostId",Id.toString());
 
     this.service.notification.IsComment=0;
     this.service.NotificationInsert(this.service.formData.UserId).subscribe(
