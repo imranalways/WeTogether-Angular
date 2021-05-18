@@ -301,4 +301,10 @@ export class ProfileComponent implements OnInit{
       }
     )
   }
+
+  selectFile() {
+    let element: HTMLElement = document.querySelector('input[type="file"]') as HTMLElement;
+    element.click();
+}
+
 }
