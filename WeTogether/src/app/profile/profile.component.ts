@@ -34,6 +34,24 @@ export class ProfileComponent implements OnInit{
    }
  }
 
+ profileimg: string;
+
+ onProfileChange(event) {
+  const reader = new FileReader();
+  console.log("okk from profile pic");
+  if(event.target.files && event.target.files.length) {
+    const [file] = event.target.files;
+    reader.readAsDataURL(file);
+  
+    reader.onload = () => {
+ 
+      this.profileimg = reader.result as string; 
+      console.log(this.profileimg);
+    };
+ 
+  }
+}
+
  CloseImg(){
    this.imageSrc=null;
    this.service.postData.Attachment=null;
