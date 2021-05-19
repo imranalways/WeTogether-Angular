@@ -107,3 +107,7 @@
     position: absolute;
     margin-left: -120px;
   }
+
+  #Loading{
+    text-align: center;
+  }
