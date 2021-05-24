@@ -10,6 +10,12 @@
         <div class="col-md-4"></div>
         
         <div class="col-md-4">
+          <div id="Loading" *ngIf="service.formData==null">
+            <!-- <i class="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
+            <span class="sr-only">Loading...</span> -->
+            <!-- <mdb-card-img class="rounded-circle" src="C:\Users\imran.hossain\Downloads\ALL Files\WeTogether-Angular\WeTogether\src\Content\Loader\loader.svg" alt="Card image cap"></mdb-card-img> -->
+            <img  class="images" src="../../assets/Loader/loader.svg"/>
+          </div>
           <mdb-card-img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap"></mdb-card-img>
           <h4 *ngIf='userid == UrlId'><i  id="profilePicBtn" (click)="selectFile()" (change)="onProfileChange($event)" class="fa fa-camera" aria-hidden="true" title="Edit Profile Picture"></i></h4>
         </div>
