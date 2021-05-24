@@ -87,6 +87,12 @@
                                   <!-- view overlay zoom -->
                                   <!-- class="img-fluid" -->
                                   <div class="col-md-12 ">
+                                    <div id="Loading" *ngIf="service.formData==null">
+                                      <!-- <i class="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
+                                      <span class="sr-only">Loading...</span> -->
+                                      <!-- <mdb-card-img class="rounded-circle" src="C:\Users\imran.hossain\Downloads\ALL Files\WeTogether-Angular\WeTogether\src\Content\Loader\loader.svg" alt="Card image cap"></mdb-card-img> -->
+                                      <img  class="images" src="../../assets/Loader/loader.svg"/>
+                                    </div>
                                     <a routerLink="/Imageview" target="_blank"><img  id="pimg" *ngIf="service.formData.Attachment!=null" [src]="service.formData.Attachment" (click)="getImage(service.formData.Attachment)"></a>
 
                                   </div>
