@@ -11,6 +11,11 @@
                <hr>
               </mdb-card-title>
               <mdb-card-text>
+                <p *ngIf="lCount<10">
+                    <img  class="images" src="../../assets/Loader/loader.svg"/>
+                    {{loaderCount()}}
+                </p>
+                <!-- {{lCountReset()}} -->
                 <div *ngFor="let req of service.freqList">
                     <div class="row" *ngIf="req.SenderId!=userid && req.ReceiverId==userid && req.IsAccepted!=true && req.IsDeleted!=1">
                        
@@ -23,7 +28,11 @@
                             <button class="btn btn-danger btn-sm" (click)="rejectFriendRequest(req.SenderId,req.SenderName,req.RequestId)">R e j e c t</button>
 
                         </div>
+                        {{hasFriendReq()}}
                     </div>
+                </div>
+                <div *ngIf="!hasReq">
+                    <h4>No friend request pending</h4>
                 </div>
               </mdb-card-text>
             </mdb-card-body>

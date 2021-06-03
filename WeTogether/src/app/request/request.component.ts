@@ -52,5 +52,15 @@ export class RequestComponent implements OnInit {
       }
     )
   }
-
+  hasReq:boolean=false;
+  hasFriendReq(){
+    this.hasReq=true;
+  }
+  lCount=0;
+  loaderCount(){
+    this.lCount+=1;
+  }
+  lCountReset(){
+    this.lCount=0;
+  }
 }
