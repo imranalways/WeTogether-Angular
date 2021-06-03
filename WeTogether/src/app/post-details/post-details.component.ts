@@ -67,8 +67,9 @@ export class PostDetailsComponent implements OnInit {
     console.log(this.service.cLikeList);
 
     this.UrlId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.service.getPostsById(this.UrlId);
-    this.service.getCommentsByPostsId(this.UrlId);
+    localStorage.setItem("PostId",this.UrlId.toString());
+    this.service.getPostsById(this.UrlId.toString());
+    this.service.getCommentsByPostsId(this.UrlId.toString());
     this.service.getLikes();
     console.log(this.service.comments);
 
@@ -145,6 +146,7 @@ count(){
 
 ccount(){
   this.cl+=1;
+  this.cchecker=true;
 }
 reset(){
   this.c=0;
